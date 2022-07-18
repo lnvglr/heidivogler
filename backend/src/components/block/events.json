@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_block_events",
+  "info": {
+    "displayName": "events",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "sm"
+    },
+    "filter": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "currentOffer"
+      ],
+      "default": "currentOffer"
+    }
+  }
+}

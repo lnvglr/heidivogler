@@ -2,7 +2,7 @@
   "name": "strapi",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Heidi Vogler Backend",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -13,8 +13,10 @@
   "dependencies": {
     "@strapi/plugin-i18n": "4.1.9",
     "@strapi/plugin-users-permissions": "4.1.9",
-    "@strapi/provider-upload-cloudinary": "4.1.9",
+    "@strapi/provider-upload-aws-s3": "^4.2.0",
     "@strapi/strapi": "4.1.9",
+    "slugify": "^1.6.5",
+    "strapi-plugin-populate-deep": "^0.1.2",
     "pg": "8.7.3"
   },
   "author": {

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_block_contact_forms",
+  "info": {
+    "displayName": "Kontaktformular",
+    "icon": "address-book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "preCopy": {
+      "type": "string"
+    },
+    "copy": {
+      "type": "text"
+    }
+  }
+}

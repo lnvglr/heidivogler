@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_block_cards",
+  "info": {
+    "displayName": "card",
+    "icon": "clone"
+  },
+  "options": {},
+  "attributes": {
+    "card": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_block_testimonials",
+  "info": {
+    "displayName": "Testimonials",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "testimonial": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.testimonial"
+    }
+  }
+}

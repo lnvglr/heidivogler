@@ -1,0 +1,25 @@
+{
+  "name": "icon-picker",
+  "version": "0.0.0",
+  "description": "This is the description of the plugin.",
+  "strapi": {
+    "name": "icon-picker",
+    "description": "Description of Icon Picker plugin",
+    "kind": "plugin",
+    "displayName": "Icon Picker"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "maintainers": [
+    {
+      "name": "A Strapi developer"
+    }
+  ],
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

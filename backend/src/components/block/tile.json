@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_block_tiles",
+  "info": {
+    "displayName": "tile",
+    "icon": "boxes",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Description": {
+      "type": "text"
+    },
+    "Icon": {
+      "type": "icon-picker"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "offers",
+  "info": {
+    "singularName": "offer",
+    "pluralName": "offers",
+    "displayName": "Angebot",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "Tile": {
+      "displayName": "tile",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.tile"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "block.button",
+        "block.element",
+        "block.image",
+        "block.quote",
+        "block.tile",
+        "block.events"
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "unique": true
+    },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.hero"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
+      "mappedBy": "offer"
+    }
+  }
+}

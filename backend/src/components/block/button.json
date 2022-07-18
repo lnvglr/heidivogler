@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_block_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "arrow-alt-circle-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "filled",
+        "clear"
+      ]
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
