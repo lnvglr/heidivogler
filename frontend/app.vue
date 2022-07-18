@@ -5,7 +5,7 @@
     </Head>
     <Body class="antialiased text-neutral-800 bg-stone-100 text-lg">
       <NuxtLayout>
-        <NuxtPage class="page w-full h-full" />
+        <NuxtPage />
       </NuxtLayout>
     </Body>
   </Html>

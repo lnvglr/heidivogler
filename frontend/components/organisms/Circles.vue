@@ -30,9 +30,6 @@ export default defineComponent({
       this.show = true
     }, 500);
   },
-  beforeDestroy() {
-    window.removeEventListener('mousemove', this.onMouseMove);
-  },
   methods: {
     onMouseMove(e: MouseEvent) {
       this.pointer = {

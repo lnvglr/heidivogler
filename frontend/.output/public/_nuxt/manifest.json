@@ -1,33 +1,103 @@
 {
   "node_modules/nuxt/dist/app/entry.mjs": {
-    "file": "entry-8e25485c.mjs",
+    "file": "entry-8c113b20.mjs",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
+      "layouts/default.vue",
+      "_index-c424467b.mjs",
+      "_slugify-943874c1.mjs",
+      "pages/[slug].vue",
+      "pages/angebot/[slug].vue",
+      "pages/angebote.vue",
       "pages/index.vue",
-      "layouts/default.vue"
+      "pages/kontakt.vue",
+      "pages/termine.vue",
+      "pages/ueber-mich.vue"
     ],
     "css": [
-      "entry.74e54931.css"
+      "entry.07c38d7f.css"
+    ]
+  },
+  "pages/[slug].vue": {
+    "file": "_slug_-beff710b.mjs",
+    "src": "pages/[slug].vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ]
+  },
+  "pages/angebot/[slug].vue": {
+    "file": "_slug_-5051c2f8.mjs",
+    "src": "pages/angebot/[slug].vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ]
+  },
+  "pages/angebote.vue": {
+    "file": "angebote-6913dac5.mjs",
+    "src": "pages/angebote.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "pages/index.vue": {
-    "file": "index-1c45ad05.mjs",
+    "file": "index-9705eecc.mjs",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
+  "pages/kontakt.vue": {
+    "file": "kontakt-22e8ded6.mjs",
+    "src": "pages/kontakt.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ]
+  },
+  "pages/termine.vue": {
+    "file": "termine-9974d0fb.mjs",
+    "src": "pages/termine.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ]
+  },
+  "pages/ueber-mich.vue": {
+    "file": "ueber-mich-2b04cb1b.mjs",
+    "src": "pages/ueber-mich.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ]
+  },
   "layouts/default.vue": {
-    "file": "default-172625a3.mjs",
+    "file": "default-789f4d5e.mjs",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ],
     "css": [
-      "default.8a9ee016.css"
+      "default.4e00d6eb.css"
+    ]
+  },
+  "_index-c424467b.mjs": {
+    "file": "index-c424467b.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ]
+  },
+  "_slugify-943874c1.mjs": {
+    "file": "slugify-943874c1.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
     ]
   }
 }
