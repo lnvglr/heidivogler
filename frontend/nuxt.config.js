@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		'@formkit/nuxt'
 	],
 	strapi: {
-		url: process.env.API_BASE || 'backend-production-e0a0.up.railway.app',
+		url: process.env.API_BASE || 'http://localhost:1337',
 	},
 	buildModules: [
 		'@nuxtjs/tailwindcss',
