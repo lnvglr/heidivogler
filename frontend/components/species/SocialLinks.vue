@@ -12,7 +12,7 @@
         class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-md"
         exactActiveClass="text-gold-500"
       >
-        <FontAwesomeIcon v-if="item.icon" :icon="item.icon" class="mr-3" fixed-width />
+        <!-- <FontAwesomeIcon v-if="item.icon" :icon="item.icon" class="mr-3" fixed-width /> -->
         <span>{{ cta ? item.cta : item.title }}</span>
       </NuxtLink>
       <hr v-else class="border-none h-4" />
@@ -21,7 +21,12 @@
 </template>
 
 <script lang="ts">
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 export default defineComponent({
+  components: {
+    // FontAwesomeIcon
+  },
 	props: {
 		links: {
 			type: Array,
