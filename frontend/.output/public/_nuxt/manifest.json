@@ -1,12 +1,12 @@
 {
   "node_modules/nuxt/dist/app/entry.mjs": {
-    "file": "entry-8c113b20.mjs",
+    "file": "entry-ee4a27ac.mjs",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
       "layouts/default.vue",
-      "_index-c424467b.mjs",
-      "_slugify-943874c1.mjs",
+      "_index-6c348504.mjs",
+      "_slugify-be7853ce.mjs",
       "pages/[slug].vue",
       "pages/angebot/[slug].vue",
       "pages/angebote.vue",
@@ -20,7 +20,7 @@
     ]
   },
   "pages/[slug].vue": {
-    "file": "_slug_-beff710b.mjs",
+    "file": "_slug_-60e39e8b.mjs",
     "src": "pages/[slug].vue",
     "isDynamicEntry": true,
     "imports": [
@@ -28,7 +28,7 @@
     ]
   },
   "pages/angebot/[slug].vue": {
-    "file": "_slug_-5051c2f8.mjs",
+    "file": "_slug_-da9aec6e.mjs",
     "src": "pages/angebot/[slug].vue",
     "isDynamicEntry": true,
     "imports": [
@@ -36,7 +36,7 @@
     ]
   },
   "pages/angebote.vue": {
-    "file": "angebote-6913dac5.mjs",
+    "file": "angebote-cfb0785e.mjs",
     "src": "pages/angebote.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -44,7 +44,7 @@
     ]
   },
   "pages/index.vue": {
-    "file": "index-9705eecc.mjs",
+    "file": "index-ec515600.mjs",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -52,7 +52,7 @@
     ]
   },
   "pages/kontakt.vue": {
-    "file": "kontakt-22e8ded6.mjs",
+    "file": "kontakt-669bf451.mjs",
     "src": "pages/kontakt.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -60,7 +60,7 @@
     ]
   },
   "pages/termine.vue": {
-    "file": "termine-9974d0fb.mjs",
+    "file": "termine-af6d73bc.mjs",
     "src": "pages/termine.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -68,7 +68,7 @@
     ]
   },
   "pages/ueber-mich.vue": {
-    "file": "ueber-mich-2b04cb1b.mjs",
+    "file": "ueber-mich-e31f88cf.mjs",
     "src": "pages/ueber-mich.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -76,7 +76,7 @@
     ]
   },
   "layouts/default.vue": {
-    "file": "default-789f4d5e.mjs",
+    "file": "default-b50e6135.mjs",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -86,15 +86,15 @@
       "default.4e00d6eb.css"
     ]
   },
-  "_index-c424467b.mjs": {
-    "file": "index-c424467b.mjs",
+  "_index-6c348504.mjs": {
+    "file": "index-6c348504.mjs",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_slugify-943874c1.mjs": {
-    "file": "slugify-943874c1.mjs",
+  "_slugify-be7853ce.mjs": {
+    "file": "slugify-be7853ce.mjs",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"

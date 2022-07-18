@@ -1,1 +1,0 @@
-import{_ as n,d as s,o as r,c,i as _,w as e,b as i,e as o,t as p}from"./entry-8c113b20.mjs";const u=s({setup(){return{}}}),d=o(" kontakt content ");function l(t,m,f,k,$,x){const a=i;return r(),c(a,{name:"plain"},_({default:e(()=>[d]),_:2},[t.$route.meta.title?{name:"title",fn:e(()=>[o(p(t.$route.meta.title),1)])}:void 0]),1024)}var v=n(u,[["render",l]]);export{v as default};
