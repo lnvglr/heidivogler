@@ -24,7 +24,7 @@
       </div>
     </TransitionGroup>
     <div
-      class="h-[150vh] min-h-[1280px] max-h-[1920px] w-full grid grid-cols-1 grid-rows-7 lg:grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
+      class="h-[150vh] min-h-[1280px] max-h-[1920px] w-full grid grid-cols-1 grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
       id="angebote"
     >
       <Offer
