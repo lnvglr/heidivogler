@@ -2,7 +2,7 @@
   <div v-if="page">
     <div class="h-[90vh] min-h-[720px] relative">
       <Image
-        :media="page.attributes.hero.image?.data.attributes"
+        :media="page.attributes.hero.image.data?.attributes"
         class="h-full -mt-36 -z-10 object-top"
         width="full"
         aspectRatio="16/10"
