@@ -2,11 +2,7 @@
   <div class="container flex flex-col bg-white rounded-md p-5 gap-2" :class="size">
     <div class="date flex justify-between">
       <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
-      <FontAwesomeIcon
-        :icon="['fas', 'calendar-plus']"
-        class="download duration-75 text-stone-600 hover:text-primary-500 cursor-pointer text-2xl -mb-5"
-        @click="downloadEvent"
-      />
+      <DownloadEvent :event="event" class="download" />
     </div>
     <div class="title font-bold leading-none">
       <span>{{ event.attributes.title }}</span>
@@ -33,10 +29,12 @@
 <script lang="ts">
 import Button from "~/components/molecules/Button.vue";
 import { Event, EventAttributes } from "~/types";
+import DownloadEvent from "~/components/molecules/DownloadEvent.vue";
 
 export default defineComponent({
   components: {
     Button,
+    DownloadEvent
   },
   props: {
     event: {
@@ -68,60 +66,6 @@ export default defineComponent({
         date.getHours() * 60 * 60 * 1000;
       date.toISOString();
       return (date.getTime() - day) / (1000 * 60 * 60 * 24);
-    },
-    makeTextFile(text) {
-      const data = new Blob([text], { type: "text/ics" });
-      let textFile = null;
-      textFile = window.URL.createObjectURL(data);
-      return textFile;
-    },
-    toDateArray(raw: Date): number[] {
-      const ISO = raw.toISOString();
-      const date = ISO.split("T")[0]
-        .split("-")
-        .map((e) => parseInt(e));
-      const time = ISO.split("T")[1]
-        .split(":")
-        .splice(0, 2)
-        .map((e) => parseInt(e));
-      return [...date, ...time];
-    },
-    async downloadEvent() {
-      try {
-        const ics = await import("ics");
-        const slugify = (await import("slugify")).default;
-        const event = {
-          start: this.toDateArray(this.start),
-          end: this.toDateArray(this.end),
-
-          startInputType: "utc",
-          startOutputType: "local",
-          endInputType: "utc",
-          endOutputType: "local",
-
-          title: this.event.attributes.title,
-          description: this.event.attributes.description,
-          location: this.location,
-          busyStatus: "BUSY",
-        } as EventAttributes;
-
-        const fontName =
-          slugify([this.event.attributes.title, event.start.join("-")].join("-"), {
-            lower: true,
-            strict: true,
-          }) + ".ics";
-        ics.createEvent(event, (error, value) => {
-          if (error) return console.log(error);
-          const elem = window.document.createElement("a");
-          elem.href = this.makeTextFile(value);
-          elem.download = fontName;
-          document.body.appendChild(elem);
-          elem.click();
-          document.body.removeChild(elem);
-        });
-      } catch (er) {
-        console.warn(er);
-      }
     },
   },
   computed: {

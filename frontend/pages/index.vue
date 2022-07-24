@@ -11,12 +11,12 @@
         :copy="page.attributes.hero.copy"
         :subCopy="page.attributes.hero.subCopy"
         :ornaments="true"
-        class="p-24 pt-24 pb-12 w-full"
+        class="p-6 sm:p-12 lg:p-24 pt-24 pb-12 w-full"
         style="--i: 2"
       />
       <div
         v-if="page"
-        class="text-gold-200 flex flex-col items-center gap-5 relative top-12"
+        class="text-gold-200 flex flex-col items-center gap-5 relative lg:top-12"
         style="--i: 1"
       >
         <span class="cursor-pointer" @click.prevent="scrollToHash('#angebote')">Angebote kennenlernen</span>
@@ -33,12 +33,12 @@
         :offer="offer"
         :parallax="i + 1"
         :class="`row-span-2 lg:row-span-4 lg:col-start-${i + 1} row-start-${
-          i * 2 + 2
+          i * 2 - 1
         } lg:row-start-${i + 1} w-full`"
       />
       <Transition
         name="page"
-        class="lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
+        class="hidden lg:block lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
       >
         <SocialLinks
           v-if="page"

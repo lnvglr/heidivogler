@@ -2,6 +2,7 @@
 	<img
 		v-if="(media || src) && source"
 		:src="source"
+		:srcset="srcset"
 		:style="`--aspect-ratio: ${aspectRatio}`"
 		:class="{'w-full': width === 'full'}"
 		:width="w"
@@ -64,13 +65,23 @@ export default defineComponent({
 				.entries((this.media as Media)?.formats)
 				.reduce((a, b) => a[1]?.width > b[1]?.width ? a : b, [])
 		},
-		source() {
+		source(): string {
 			if (this.src) return this.src
 			// const base = this.$strapi.api.url || 'http://localhost:1337';
 			const base = '';
-			if (this.format?.url) return base + this.format.url
+			// if (this.format?.url) return base + this.format.url
+			console.log(this.media)
 			if (this.media?.url) return base + this.media.url
 		},
+		srcset() {
+			const formats = Object.values(this.media.formats) as ImageProps[]
+			formats.push({
+				url: this.source,
+				width: 2560,
+			} as ImageProps)
+			const srcset = formats.map(format => `${format.url} ${format.width}w`).join(', ')
+			return srcset
+		}
 	},
 	methods: {
 		match(image: ImageProps) {

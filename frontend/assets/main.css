@@ -26,6 +26,9 @@
 			text-decoration: underline;
 		}
 	}
+	p + p {
+		margin-top: var(--m-3);
+	}
 }
 
 .text-shadow {

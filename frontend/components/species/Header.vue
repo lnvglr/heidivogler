@@ -1,5 +1,5 @@
 <template>
-  <header class="z-10">
+  <header class="z-10 overflow-hidden">
     <nav
       class="text-stone-400 flex items-center justify-center px-10 text-lg font-medium h-36 bg-gradient-to-b"
       :class="inverted ? 'text-stone-50' : 'text-stone-700'"

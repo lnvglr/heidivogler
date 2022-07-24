@@ -28,7 +28,7 @@
         <FontAwesomeIcon :icon="['fas', 'quote-right']" />
       </div>
     </div>
-    <div>{{ testimonial.testimonial }}</div>
+    <div v-html="content" class="markdown" />
   </div>
 </template>
 
@@ -47,6 +47,7 @@ export default defineComponent({
   },
   computed: {
     content() {
+      return useMarkdown(this.testimonial.testimonial)
       // return this.data.image?.data.attributes
     },
   },
