@@ -30,7 +30,6 @@ export default defineComponent({
   },
   methods: {
     onMouseMove(e: MouseEvent) {
-      console.log(e);
       this.pointer = {
         x: Math.abs(e.clientX / window.innerWidth),
         y: Math.abs(e.clientY / window.innerHeight),
