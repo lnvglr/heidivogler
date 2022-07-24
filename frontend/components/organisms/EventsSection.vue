@@ -2,11 +2,10 @@
   <section class="flex flex-col gap-12 p-12" v-if="events?.length > 0">
     <div class="flex flex-col items-start gap-2">
       <NuxtLink to="/termine" class="text-3xl font-bold hover:text-primary-500"
-        >Anstehende Termine</NuxtLink
+        >{{$t('upcoming.events.title')}}</NuxtLink
       >
       <span class="font-medium text-stone-500"
-        >Alle geplanten Seminare, Retreats und Gruppentherapien, die bald
-        stattfinden.</span
+        >{{$t('upcoming.events.description')}}</span
       >
     </div>
     <div class="flex flex-wrap gap-6">

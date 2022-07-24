@@ -1,7 +1,8 @@
 <template>
   <component :is="parallaxSpeed ? ScrollParallax : 'div'" :speed="parallaxSpeed / -10" direction="y" :up="true">
     <NuxtLink
-      :to="offer.attributes?.slug ? `angebot/${offer.attributes.slug}` : 'angebote/'"
+      v-if="offer?.attributes"
+      :to="offer.attributes.slug ? `angebot/${offer.attributes.slug}` : 'angebote/'"
       class="block h-full relative rounded-md bg-stone-100 overflow-hidden duration-300 hover:-translate-y-1"
     >
       <Image
@@ -14,13 +15,13 @@
         class="relative p-12 z-10 text-white flex flex-col justify-end h-full bg-gradient-to-t from-black/70"
       >
         <div
-          v-if="offer.attributes.events.data.length > 0"
+          v-if="offer.attributes.events?.data.length > 0"
           class="p-12 -m-12 mb-auto bg-gradient-to-b from-black/70 text-shadow"
         >
-          <FontAwesomeIcon :icon="['fas', 'calendar']" class="mr-3" fixed-width /><span
-            class="font-bold"
-            >{{ offer.attributes.events.data.length }} anstehende Termine</span
-          >
+          <FontAwesomeIcon :icon="['fas', 'calendar']" class="mr-3" fixed-width />
+          <span class="font-bold">
+          {{ $t('upcoming.events', { n: offer.attributes.events.data.length }) }}
+          </span>
         </div>
         <div class="flex flex-col gap-2">
           <h4 class="text-xl font-medium opacity-70" v-if="offer.attributes.hero?.copy">

@@ -1,5 +1,5 @@
 <template>
-  <Html>
+  <Html :lang="$i18n.locale" >
     <Head>
       <Title>Heidi Vogler</Title>
     </Head>

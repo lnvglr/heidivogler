@@ -1,34 +1,43 @@
 <template>
-  <section class="grid grid-cols-1 md:grid-cols-6 justify-center py-24 px-6 duration-1000">
-    offers
+  <section
+    class="py-24 px-6 duration-1000 overflow-x-auto"
+    v-if="offers?.length > 0"
+  >
+    <h3 class="text-3xl font-bold mb-12">{{$t('more.offers')}}</h3>
+    <div class="flex gap-12 mr-12">
+      <Offer v-for="(offer, i) in offers" :key="offer.id" :offer="offer" class="min-w-[480px] max-w-[480px] h-96"/>
+    </div>
   </section>
 </template>
 
 <script lang="ts">
-import Button from "~/components/molecules/Button.vue";
-import Testimonial from "~/components/cells/Testimonial.vue";
-import ListGroupTransition from "~/components/cells/ListGroupTransition.vue";
+import Offer from "~/components/organisms/Offer.vue";
 export default defineComponent({
   components: {
-    Button,
-    Testimonial,
-    ListGroupTransition,
+    Offer,
   },
   props: {
     data: {
       type: Object,
     },
+    page: {
+      type: Object,
+    }
   },
   data() {
     return {
+      offers: null,
     };
   },
-  mounted() {
+  async mounted() {
+    const exclude = [1,2,3]
+    // if (!this.page) {
+
+    // }
+    this.offers = (await this.$strapi.find("offers")).data.filter((e: Offer) => !exclude.includes(e.id));
   },
-  computed: {
-  },
-  methods: {
-  },
+  computed: {},
+  methods: {},
 });
 </script>
 <style lang="scss"></style>

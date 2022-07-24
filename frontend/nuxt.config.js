@@ -1,4 +1,6 @@
 import { defineNuxtConfig } from 'nuxt'
+import i18n from './config/i18n'
+
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -13,7 +15,7 @@ export default defineNuxtConfig({
 		strapiBaseUri: process.env.API_URL || "http://localhost:1337"
 	},
 	buildModules: [
-		'@nuxtjs/tailwindcss',
+		'@nuxtjs/tailwindcss', '@intlify/nuxt3'
 	],
 	css: [
 		'@/assets/main.css',
@@ -34,4 +36,5 @@ export default defineNuxtConfig({
 		host: "0.0.0.0",
 		port: Number(process.env.PORT) || 3000,
 	},
+  intlify: i18n,
 })

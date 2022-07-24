@@ -7,7 +7,7 @@
     <Circles />
     <TransitionGroup tag="div" name="page" style="--total: 3">
       <HeroCopy
-        v-if="page?.attributes.hero"
+        v-if="page?.attributes?.hero"
         :copy="page.attributes.hero.copy"
         :subCopy="page.attributes.hero.subCopy"
         :ornaments="true"
@@ -24,7 +24,7 @@
       </div>
     </TransitionGroup>
     <div
-      class="h-[150vh] min-h-[1280px] w-full grid grid-cols-1 grid-rows-7 lg:grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
+      class="h-[150vh] min-h-[1280px] max-h-[1920px] w-full grid grid-cols-1 grid-rows-7 lg:grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
       id="angebote"
     >
       <Offer
@@ -48,7 +48,7 @@
         />
       </Transition>
     </div>
-    <ContentCollection :content="page?.attributes.content" />
+    <ContentCollection :content="page?.attributes?.content" />
   </div>
 </template>
 <script lang="ts">
@@ -80,12 +80,18 @@ export default defineComponent({
   data() {
     return {
       page: null,
-      offers: null,
     };
   },
-  async mounted() {
-    this.page = (await this.$strapi.find("home")).data;
-    this.offers = (await this.$strapi.find("offers")).data.slice(0, 3);
+  mounted() {
+    this.$strapi.find("home").then(({data}) => {
+      console.log(data)
+      this.page = data;
+    });
+  },
+  computed: {
+    offers() {
+      return this.page?.attributes?.offers?.data.slice(0, 3)
+    }
   },
   methods: {
     scrollToHash(hash: string) {

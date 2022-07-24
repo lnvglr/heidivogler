@@ -1,7 +1,5 @@
 <template>
   <div v-if="content?.length > 0">
-
-    {{page?.attributes.content.map(e => e.__component)}}
     <component
       v-for="element in content"
       :key="element.id"
