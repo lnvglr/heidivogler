@@ -13,8 +13,10 @@
         class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-md"
         exactActiveClass="text-gold-500"
       >
-        <FontAwesomeIcon :icon="item.icon" class="mr-3" fixed-width />
-        <div>{{ cta ? item.cta : item.title }}</div>
+        <ClientOnly>
+          <FontAwesomeIcon :icon="item.icon" class="mr-3" fixed-width />
+          <span>{{ cta ? item.cta : item.title }}</span>
+        </ClientOnly>
       </NuxtLink>
     </li>
   </ul>
