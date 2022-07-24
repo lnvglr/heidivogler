@@ -12,13 +12,26 @@ export interface Offer {
     slug: string;
     createdAt: string
     updatedAt: string
+    events: {
+      data: EventAttributes[]
+    }
     hero: {
+      copy: string;
+      image: {
+        data: {
+          id: number;
+          attributes: Media;
+        }
+      }
       data: {
         id: number
         attributes: Media
       }
     }
   }
+}
+export interface EventAttributes {
+
 }
 
 export interface ImageProps {

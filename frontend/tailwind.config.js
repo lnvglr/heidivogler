@@ -83,6 +83,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
+    require("tailwindcss-hyphens"),
     require('tailwind-css-variables')({
       screens: false,
       lineHeight: false,

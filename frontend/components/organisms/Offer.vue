@@ -12,11 +12,11 @@
         width="full"
       />
       <div
-        class="relative p-12 z-10 text-white flex flex-col justify-end h-full bg-gradient-to-t from-black/70"
+        class="relative p-8 lg:p-12 z-10 text-white flex flex-col justify-end h-full bg-gradient-to-t from-black/70"
       >
         <div
           v-if="offer.attributes.events?.data.length > 0"
-          class="p-12 -m-12 mb-auto bg-gradient-to-b from-black/70 text-shadow"
+          class="p-12 -m-12 mb-auto bg-gradient-to-b from-black/40"
         >
           <FontAwesomeIcon :icon="['fas', 'calendar']" class="mr-3" fixed-width />
           <span class="font-bold">
@@ -27,7 +27,7 @@
           <h4 class="text-xl font-medium opacity-70" v-if="offer.attributes.hero?.copy">
             {{ offer.attributes.title }}
           </h4>
-          <h3 class="text-3xl font-bold leading-none">
+          <h3 class="text-3xl font-bold leading-none hyphens-auto">
             {{ offer.attributes.hero?.copy || offer.attributes.title }}
           </h3>
         </div>

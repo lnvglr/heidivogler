@@ -32,6 +32,7 @@
         :key="offer.id"
         :offer="offer"
         :parallax="i + 1"
+        innerClass="lg:p-8 xl:p-12"
         :class="`row-span-2 lg:row-span-4 lg:col-start-${i + 1} row-start-${
           i * 2 - 1
         } lg:row-start-${i + 1} w-full`"

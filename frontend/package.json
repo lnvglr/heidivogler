@@ -26,5 +26,7 @@
     "tailwind-css-variables": "^3.0.1",
     "vue3-parallax": "^0.1.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "tailwindcss-hyphens": "^0.1.0"
+  }
 }

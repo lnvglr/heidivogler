@@ -1,11 +1,13 @@
 <template>
-  <section
-    class="py-24 px-6 duration-1000 overflow-x-auto"
-    v-if="offers?.length > 0"
-  >
-    <h3 class="text-3xl font-bold mb-12">{{$t('more.offers')}}</h3>
+  <section class="bg-stone-100 py-24 px-6 duration-1000 overflow-x-auto" v-if="offers?.length > 0">
+    <h3 class="text-3xl font-bold mb-12">{{ $t("more.offers") }}</h3>
     <div class="flex gap-12 mr-12">
-      <Offer v-for="(offer, i) in offers" :key="offer.id" :offer="offer" class="min-w-[480px] max-w-[480px] h-96"/>
+      <Offer
+        v-for="(offer, i) in offers"
+        :key="offer.id"
+        :offer="offer"
+        class="min-w-[480px] max-w-[480px] h-96"
+      />
     </div>
   </section>
 </template>
@@ -22,7 +24,7 @@ export default defineComponent({
     },
     page: {
       type: Object,
-    }
+    },
   },
   data() {
     return {
@@ -30,11 +32,13 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const exclude = [1,2,3]
+    const exclude = [1, 2, 3];
     // if (!this.page) {
 
     // }
-    this.offers = (await this.$strapi.find("offers")).data.filter((e: Offer) => !exclude.includes(e.id));
+    this.offers = (await this.$strapi.find("offers")).data.filter(
+      (e: Offer) => !exclude.includes(e.id)
+    );
   },
   computed: {},
   methods: {},

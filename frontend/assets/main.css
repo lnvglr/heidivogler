@@ -3,36 +3,69 @@
 @tailwind utilities;
 
 .markdown {
-	h1, h2, h3, h4 {
-		font-weight: var(--font-bold);
-		line-height: 1.2;
-		margin-block: var(--m-3);
-	}
-	h1 {
-		font-size: var(--text-4xl);
-	}
-	h2 {
-		font-size: var(--text-3xl);
-	}
-	h3 {
-		font-size: var(--text-2xl);
-	}
-	h4 {
-		font-size: var(--text-xl);
-	}
-	a {
-		color: var(--color-gold-500);
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-	p + p {
-		margin-top: var(--m-3);
-	}
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: var(--font-bold);
+    line-height: 1.2;
+    margin-block: var(--m-3);
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+  }
+
+  h2 {
+    font-size: var(--text-3xl);
+  }
+
+  h3 {
+    font-size: var(--text-2xl);
+  }
+
+  h4 {
+    font-size: var(--text-xl);
+  }
+
+  a {
+    color: var(--color-gold-500);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p+p {
+    margin-top: var(--m-3);
+  }
 }
 
 .text-shadow {
-	text-shadow: 0 5px 15px var(--tw-shadow-color, black);
+  text-shadow: 0 5px 15px var(--tw-shadow-color, black);
+}
+
+:root {
+  --fk-color-border: var(--color-stone-300) !important;
+}
+
+[data-type="button"] .formkit-input,
+[data-type="submit"] .formkit-input,
+[data-type="button"] .formkit-input:focus-visible,
+[data-type="submit"] .formkit-input:focus-visible,
+[data-type="button"] .formkit-input:focus-within,
+[data-type="submit"] .formkit-input:focus-within {
+  --fk-color-primary: var(--color-primary-400);
+  --fk-bg-submit: var(--color-primary-400);
+  --fk-color-border-focus: var(--color-primary-400);
+  --fk-bg-submit-hover: var(--color-primary-500);
+  --fk-color-placeholder: var(--color-stone-400);
+}
+
+.formkit-inner {
+  /* --fk-border-box-shadow: initial; */
+  background-color: var(--color-white);
 }
 
 /* .formkit-input[type="*"] input {
