@@ -13,7 +13,7 @@
       <Event :event="event" v-for="event in events" :size="data.size" />
     </div>
   </section>
-  <section v-else class="p-12">Keine bevorstehenden Termine</section>
+  <!-- <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section> -->
 </template>
 
 <script lang="ts">

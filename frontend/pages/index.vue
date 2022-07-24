@@ -24,7 +24,7 @@
       </div>
     </TransitionGroup>
     <div
-      class="h-[150vh] min-h-[1280px] w-full grid grid-cols-1 grid-rows-7 lg:grid-rows-8 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
+      class="h-[150vh] min-h-[1280px] w-full grid grid-cols-1 grid-rows-7 lg:grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
       id="angebote"
     >
       <Offer
@@ -32,7 +32,7 @@
         :key="offer.id"
         :offer="offer"
         :parallax="i + 1"
-        :class="`row-span-2 lg:row-span-6 lg:col-start-${i + 1} row-start-${
+        :class="`row-span-2 lg:row-span-4 lg:col-start-${i + 1} row-start-${
           i * 2 + 2
         } lg:row-start-${i + 1} w-full`"
       />

@@ -1,5 +1,7 @@
 <template>
   <div v-if="content?.length > 0">
+
+    {{page?.attributes.content.map(e => e.__component)}}
     <component
       v-for="element in content"
       :key="element.id"
@@ -14,22 +16,26 @@
 import TextBlock from "~/components/molecules/TextBlock.vue";
 import TextCard from "~/components/molecules/TextCard.vue";
 import QuoteSection from "~/components/organisms/QuoteSection.vue";
+import AboutSection from "~/components/organisms/AboutSection.vue";
 import ImageSection from "~/components/organisms/ImageSection.vue";
 import ButtonSection from "~/components/organisms/ButtonSection.vue";
 import EventsSection from "~/components/organisms/EventsSection.vue";
 import TestimonialsSection from "~/components/organisms/TestimonialsSection.vue";
 import ContactSection from "~/components/organisms/ContactSection.vue";
+import OffersSection from "~/components/organisms/OffersSection.vue";
 
 export default defineComponent({
   components: {
     TextBlock,
     TextCard,
     QuoteSection,
+    AboutSection,
     ImageSection,
     ButtonSection,
     EventsSection,
     ContactSection,
-    TestimonialsSection
+    TestimonialsSection,
+    OffersSection,
   },
   props: {
     content: Object,
@@ -54,6 +60,10 @@ export default defineComponent({
           return TestimonialsSection;
         case "block.contact-form":
           return ContactSection;
+        case "block.about":
+          return AboutSection;
+        case "block.offers":
+          return OffersSection;
       }
     },
   },

@@ -1,8 +1,11 @@
 <template>
-  <section class="grid grid-cols-1 md:grid-cols-6 justify-center p-24 duration-1000">
-		<div class="hidden md:flex items-center justify-center">
-		<Button class="w-12" @click="prev"><FontAwesomeIcon :icon="['fas', 'arrow-left']"/></Button>
-		</div>
+  <section class="grid grid-cols-1 md:grid-cols-6 justify-center py-24 px-6 duration-1000">
+    <div class="hidden md:flex items-center justify-center">
+      <Button class="w-12" @click="prev"
+      v-if="data.testimonial.length > 1"
+        ><FontAwesomeIcon :icon="['fas', 'arrow-left']"
+      /></Button>
+    </div>
     <ListGroupTransition
       :watcher="current"
       transitionName="move"
@@ -15,9 +18,12 @@
         :testimonial="testimonial"
       />
     </ListGroupTransition>
-		<div class="hidden md:flex items-center justify-center">
-		<Button class="w-12" @click="next"><FontAwesomeIcon :icon="['fas', 'arrow-right']"/></Button>
-		</div>
+    <div class="hidden md:flex items-center justify-center">
+      <Button class="w-12" @click="next"
+      v-if="data.testimonial.length > 1"
+        ><FontAwesomeIcon :icon="['fas', 'arrow-right']"
+      /></Button>
+    </div>
   </section>
 </template>
 
@@ -39,18 +45,19 @@ export default defineComponent({
   data() {
     return {
       current: Math.floor(Math.random() * this.data.testimonial.length),
+      timeout: null,
     };
   },
   mounted() {
     const interval = () => {
-      this.next()
-      setTimeout(interval, this.duration);
+      this.next();
+      this.timeout = setTimeout(interval, this.duration);
     };
-    setTimeout(interval, this.duration);
+    this.timeout = setTimeout(interval, this.duration);
   },
   computed: {
     duration() {
-      return this.data.testimonial[this.current].testimonial.length * 50 + 1000;
+      return this.data.testimonial[this.current].testimonial.length * 50 + 1500;
     },
     testimonials() {
       return this.data.testimonial.filter((e: any, i: number) => i === this.current);
@@ -58,6 +65,7 @@ export default defineComponent({
   },
   methods: {
     prev() {
+      clearTimeout(this.timeout);
       if (this.current === 0) {
         this.current = this.data.testimonial.length - 1;
       } else {
@@ -65,6 +73,7 @@ export default defineComponent({
       }
     },
     next() {
+      clearTimeout(this.timeout);
       if (this.current === this.data.testimonial.length - 1) {
         this.current = 0;
       } else {
