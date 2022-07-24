@@ -66,7 +66,8 @@ export default defineComponent({
 		},
 		source() {
 			if (this.src) return this.src
-			const base = this.$strapi.api || 'http://localhost:1337';
+			// const base = this.$strapi.api.url || 'http://localhost:1337';
+			const base = '';
 			if (this.format?.url) return base + this.format.url
 			if (this.media?.url) return base + this.media.url
 		},
