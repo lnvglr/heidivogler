@@ -19,18 +19,19 @@
         class="text-gold-200 flex flex-col items-center gap-5 relative top-12"
         style="--i: 1"
       >
-        <a href="#angebote">Angebote kennenlernen</a>
+        <span class="cursor-pointer" @click.prevent="scrollToHash('#angebote')">Angebote kennenlernen</span>
         <Arrow />
       </div>
     </TransitionGroup>
     <div
-      class="h-[120vh] min-h-[1280px] w-full grid grid-cols-1 grid-rows-8 p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
+      class="h-[150vh] min-h-[1280px] w-full grid grid-cols-1 grid-rows-7 lg:grid-rows-8 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
       id="angebote"
     >
       <Offer
         v-for="(offer, i) in offers"
         :key="offer.id"
         :offer="offer"
+        :parallax="i + 1"
         :class="`row-span-2 lg:row-span-6 lg:col-start-${i + 1} row-start-${
           i * 2 + 2
         } lg:row-start-${i + 1} w-full`"
@@ -86,6 +87,14 @@ export default defineComponent({
     this.page = (await this.$strapi.find("home")).data;
     this.offers = (await this.$strapi.find("offers")).data.slice(0, 3);
   },
+  methods: {
+    scrollToHash(hash: string) {
+      document.querySelector(hash).scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    },
+  }
 });
 </script>
 <style scoped>

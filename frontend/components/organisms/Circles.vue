@@ -2,7 +2,7 @@
   <Transition name="page">
     <div
       v-if="show"
-      class="absolute left-0 -top-36 w-full h-[200vh] overflow-hidden pointer-events-none -z-10"
+      class="absolute left-0 -top-36 w-full h-[200vh] overflow-hidden pointer-events-none"
     >
       <div
         v-for="(circle, i) in circles"
@@ -60,7 +60,7 @@ export default defineComponent({
         },
         {
           size: `${20}vw`,
-          top: `${130 * (this.pointer.y / 30 + 1)}vh`,
+          top: `${150 * (this.pointer.y / 30 + 1)}vh`,
           left: `${10 * (this.pointer.x / 20 + 1)}vw`,
         },
       ];
