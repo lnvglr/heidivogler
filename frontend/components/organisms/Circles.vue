@@ -1,42 +1,41 @@
 <template>
-  <transition-group
-    tag="div"
-    name="list"
-    class="absolute left-0 -top-36 w-full h-[200vh] overflow-hidden pointer-events-none -z-10"
-    :style="{ '--total': circles.length }"
-  >
+  <Transition name="page">
     <div
-      v-for="(circle, i) in circles"
-      :key="i"
-      class="absolute rounded-full border border-gold-500"
       v-if="show"
-      :style="{
-        width: circle.size,
-        height: circle.size,
-        top: circle.top,
-        right: circle.right,
-        left: circle.left,
-        '--i': i
-      }"
-    ></div>
-  </transition-group>
+      class="absolute left-0 -top-36 w-full h-[200vh] overflow-hidden pointer-events-none -z-10"
+    >
+      <div
+        v-for="(circle, i) in circles"
+        :key="i"
+        class="absolute rounded-full border border-gold-500"
+        :style="{
+          width: circle.size,
+          height: circle.size,
+          top: circle.top,
+          right: circle.right,
+          left: circle.left,
+        }"
+      ></div>
+    </div>
+  </Transition>
 </template>
 
 <script lang="ts">
 export default defineComponent({
   mounted() {
-    window.addEventListener('mousemove', this.onMouseMove);
+    window.addEventListener("mousemove", this.onMouseMove);
     setTimeout(() => {
-      this.show = true
+      this.show = true;
     }, 500);
   },
   methods: {
     onMouseMove(e: MouseEvent) {
+      console.log(e);
       this.pointer = {
-        x: Math.abs((e.clientX / window.innerWidth)),
-        y: Math.abs((e.clientY / window.innerHeight)),
+        x: Math.abs(e.clientX / window.innerWidth),
+        y: Math.abs(e.clientY / window.innerHeight),
       };
-    }
+    },
   },
   data() {
     return {
