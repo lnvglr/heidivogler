@@ -12,6 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.hero"
+    },
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -26,11 +31,6 @@
         "block.contact-form",
         "block.testimonials"
       ]
-    },
-    "hero": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.hero"
     }
   }
 }

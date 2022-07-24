@@ -13,14 +13,19 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
+      "displayName": "Titel",
       "type": "string"
     },
-    "Tile": {
-      "displayName": "tile",
-      "type": "component",
-      "repeatable": true,
-      "component": "block.tile"
+    "slug": {
+      "type": "string",
+      "unique": true
     },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.hero"
+    },
+    
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -32,16 +37,8 @@
         "block.events"
       ]
     },
-    "slug": {
-      "type": "string",
-      "unique": true
-    },
-    "hero": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.hero"
-    },
     "events": {
+      "displayName": "Termine",
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event",

@@ -12,6 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.hero"
+    },
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -21,11 +26,6 @@
         "block.button",
         "block.card"
       ]
-    },
-    "hero": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.hero"
     }
   }
 }
