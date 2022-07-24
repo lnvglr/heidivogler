@@ -25,23 +25,23 @@
       "repeatable": false,
       "component": "block.hero"
     },
-    
     "content": {
       "type": "dynamiczone",
       "components": [
         "block.button",
         "block.element",
+        "block.events",
         "block.image",
         "block.quote",
         "block.tile",
-        "block.events"
+        "block.offers"
       ]
     },
     "events": {
-      "displayName": "Termine",
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event",
+      "displayName": "Termine",
       "mappedBy": "offer"
     }
   }
