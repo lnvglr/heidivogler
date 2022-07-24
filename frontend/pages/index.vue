@@ -1,10 +1,13 @@
 <template>
   <div>
-    <div class="absolute h-screen min-h-[1280px] w-screen -mt-36 -z-10 bg-success-800 green"></div>
+    <div
+      class="absolute h-screen min-h-[1280px] w-screen -mt-36 -z-10 bg-success-800 green"
+      :class="{'show-green': page}"
+    ></div>
     <Circles />
     <TransitionGroup tag="div" name="page" style="--total: 3">
       <HeroCopy
-        v-if="page?.attributes.hero" 
+        v-if="page?.attributes.hero"
         :copy="page.attributes.hero.copy"
         :subCopy="page.attributes.hero.subCopy"
         :ornaments="true"
@@ -28,16 +31,21 @@
         v-for="(offer, i) in offers"
         :key="offer.id"
         :offer="offer"
-        :class="`row-span-2 lg:row-span-6 lg:col-start-${i + 1} row-start-${i * 2 + 2} lg:row-start-${
-          i + 1
-        } w-full`"
+        :class="`row-span-2 lg:row-span-6 lg:col-start-${i + 1} row-start-${
+          i * 2 + 2
+        } lg:row-start-${i + 1} w-full`"
       />
-      <div
+      <Transition
+        name="page"
         class="lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
       >
-        <SocialLinks class="font-regular" :links="['instagram', 'email']" :cta="true" />
-      </div>
-
+        <SocialLinks
+          v-if="page"
+          class="font-regular"
+          :links="['instagram', 'email']"
+          :cta="true"
+        />
+      </Transition>
     </div>
     <ContentCollection :content="page?.attributes.content" />
   </div>
@@ -61,8 +69,8 @@ export default defineComponent({
     Button,
     Arrow,
     Event,
-    ContentCollection
-},
+    ContentCollection,
+  },
   setup() {
     definePageMeta({
       headerInverted: true,
@@ -72,27 +80,29 @@ export default defineComponent({
     return {
       page: null,
       offers: null,
-    }
+    };
   },
   async mounted() {
     this.page = (await this.$strapi.find("home")).data;
-    this.offers = (
-      await this.$strapi.find("offers")
-    ).data.slice(0, 3);
+    this.offers = (await this.$strapi.find("offers")).data.slice(0, 3);
   },
 });
 </script>
 <style scoped>
 .green:after {
-  content: '';
+  opacity: 0;
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   mix-blend-mode: hard-light;
-  opacity: 1;
   background-image: url("/green.jpg");
   background-size: cover;
+  transition: 2s;
+}
+.show-green:after {
+  opacity: 1;
 }
 </style>
