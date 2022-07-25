@@ -1,11 +1,13 @@
 import { defineNuxtConfig } from 'nuxt'
 import i18n from './config/i18n'
+import pwa from './config/pwa'
 
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/strapi',
+		'@kevinmarrec/nuxt-pwa',
 		'@formkit/nuxt'
 	],
 	strapi: {
@@ -36,5 +38,6 @@ export default defineNuxtConfig({
 		host: "0.0.0.0",
 		port: Number(process.env.PORT) || 3000,
 	},
-  intlify: i18n,
+	intlify: i18n,
+	pwa,
 })
