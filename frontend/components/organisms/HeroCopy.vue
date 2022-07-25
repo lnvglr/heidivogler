@@ -1,18 +1,24 @@
 <template>
   <div class="flex flex-col gap-10 items-center text-center from-black/80">
-    <div class="flex items-center gap-5 text-gold-400">
-      <div v-if="ornaments" class="ornaments hidden sm:block" v-html="left"></div>
+    <ScrollParallax class="flex items-center gap-5 text-gold-400" :speed="-0.3">
+      <ScrollParallax v-if="ornaments" class="ornaments hidden sm:block" v-html="left" :speed="0.1" direction="x" :left="true"></ScrollParallax>
       <h1 v-if="copy" class="text-5xl sm:text-6xl md:text-7xl font-display italic max-w-xl">{{ copy }}</h1>
-      <div v-if="ornaments" class="ornaments hidden sm:block" v-html="right"></div>
-    </div>
+      <ScrollParallax v-if="ornaments" class="ornaments hidden sm:block" v-html="right" :speed="0.1" direction="x" :right="true"></ScrollParallax>
+    </ScrollParallax>
+    <ScrollParallax :speed="-0.2">
     <h2 v-if="subCopy" class="text-gold-200 text-xl sm:text-2xl md:text-3xl font-display italic max-w-3xl">
       {{ subCopy }}
     </h2>
+    </ScrollParallax>
   </div>
 </template>
 
 <script lang="ts">
+import ScrollParallax from "vue3-parallax/src/components/ScrollParallax.vue";
 export default defineComponent({
+  components: {
+    ScrollParallax
+  },
   props: {
     copy: {
       type: String,

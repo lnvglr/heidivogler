@@ -1,16 +1,22 @@
 <template>
-  <img
+<div
     v-if="source"
-    :src="(inView && source) || ''"
+    class="overflow-hidden h-full w-full"
+    >
+  <img
+    :src="(inView && source) || smallest.url || ''"
     :srcset="(inView && srcset) || ''"
     :style="`--aspect-ratio: ${aspectRatio}`"
-    :class="{ 'w-full': width === 'full' }"
+    class="duration-300"
+    :class="{ 'w-full h-full': width === 'full', 'duration-75 blur-lg brightness-75 scale-110': loading }"
     :width="w"
     :height="h"
     v-bind="$attrs"
     ref="image"
     :alt="alt || media?.alternativeText || 'image'"
+    @load="inView && (loading = false)"
   />
+  </div>
   <div
     v-else
     class="placeholder flex items-center justify-center text-beige-400 font-bold"
@@ -80,6 +86,12 @@ export default defineComponent({
         []
       );
     },
+    smallest() {
+      return Object.values((this.media as Media)?.formats).reduce(
+        (a, b) => (a[1]?.width < b[1]?.width ? a : b),
+        []
+      ) as Media;
+    },
     source(): string {
       if (this.src) return this.src;
       if (this.media?.url) return this.media.url;
@@ -103,6 +115,7 @@ export default defineComponent({
     return {
       observer: new IntersectionObserver((e) => this.checkView(e[0])),
       inView: !this.lazy,
+      loading: true
     };
   },
   methods: {

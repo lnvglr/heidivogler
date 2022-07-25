@@ -23,7 +23,8 @@
         <Arrow />
       </div>
     </TransitionGroup>
-    <div
+    <TransitionGroup
+      tag="div" name="page" style="--total: 3"
       class="h-[150vh] min-h-[1280px] max-h-[1920px] w-full grid grid-cols-1 grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
       id="angebote"
     >
@@ -36,9 +37,9 @@
         :class="`row-span-2 lg:row-span-4 lg:col-start-${i + 1} row-start-${
           i * 2 - 1
         } lg:row-start-${i + 1} w-full`"
+        :style="`--i: ${3 - i}`"
       />
-      <Transition
-        name="page"
+      <div
         class="hidden lg:block lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
       >
         <SocialLinks
@@ -47,8 +48,8 @@
           :links="['instagram', 'email']"
           :cta="true"
         />
-      </Transition>
-    </div>
+      </div>
+    </TransitionGroup>
     <ContentCollection :content="page?.attributes?.content" />
   </div>
 </template>
