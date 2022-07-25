@@ -1,22 +1,25 @@
 <template>
-  <div v-if="page">
+  <div>
     <div class="h-[90vh] min-h-[720px] relative">
+      <TransitionGroup name="slide-in">
       <Image
+        v-if="page"
         :media="page.attributes.hero.image.data?.attributes"
         class="h-full -mt-36 -z-10 object-top"
         width="full"
         aspectRatio="16/10"
       />
-      <Transition name="slide-in">
         <HeroCopy
           v-if="show"
           :copy="page.attributes.hero.copy"
           :subCopy="page.attributes.hero.subCopy"
-          class="absolute bottom-0 p-24 w-full bg-gradient-to-t z-20"
+          class="absolute bottom-0 px-12 py-24 w-full bg-gradient-to-t z-20"
         />
-      </Transition>
+      </TransitionGroup>
     </div>
-    <ContentCollection :content="page.attributes.content" />
+      <Transition name="slide-in">
+    <ContentCollection v-if="page" :content="page.attributes.content" />
+      </Transition>
   </div>
 </template>
 

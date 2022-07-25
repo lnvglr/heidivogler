@@ -1,13 +1,16 @@
 <template>
-  <NuxtLayout name="plain" v-if="page">
+  <NuxtLayout name="default" v-if="page" class="p-12 max-w-4xl mx-auto">
     <template #title>{{ page?.attributes.title }}</template>
-    <div class="markdown max-w-4xl" v-html="content" />
+    <div class="markdown" v-html="content" />
   </NuxtLayout>
 </template>
 
 <script lang="ts">
 export default defineComponent({
   setup() {
+    definePageMeta({
+      layout: false,
+    });
   },
   data() {
     return {

@@ -10,7 +10,7 @@
   h4 {
     font-weight: var(--font-bold);
     line-height: 1.2;
-    margin-block: var(--m-3);
+    margin-block: 1em;
   }
 
   h1 {
@@ -36,7 +36,10 @@
       text-decoration: underline;
     }
   }
-
+  hr {
+    border: 1px solid var(--color-stone-200);
+    margin-block: var(--h-12);
+  }
   p+p {
     margin-top: var(--m-3);
   }

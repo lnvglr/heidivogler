@@ -56,6 +56,7 @@ module.exports = {
     ...['1', '2', '3', '4', '5', '6'].map((e) => `col-start-${e}`),
     ...['1', '2', '3', '4', '5', '6'].map((e) => `lg:col-start-${e}`),
     ...['1', '2', '3', '4', '5', '6'].map((e) => `row-start-${e}`),
+    ...['1', '2', '3', '4', '5', '6'].map((e) => `order-${e}`),
   ],
   tailwindcss: {
     viewer: true,

@@ -1,5 +1,5 @@
 <template>
-	<NuxtLayout name="plain">
+  <NuxtLayout name="generic">
 		<template #title v-if="$route.meta.title">{{ $route.meta.title }}</template>
 		kontakt content
 	</NuxtLayout>
@@ -11,7 +11,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   setup() {
     definePageMeta({
-      // layout: false,
+      layout: false,
       title: "Kontakt",
     });
 
