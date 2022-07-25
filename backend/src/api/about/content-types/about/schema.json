@@ -24,7 +24,8 @@
         "block.image",
         "block.quote",
         "block.button",
-        "block.card"
+        "block.card",
+        "block.tile"
       ]
     }
   }

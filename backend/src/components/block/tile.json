@@ -1,16 +1,22 @@
 {
   "collectionName": "components_block_tiles",
   "info": {
-    "displayName": "tile",
+    "displayName": "Kachel",
     "icon": "boxes",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "Description": {
+    "title": {
+      "displayName": "Titel",
       "type": "text"
     },
-    "Icon": {
+    "description": {
+      "displayName": "Beschreibung",
+      "type": "richtext"
+    },
+    "icon": {
+      "displayName": "Icon",
       "type": "icon-picker"
     }
   }
