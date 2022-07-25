@@ -24,12 +24,12 @@
           </span>
         </div>
         <div class="flex flex-col gap-2">
-          <h4 class="text-xl font-medium opacity-70" v-if="offer.attributes.hero?.copy">
+          <h3 class="text-xl font-medium opacity-70" v-if="offer.attributes.hero?.copy">
             {{ offer.attributes.title }}
-          </h4>
-          <h3 class="text-3xl font-bold leading-none hyphens-auto">
-            {{ offer.attributes.hero?.copy || offer.attributes.title }}
           </h3>
+          <span class="text-3xl font-bold leading-none hyphens-auto">
+            {{ offer.attributes.hero?.copy || offer.attributes.title }}
+          </span>
         </div>
       </div>
     </NuxtLink>
