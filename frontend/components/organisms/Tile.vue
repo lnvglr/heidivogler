@@ -1,22 +1,34 @@
 <template>
-	<section class="bg-stone-100 p-12 flex justify-center">
-		<div class="max-w-2xl w-full mx-auto markdown my-12 bg-white rounded-md p-12" v-html="content" />
-	</section>
+  <div class="bg-white p-12 rounded-lg flex flex-col items-start gap-12 min-w-[160px]">
+    <FontAwesomeIcon
+      v-if="icon"
+      :icon="['fas', icon]"
+      class="text-primary-500 text-3xl leading-none"
+    />
+    <h3 class="text-2xl font-bold">{{ title }}</h3>
+    <div class="markdown" v-html="content">
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 export default defineComponent({
-	props: {
-		data: {
-			type: Object,
-		}
-	},
-	computed: {
-		content() {
-			return useMarkdown(this.data.card)
-		}
-	},
-})
+  props: {
+    icon: {
+      type: String,
+    },
+    title: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+  },
+  computed: {
+    content() {
+      return useMarkdown(this.description)
+    },
+  },
+});
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

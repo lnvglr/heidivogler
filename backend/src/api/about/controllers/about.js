@@ -21,6 +21,9 @@ module.exports = createCoreController('api::about.about', ({ strapi }) => ({
 				content: {
 					populate: {
 						image: true,
+						tile: {
+							'icon-picker': true,
+						}
 					}
 				},
 			},

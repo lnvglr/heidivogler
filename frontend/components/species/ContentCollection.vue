@@ -21,6 +21,7 @@ import EventsSection from "~/components/organisms/EventsSection.vue";
 import TestimonialsSection from "~/components/organisms/TestimonialsSection.vue";
 import ContactSection from "~/components/organisms/ContactSection.vue";
 import OffersSection from "~/components/organisms/OffersSection.vue";
+import TileSection from "~/components/organisms/TileSection.vue";
 
 export default defineComponent({
   components: {
@@ -34,6 +35,7 @@ export default defineComponent({
     ContactSection,
     TestimonialsSection,
     OffersSection,
+    TileSection,
   },
   props: {
     content: Object,
@@ -62,6 +64,8 @@ export default defineComponent({
           return AboutSection;
         case "block.offers":
           return OffersSection;
+        case "block.tile":
+          return TileSection;
       }
     },
   },

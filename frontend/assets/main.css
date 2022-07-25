@@ -43,6 +43,14 @@
   p+p {
     margin-top: var(--m-3);
   }
+  ul {
+    list-style: disc;
+    padding-left: var(--p-5)
+  }
+  ol {
+    list-style: decimal;
+    padding-left: var(--p-5)
+  }
 }
 
 .text-shadow {
