@@ -3,7 +3,7 @@
     <nav class="grid grid-cols-12 gap-6 md:gap-12 max-w-5xl mx-auto w-full">
       <div class="col-span-6 sm:col-span-6 lg:col-span-6 flex flex-col gap-24">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <NuxtLink to="/" class="">
+          <NuxtLink to="/" class="" title="home">
             <Icon v-if="Logo" :icon="Logo" class="w-full max-w-[160px]" />
           </NuxtLink>
           <ul>

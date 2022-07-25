@@ -16,6 +16,7 @@
     :title="title"
     :disabled="disabled"
     class="button items-center justify-center"
+    :aria-label="title"
   >
 
     <span class="flex items-center justify-center gap-2">

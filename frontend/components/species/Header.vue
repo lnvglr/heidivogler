@@ -32,6 +32,7 @@
             :exactActiveClass="
               inverted ? `${item.icon ? 'text-gold-400' : 'text-white'}` : 'text-gold-500'
             "
+            :title="item.title || item.name"
             :class="{
               'hover:text-gold-400': inverted,
               'hover:text-gold-600': !inverted,

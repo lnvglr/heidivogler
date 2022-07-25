@@ -1,7 +1,7 @@
 <template>
 	<section class="p-12 flex justify-center">
 		<!-- {{data.label}} -->
-		<Button :to="data.link">{{data.label}}</Button>
+		<Button :to="data.link" :title="data.label">{{data.label}}</Button>
 	</section>
 </template>
 

@@ -3,6 +3,7 @@
     <div class="hidden md:flex items-center justify-center">
       <Button class="w-12" @click="prev"
       v-if="data.testimonial.length > 1"
+      :title="$t('prev.testimonial')"
         ><FontAwesomeIcon :icon="['fas', 'arrow-left']"
       /></Button>
     </div>
@@ -21,6 +22,7 @@
     <div class="hidden md:flex items-center justify-center">
       <Button class="w-12" @click="next"
       v-if="data.testimonial.length > 1"
+      :title="$t('next.testimonial')"
         ><FontAwesomeIcon :icon="['fas', 'arrow-right']"
       /></Button>
     </div>

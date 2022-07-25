@@ -9,6 +9,7 @@
     :height="h"
     v-bind="$attrs"
     ref="image"
+    :alt="alt || media?.alternativeText || 'image'"
   />
   <div
     v-else
@@ -25,6 +26,10 @@ export default defineComponent({
       type: Object as () => Media,
     },
     src: {
+      type: String,
+      default: null,
+    },
+    alt: {
       type: String,
       default: null,
     },

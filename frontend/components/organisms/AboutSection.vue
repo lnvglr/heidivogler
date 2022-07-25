@@ -11,7 +11,7 @@
     </div>
 		<div class="flex flex-col items-start gap-6">
 			<p class="text-xl sm:text-2xl" v-html="content"/>
-			<Button :to="'ueber-mich'">Mehr erfahren</Button>
+			<Button :to="'ueber-mich'" :title="$t('learn.more')">{{$t('learn.more')}}</Button>
 		</div>
 		</div>
 	</section>

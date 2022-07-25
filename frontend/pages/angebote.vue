@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="default" class="p-12">
     <template #title v-if="$route.meta.title">{{ $route.meta.title }}</template>
-    <div class="flex flex-wrap gap-5"><Button v-for="offer in offers" :key="offer.id" :to="`/angebot/${offer.attributes.slug}`">{{offer.attributes.title}}</Button></div>
+    <div class="flex flex-wrap gap-5"><Button v-for="offer in offers" :key="offer.id" :to="`/angebot/${offer.attributes.slug}`" :title="offer.attributes.title">{{offer.attributes.title}}</Button></div>
   </NuxtLayout>
 </template>
 
