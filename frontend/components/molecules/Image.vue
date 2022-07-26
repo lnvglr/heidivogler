@@ -1,21 +1,21 @@
 <template>
-<div
-    v-if="source"
-    class="overflow-hidden h-full w-full"
-    >
-  <img
-    :src="(inView && source) || smallest.url || ''"
-    :srcset="(inView && srcset) || ''"
-    :style="`--aspect-ratio: ${aspectRatio}`"
-    class="duration-300"
-    :class="{ 'w-full h-full': width === 'full', 'duration-75 blur-lg brightness-75 scale-110': loading }"
-    :width="w"
-    :height="h"
-    v-bind="$attrs"
-    ref="image"
-    :alt="alt || media?.alternativeText || 'image'"
-    @load="inView && (loading = false)"
-  />
+  <div v-if="source" class="overflow-hidden h-full w-full"
+      v-bind="$attrs">
+    <img
+      :src="(inView && source) || smallest.url || ''"
+      :srcset="(inView && srcset) || ''"
+      :style="`--aspect-ratio: ${aspectRatio}`"
+      class="duration-300"
+      :class="{
+        'w-full h-full': width === 'full',
+        'duration-75 blur-lg brightness-75 scale-105': loading,
+      }"
+      :width="w"
+      :height="h"
+      ref="image"
+      :alt="alt || media?.alternativeText || 'image'"
+      @load="inView && (loading = false)"
+    />
   </div>
   <div
     v-else
@@ -115,7 +115,7 @@ export default defineComponent({
     return {
       observer: new IntersectionObserver((e) => this.checkView(e[0])),
       inView: !this.lazy,
-      loading: true
+      loading: true,
     };
   },
   methods: {

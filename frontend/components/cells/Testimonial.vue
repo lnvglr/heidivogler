@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex flex-col gap-5 items-center bg-stone-50 rounded-md p-12 w-full max-w-2xl"
+    class="flex flex-col gap-5 items-center bg-stone-50 rounded-md p-6 sm:p-12 w-full max-w-2xl"
   >
-    <div class="w-24 h-24 -translate-y-24 -mb-24" v-if="testimonial.image.data">
+    <div class="w-24 h-24 -translate-y-20 -mb-20 sm:-translate-y-24 sm:-mb-24" v-if="testimonial.image.data">
       <Image
         class="h-full rounded-full"
         :media="testimonial.image.data.attributes"
