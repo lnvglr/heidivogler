@@ -40,4 +40,9 @@ export default defineNuxtConfig({
 	},
 	intlify: i18n,
 	pwa,
+	vite: {
+		build: {
+			sourcemap: true,
+		},
+	},
 })
