@@ -8,6 +8,28 @@ module.exports = ({ env }) => ({
     enabled: true,
     resolve: './src/plugins/icon-picker'
   },
+  "rest-cache": {
+    config: {
+      provider: {
+        name: "memory",
+        options: {
+          max: 32767,
+          maxAge: 3600,
+        },
+      },
+      strategy: {
+        contentTypes: [
+          // list of Content-Types UID to cache
+          "api::datenschutz.datenschutz",
+          "api::impressum.impressum",
+          "api::about.about",
+          "api::event.event",
+          "api::home.home",
+          "api::offer.offer",
+        ],
+      },
+    },
+  },
   upload: {
     config: {
       provider: 'aws-s3',

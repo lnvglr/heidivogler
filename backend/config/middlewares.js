@@ -1,5 +1,6 @@
 const awsBucket = `${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com`;
 module.exports = [
+  'strapi::compression',
   'strapi::errors',
   {
     name: 'strapi::security',
