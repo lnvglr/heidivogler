@@ -1,6 +1,5 @@
 <template>
-  <div v-if="source" class="overflow-hidden h-full w-full"
-      v-bind="$attrs">
+  <div v-if="source" class="overflow-hidden h-full w-full" v-bind="$attrs">
     <img
       :src="(inView && source) || smallest.url || ''"
       :srcset="(inView && srcset) || ''"

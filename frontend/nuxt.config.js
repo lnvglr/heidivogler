@@ -17,7 +17,9 @@ export default defineNuxtConfig({
 		strapiBaseUri: process.env.API_URL || "http://localhost:1337"
 	},
 	buildModules: [
-		'@nuxtjs/tailwindcss', '@intlify/nuxt3'
+		'@nuxtjs/tailwindcss', '@intlify/nuxt3', ['@nuxt-modules/compression', {
+			algorithm: 'brotliCompress'
+		}]
 	],
 	css: [
 		'@/assets/main.css',

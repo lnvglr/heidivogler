@@ -16,12 +16,14 @@
     "@fortawesome/vue-fontawesome": "3.0.0-5",
     "@intlify/nuxt3": "^0.2.3",
     "@kevinmarrec/nuxt-pwa": "^0.4.2",
+    "@nuxt-modules/compression": "^0.1.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/strapi": "^1.4.0",
     "ics": "^2.37.0",
     "markdown-it": "^13.0.1",
     "nuxt": "3.0.0-rc.5",
     "slugify": "^1.6.5",
+    "vite-plugin-compression": "^0.5.1",
     "vue3-parallax": "^0.1.4"
   },
   "devDependencies": {
