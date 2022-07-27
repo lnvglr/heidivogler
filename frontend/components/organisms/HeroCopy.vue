@@ -15,6 +15,7 @@
 
 <script lang="ts">
 import ScrollParallax from "vue3-parallax/src/components/ScrollParallax.vue";
+
 export default defineComponent({
   components: {
     ScrollParallax

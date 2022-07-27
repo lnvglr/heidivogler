@@ -37,10 +37,10 @@ export default defineComponent({
     if (!app.$state) app.provide("state", reactive({}));
     definePageMeta({
       pageTransition: {
-        name: "page",
+        // name: "page",
       },
       layoutTransition: {
-        name: "page",
+        // name: "page",
       },
     });
   },

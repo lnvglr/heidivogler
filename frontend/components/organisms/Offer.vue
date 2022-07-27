@@ -40,6 +40,7 @@
 import { Offer } from "~/types";
 import Image from "~/components/molecules/Image.vue";
 import ScrollParallax from "vue3-parallax/src/components/ScrollParallax.vue";
+import { markRaw } from "vue";
 
 export default defineComponent({
   components: { Image, ScrollParallax },
@@ -59,7 +60,7 @@ export default defineComponent({
   },
   data() {
     return {
-      ScrollParallax,
+      ScrollParallax: markRaw(ScrollParallax),
       parallaxSpeed: this.parallax
     }
   },

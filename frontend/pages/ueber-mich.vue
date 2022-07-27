@@ -50,7 +50,7 @@ export default defineComponent({
     setTimeout(() => {
       this.show = true;
     }, 500);
-    this.page = (await this.$strapi.find("about")).data;
+    this.page = (await this.$strapi.find("about", {populate: "*"})).data;
   },
 });
 </script>

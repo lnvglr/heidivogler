@@ -5,7 +5,7 @@
       :class="{'show-green': page}"
     ></div>
     <Circles />
-    <TransitionGroup tag="div" name="page" style="--total: 3">
+    <TransitionGroup tag="div" name="page" style="--total: 2">
       <HeroCopy
         v-if="page?.attributes?.hero"
         :copy="page.attributes.hero.copy"
@@ -13,11 +13,13 @@
         :ornaments="true"
         class="p-6 sm:p-12 lg:p-24 pt-24 pb-12 w-full"
         style="--i: 2"
+        :key="2"
       />
       <div
         v-if="page"
         class="text-gold-200 flex flex-col items-center gap-5 relative lg:top-12"
         style="--i: 1"
+        :key="1"
       >
         <span class="cursor-pointer" @click.prevent="scrollToHash('#angebote')">Angebote kennenlernen</span>
         <Arrow />
@@ -40,6 +42,7 @@
         :style="`--i: ${3 - i}`"
       />
       <div
+        key="SocialLinks"
         class="hidden lg:block lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
       >
         <SocialLinks
@@ -86,7 +89,6 @@ export default defineComponent({
   },
   mounted() {
     this.$strapi.find("home").then(({data}) => {
-      console.log(data)
       this.page = data;
     });
   },

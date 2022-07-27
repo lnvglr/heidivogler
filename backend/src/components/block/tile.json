@@ -9,7 +9,7 @@
   "attributes": {
     "title": {
       "displayName": "Titel",
-      "type": "text"
+      "type": "string"
     },
     "description": {
       "displayName": "Beschreibung",
