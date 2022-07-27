@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-stone-100 p-12 flex justify-center">
-    <Tile :icon="data.icon" :title="data.title" :description="data.description" />
+  <section class="grid grid-cols-2 gap-12 bg-stone-100 p-12 max-w-7xl mx-auto">
+    <Tile v-for="t in data.tile" :icon="t.icon" :title="t.title" :description="t.description" />
   </section>
 </template>
 

@@ -32,10 +32,9 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const exclude = [1, 2, 3];
-    // if (!this.page) {
-
-    // }
+    const exclude = this.page?.attributes.offers?.data ? this.page?.attributes.offers?.data.slice(0, 3).map(({id}) => id) : [this.page?.id];
+    console.log(this.page)
+    console.log(exclude);
     this.offers = (await this.$strapi.find("offers")).data.filter(
       (e: Offer) => !exclude.includes(e.id)
     );

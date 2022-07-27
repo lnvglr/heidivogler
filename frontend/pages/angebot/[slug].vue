@@ -9,7 +9,11 @@
       />
     </div>
 		<div class="py-24">
-			<div class="max-w-2xl mx-auto"><h1 class="text-3xl font-bold">{{ offer.attributes.title }}</h1></div>
+			<div class="relative bg-white rounded-lg p-12 md:p-24 max-w-5xl mx-auto -mt-48 z-50 flex flex-col gap-5 items-start">
+				<h1 class="text-2xl font-bold text-stone-400">{{ offer.attributes.title }}</h1>
+				<h1 class="text-5xl font-bold mb-2">{{ offer.attributes.hero?.copy }}</h1>
+				<h1 class="text-3xl">{{ offer.attributes.hero?.subCopy }}</h1>
+			</div>
 			<ContentCollection :content="content" :page="offer" />
 		</div>
 	</div>

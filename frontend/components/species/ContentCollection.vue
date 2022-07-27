@@ -64,7 +64,7 @@ export default defineComponent({
           return AboutSection;
         case "block.offers":
           return OffersSection;
-        case "block.tile":
+        case "block.tiles":
           return TileSection;
       }
     },

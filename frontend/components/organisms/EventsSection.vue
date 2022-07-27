@@ -9,7 +9,7 @@
       >
     </div>
     <div class="flex flex-wrap gap-6">
-      <Event :event="event" v-for="event in events" :size="data.size" />
+      <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'md' : 'sm'" />
     </div>
   </section>
   <!-- <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section> -->

@@ -53,7 +53,7 @@
         />
       </div>
     </TransitionGroup>
-    <ContentCollection :content="page?.attributes?.content" />
+    <ContentCollection :content="page?.attributes?.content" :page="page" />
   </div>
 </template>
 <script lang="ts">

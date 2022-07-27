@@ -2,7 +2,7 @@
   <component :is="parallaxSpeed ? ScrollParallax : 'div'" :speed="parallaxSpeed / -10" direction="y" :up="true">
     <NuxtLink
       v-if="offer?.attributes"
-      :to="offer.attributes.slug ? `angebot/${offer.attributes.slug}` : 'angebote/'"
+      :to="offer.attributes.slug ? `/angebot/${offer.attributes.slug}` : '/angebote'"
       class="block h-full relative rounded-md bg-stone-700 overflow-hidden duration-300 hover:-translate-y-1"
     >
       <Image
