@@ -33,8 +33,8 @@
         "block.events",
         "block.image",
         "block.quote",
-        "block.tile",
-        "block.offers"
+        "block.offers",
+        "block.tiles"
       ]
     },
     "events": {
