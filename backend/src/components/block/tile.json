@@ -17,7 +17,7 @@
     },
     "icon": {
       "displayName": "Icon",
-      "type": "icon-picker"
+      "type": "string"
     }
   }
 }
