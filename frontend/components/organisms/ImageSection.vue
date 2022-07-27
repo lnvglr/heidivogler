@@ -1,6 +1,7 @@
 <template>
 	<section class="">
-		<Image class="h-96" :media="content" width="full" />
+		<Image class="h-[80vh] min-h-[360px] max-h-[90vh]" :media="content" width="full" />
+		<figcaption class="max-w-7xl mx-auto my-3 px-12 text-stone-400">{{content.caption}}</figcaption>
 	</section>
 </template>
 

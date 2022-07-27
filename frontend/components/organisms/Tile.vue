@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-white p-12 rounded-lg flex flex-col items-start justify-between gap-12 min-w-[160px] h-64 cursor-pointer hover:scale-[0.99] hover:bg-stone-50 duration-75" :class="icon" @click="open = !open">
+  <div class="bg-white p-12 rounded-lg flex flex-col items-start justify-between gap-12 min-w-[160px] min-h-[160px]" :class="{'cursor-pointer hover:scale-[0.99] hover:bg-stone-50 duration-75': !!description, [icon]: icon}"  @click="open = !open && !!description" >
     <FontAwesomeIcon
       v-if="icon"
       :icon="['fas', icon]"
-      class="text-primary-500 text-3xl leading-none"
+      class="text-primary-500 text-4xl leading-none"
     />
     <h3 class="text-2xl font-bold text-stone-500">{{ title }}</h3>
   </div>
