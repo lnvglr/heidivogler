@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_block_tiles",
+  "info": {
+    "displayName": "Kacheln",
+    "icon": "border-all"
+  },
+  "options": {},
+  "attributes": {
+    "tile": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.tile"
+    }
+  }
+}
