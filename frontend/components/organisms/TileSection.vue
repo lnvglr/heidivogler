@@ -1,6 +1,6 @@
 <template>
-  <section class="grid grid-cols-1 md:grid-cols-2 auto-rows-fr grid-flow-row gap-6 sm:gap-12 bg-stone-100 p-12 max-w-7xl mx-auto">
-    <Tile v-for="t in data.tile" :icon="t.icon" :title="t.title" :description="t.description" />
+  <section ref="tiles" class="bg-stone-100 p-12 min-h-[50vh] grid grid-cols-1 md:grid-cols-2 auto-rows-fr grid-flow-row gap-6 sm:gap-12 max-w-7xl mx-auto" :style="`--total: ${data.tile.length}`">
+    <Tile v-for="t, i in data.tile" class="flex" :class="inView ? 'transition-show' : 'transition-hide'" :style="`--i: ${data.tile.length - i}`" :icon="t.icon" :title="t.title" :description="t.description" />
   </section>
 </template>
 
@@ -13,6 +13,26 @@ export default defineComponent({
   props: {
     data: {
       type: Object,
+    },
+  },
+  data() {
+    return {
+      observer: new IntersectionObserver((e) => this.checkView(e[0])),
+      inView: false
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      if (this.$refs.tiles) this.observer.observe(this.$refs.tiles);
+    });
+  },
+  methods: {
+    checkView({ isIntersecting }) {
+      if (isIntersecting) {
+        setTimeout(() => {
+          this.inView = true;
+        }, 500);
+      }
     },
   },
   computed: {
