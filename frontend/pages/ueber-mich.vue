@@ -20,6 +20,9 @@
     <Transition name="slide-in">
       <ContentCollection v-if="page" :content="page.attributes.content" />
     </Transition>
+    <div class="flex justify-center items-center md:gap-24 gap-12 p-12 md:p-24">
+    <NuxtLink v-for="logo in logos" :to="logo.link" :title="logo.alt" class="hover:opacity-80" target="_blank"><img :src="logo.src" /></NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -43,6 +46,23 @@ export default defineComponent({
     return {
       page: null,
       show: false,
+      logos: [
+        {
+          src: "/logos/DSGF.svg",
+          alt: "DSGF",
+          link: "https://www.dgsf.org/",
+        },
+        {
+          src: "/logos/IPTh.svg",
+          alt: "IPTh",
+          link: "https://www.ipth.de/",
+        },
+        {
+          src: "/logos/Journey.svg",
+          alt: "The Journey",
+          link: "https://www.thejourney.com/",
+        },
+      ]
     };
   },
   methods: {},
