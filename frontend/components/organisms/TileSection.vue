@@ -1,6 +1,10 @@
 <template>
   <section ref="tiles" class="bg-stone-100 p-12 min-h-[50vh] grid grid-cols-1 md:grid-cols-2 auto-rows-fr grid-flow-row gap-6 sm:gap-12 max-w-7xl mx-auto" :style="`--total: ${data.tile.length}`">
-    <Tile v-for="t, i in data.tile" class="flex" :class="inView ? 'transition-show' : 'transition-hide'" :style="`--i: ${data.tile.length - i}`" :icon="t.icon" :title="t.title" :description="t.description" />
+    <Tile v-for="t, i in data.tile" class="flex" :class="{
+      'transition-show': inView,
+      'transition-hide': !inView,
+      '!delay-[0ms] !duration-75': hasTransitioned
+       }" :style="`--i: ${data.tile.length - i}`" :icon="t.icon" :title="t.title" :description="t.description" />
   </section>
 </template>
 
@@ -18,7 +22,8 @@ export default defineComponent({
   data() {
     return {
       observer: new IntersectionObserver((e) => this.checkView(e[0])),
-      inView: false
+      inView: false,
+      hasTransitioned: false
     }
   },
   mounted() {
@@ -31,6 +36,9 @@ export default defineComponent({
       if (isIntersecting) {
         setTimeout(() => {
           this.inView = true;
+          setTimeout(() => {
+            this.hasTransitioned = true;
+          }, this.data.tile.length * 250);
         }, 500);
       }
     },

@@ -15,8 +15,8 @@
       >
         <ClientOnly>
           <FontAwesomeIcon :icon="item.icon" class="mr-3" fixed-width />
-          <span>{{ cta ? item.cta : item.title }}</span>
         </ClientOnly>
+        <span>{{ cta ? item.cta : item.title }}</span>
       </NuxtLink>
     </li>
   </ul>

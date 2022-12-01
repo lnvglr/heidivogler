@@ -2,6 +2,7 @@
   <header
     class="z-50 overflow-hidden absolute w-screen"
     :class="{ open: menuOpen, 'text-primary-300': inverted && !menuOpen, 'text-stone-700': !inverted && !menuOpen, 'text-white': menuOpen}"
+    style="backdropFilter: blur(var(--header-blur, 0px));"
   >
     <BurgerIcon
       :active="menuOpen"

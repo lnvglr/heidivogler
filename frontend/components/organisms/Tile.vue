@@ -7,7 +7,7 @@
     />
     <h3 class="text-2xl font-bold text-stone-500">{{ title }}</h3>
   </div>
-  <Transition name="page">
+  <Transition name="page" style="--total: 1; --i: 1">
     <div v-if="open" class="fixed flex items-center justify-center top-0 left-0 w-screen h-screen bg-black/60 z-50" @click.self="open = !open">
       <div class="bg-white rounded-lg p-8 m-6 sm:p-12 shadow-2xl max-w-2xl max-h-[90vh] overflow-auto">
         <h3 class="text-3xl gap-12 -top-8 -mt-8 pt-8 sm:-top-12 sm:-mt-12 sm:pt-12 pb-6 font-bold flex justify-between sticky bg-white">{{ title }}<button class="font-normal text-6xl h-0 -mt-4 text-stone-400 hover:text-primary-500" @click="open = !open">&times;</button></h3>

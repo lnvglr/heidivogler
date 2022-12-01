@@ -1,14 +1,55 @@
 <template>
-  <NuxtLayout name="generic">
-		<template #title v-if="$route.meta.title">{{ $route.meta.title }}</template>
-		kontakt content
-	</NuxtLayout>
+  <NuxtLayout>
+    <template #title v-if="$route.meta.title">{{ $route.meta.title }}</template>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 ">
+      <div class="mt-36 p-12">
+        <div class="col-span-1 md:col-span-2 text-stone-500 font-medium">
+          {{ $t("get.in.touch") }}
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="text-4xl mb-12">{{ $t("get.in.touch.description") }}</div>
+        </div>
+        <FormKit
+          type="form"
+          v-model="contact"
+          class="flex-grow"
+          style="--fk-max-width-input: 100%"
+        >
+          <FormKit type="text" name="name" :placeholder="$t('your.name')" />
+          <FormKit type="email" name="email" :placeholder="$t('your.email')" />
+          <FormKit type="textarea" name="message" :placeholder="$t('your.message')" />
+          <!-- <FormKit type="text" v-model="location"></FormKit> -->
+        </FormKit>
+        <div class="grid gap-12 my-12">
+          <div>
+            <p>{{ $t("find.me") }}</p>
+            <p class="font-bold text-2xl" v-html="geolocation?.place_name?.replace(/,/g, '<br>')"></p>
+          </div>
+
+          <div>
+            <p>{{ $t("contact.me") }}</p>
+            <p class="font-bold text-2xl">
+              +49 (0) 1763 - 1763 624<br />hallo@heidivogler.de
+            </p>
+          </div>
+        </div>
+      </div>
+      <div ref="map" class="h-[50vh] md:h-full xl:col-span-2"></div>
+    </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-
+import mapboxgl from "mapbox-gl";
 export default defineComponent({
+  head: {
+    link: [
+      {
+        rel: "stylesheet",
+        href: "https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css",
+      },
+    ],
+  },
   setup() {
     definePageMeta({
       layout: false,
@@ -17,7 +58,109 @@ export default defineComponent({
 
     return {};
   },
+  data() {
+    return {
+      contact: {
+        name: "",
+        email: "",
+        message: "",
+        location: "",
+      },
+      token: useRuntimeConfig().public.mapbox.token,
+      location: "Gailhöfe 6, 88699 Frickingen",
+      geolocation: { center: [0, 0], place_name: "" },
+      debounce: null,
+    };
+  },
+  methods: {
+    async geocoding(search: string): Promise<[number, number]> {
+      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+        search
+      )}.json?access_token=${this.token}&types=address&limit=1&language=de`;
+
+      return fetch(url)
+        .then((res) => res.json())
+        .then(({ features }) => {
+          console.log(features);
+          return (this.geolocation = features[0]);
+        })
+        .catch((error) => console.error(error));
+    },
+    initMap() {
+      if (!this.$refs.map) return;
+      const map = new mapboxgl.Map({
+        accessToken: this.token,
+        attributionControl: true,
+        container: this.$refs.map,
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: this.geolocation?.center,
+        language: "de",
+        // scrollZoom: false,
+        cooperativeGestures: true,
+        zoom: 10,
+      });
+      const marker = new mapboxgl.Marker()
+        .setLngLat(this.geolocation?.center)
+        .setPopup(
+          new mapboxgl.Popup().setHTML(
+            `<p>${this.geolocation?.place_name?.replace(/,/g, "<br>")}</p>`
+          )
+        )
+        .addTo(map);
+    },
+  },
+  watch: {
+    location: {
+      handler(newValue: string) {
+        clearTimeout(this.debounce);
+        this.debounce = setTimeout(() => {
+          this.geocoding(newValue);
+        }, 1000);
+      },
+      immediate: true,
+    },
+    geolocation(newLocation, oldLocation) {
+      if (
+        newLocation?.center &&
+        newLocation?.center.map((e: number) => e.toFixed(3)) !==
+          oldLocation?.center.map((e: number) => e.toFixed(3))
+      ) {
+        this.initMap();
+      }
+    },
+  },
+  mounted() {
+    this.initMap();
+    // const map = new mapboxgl.Map({
+    //   accessToken: useRuntimeConfig().public.mapbox.token,
+    //   container: "map", // <div id="map"></div>
+    //   style: "mapbox://styles/mapbox/streets-v11", // default style
+    //   center: [9.225286, 47.8339527], // starting position as [lng, lat]
+    //   zoom: 9,
+    // });
+  },
 });
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.mapboxgl-popup-content {
+  padding: var(--p-5);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+.mapboxgl-popup-close-button {
+  padding: var(--p-2);
+  &:focus {
+    outline: none;
+  }
+}
+/* .mapboxgl-canvas-container {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+} */
+</style>
+<style scoped>
+:root {
+  --header-blur: 20px;
+}</style>

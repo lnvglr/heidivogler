@@ -14,7 +14,12 @@ export default defineNuxtConfig({
 		url: process.env.API_BASE || 'http://localhost:1337',
 	},
 	env: {
-		strapiBaseUri: process.env.API_URL || "http://localhost:1337"
+		strapiBaseUri: process.env.API_URL || "http://localhost:1337",
+	},
+	publicRuntimeConfig: {
+		mapbox: {
+			token: process.env.MAPBOX_TOKEN,
+		}
 	},
 	buildModules: [
 		'@nuxtjs/tailwindcss', '@intlify/nuxt3', ['@nuxt-modules/compression']

@@ -112,14 +112,14 @@ export default defineComponent({
   },
   data() {
     return {
-      observer: new IntersectionObserver((e) => this.checkView(e[0])),
+      observer: new IntersectionObserver((e) => this.checkView(e[0]), { rootMargin: "50%" }),
       inView: !this.lazy,
       loading: true,
     };
   },
   methods: {
-    checkView({ isIntersecting }) {
-      if (isIntersecting) this.inView = true;
+    checkView({isIntersecting}) {
+      if (isIntersecting) this.inView = true
     },
     match(image: ImageProps) {
       const width = parseInt(this.width);
