@@ -1,4 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
 import i18n from './config/i18n'
 import pwa from './config/pwa'
 
