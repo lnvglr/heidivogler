@@ -12,7 +12,7 @@
       <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'md' : 'sm'" />
     </div>
   </section>
-  <!-- <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section> -->
+  <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section>
 </template>
 
 <script lang="ts">
@@ -36,7 +36,10 @@ export default defineComponent({
   },
   async mounted() {
     if (this.data.filter !== "all" && this.page?.attributes.events?.data.length > 0) {
-      this.events = this.page?.attributes.events?.data;
+      this.events = this.page?.attributes.events?.data.filter(
+        (event) => event.attributes.end > new Date().toISOString()
+      );
+      console.log(this.events);
     } else {
       this.events = (
         await this.$strapi.find("events", {
