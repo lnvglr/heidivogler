@@ -88,13 +88,13 @@ export default defineComponent({
     this.contactRoutes = [
       {
         name: "instagram",
-        path: "https://www.instagram.com/heidivogler/",
+        path: "https://www.instagram.com/heidi.vogler.33/",
         title: "Instagram",
         icon: ["fab", "instagram"],
       },
       {
         name: "angebote",
-        path: "https://www.facebook.com/heidi.vogler",
+        path: "https://www.facebook.com/heidi.vogler.33",
         title: "Facebook",
         icon: ["fab", "facebook"],
       },
