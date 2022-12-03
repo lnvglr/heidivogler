@@ -16,6 +16,7 @@ export default defineNuxtConfig({
 	css: [
 		'~/assets/css/main.css',
 		'~/assets/css/transitions.css',
+		'@fortawesome/fontawesome-svg-core/styles.css'
 	],
 	i18n,
 	postcss,

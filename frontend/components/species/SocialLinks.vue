@@ -7,15 +7,15 @@
     <li v-for="(item, i) in routes" :key="item.name" :style="{ '--i': i }">
       <hr v-if="item.spacer" class="border-none h-4" />
       <NuxtLink
+        v-else
         :to="item.path"
         target="_blank"
-        v-else
         class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-md"
         exactActiveClass="text-gold-500"
       >
-        <!-- <ClientOnly> -->
+        <ClientOnly>
           <FontAwesomeIcon :icon="item.icon" class="mr-3" fixed-width />
-        <!-- </ClientOnly> -->
+        </ClientOnly>
         <span>{{ cta ? item.cta : item.title }}</span>
       </NuxtLink>
     </li>

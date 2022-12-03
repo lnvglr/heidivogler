@@ -21,7 +21,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
-    "@fortawesome/vue-fontawesome": "^2.0.9",
+    "@fortawesome/vue-fontawesome": "^3.0.2",
     "@nuxt-modules/compression": "^0.1.0",
     "@nuxtjs/strapi": "^1.6.3",
     "@nuxtjs/tailwindcss": "^6.1.3",
