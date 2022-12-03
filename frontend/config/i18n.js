@@ -1,15 +1,10 @@
-const locales = ['de'].reduce((acc, locale) => {
-  acc[locale] = import(`../locales/${locale}.json`)
-  return acc
-}, {})
 export default {
-  strategy: 'no_prefix',
-  locales: Object.keys(locales),
+  langDir: 'locales/',
   defaultLocale: 'de',
-  detectBrowserLanguage: false,
-  vueI18n: {
-    locale: 'de',
-    fallbackLocale: 'de',
-    messages: locales,
-  },
+  locales: [
+    {
+      code: 'de',
+      file: 'de.json'
+    },
+  ],
 }

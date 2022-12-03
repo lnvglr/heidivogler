@@ -49,7 +49,14 @@ const colors = {
 }
 
 module.exports = {
-  content: [],
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+    "./app.vue",
+  ],
   safelist: [
     ...['1', '2', '3', '4', '5', '6'].map((e) => `col-span-${e}`),
     ...['1', '2', '3', '4', '5', '6'].map((e) => `lg:col-span-${e}`),

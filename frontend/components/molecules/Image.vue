@@ -123,7 +123,7 @@ export default defineComponent({
     },
     match(image: ImageProps) {
       const width = parseInt(this.width);
-      if (width !== NaN && image[1]?.width > width) return image;
+      if (!isNaN(width) && image[1]?.width > width) return image;
       if (this.width === "full" && image[0] === this.largest[0]) return image;
     },
   },

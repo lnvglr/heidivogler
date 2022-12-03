@@ -1,22 +1,42 @@
----
-title: NuxtJS
-description: A basic NuxtJS app
-tags:
-  - nuxt
-  - typescript
----
+# Nuxt 3 Minimal Starter
 
-# NuxtJS Example
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Setup
 
+Make sure to install the dependencies:
 
-## ✨ Features
+```bash
+# yarn
+yarn install
 
-- NuxtJS
-- TypeScript
+# npm
+npm install
 
-## 💁‍♀️ How to use
+# pnpm
+pnpm install --shamefully-hoist
+```
 
-- Click the Railway button to deploy the app
-- Clone the project and connect to it using `railway link`
-- Run your NuxtJS app locally using `railway run yarn dev`
+## Development Server
+
+Start the development server on http://localhost:3000
+
+```bash
+npm run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+npm run build
+```
+
+Locally preview production build:
+
+```bash
+npm run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
