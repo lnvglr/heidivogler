@@ -39,7 +39,7 @@ export default defineComponent({
       return [
         {
           name: "instagram",
-          path: "https://www.instagram.com/heidivogler/",
+          path: "https://www.instagram.com/heidi.vogler.33/",
           title: "Instagram",
           cta: "Folge mir auf Instagram",
           icon: ["fab", "instagram"],
@@ -47,7 +47,7 @@ export default defineComponent({
         },
         {
           name: "facebook",
-          path: "https://www.facebook.com/heidi.vogler",
+          path: "https://www.facebook.com/heidi.vogler.33",
           title: "Facebook",
           cta: "Folge mir auf Facebook",
           icon: ["fab", "facebook"],

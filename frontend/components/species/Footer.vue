@@ -85,32 +85,11 @@ export default defineComponent({
         title: "Datenschutz",
       },
     ];
-    this.contactRoutes = [
-      {
-        name: "instagram",
-        path: "https://www.instagram.com/heidi.vogler.33/",
-        title: "Instagram",
-        icon: ["fab", "instagram"],
-      },
-      {
-        name: "angebote",
-        path: "https://www.facebook.com/heidi.vogler.33",
-        title: "Facebook",
-        icon: ["fab", "facebook"],
-      },
-      {
-        name: "email",
-        path: "mailto:hallo@heidivogler.de",
-        title: "Email",
-        icon: ["fas", "at"],
-      },
-    ];
   },
   data() {
     return {
       Logo,
       routes: [],
-      contactRoutes: [],
     };
   },
   methods: {
