@@ -1,8 +1,8 @@
 <template>
-  <NuxtLayout name="default" class="p-12 max-w-1/2 mx-auto w-full">
-    <!-- <template #title v-if="$route.meta.title">{{ $route.meta.title }}</template> -->
+  <div class="p-12 mx-auto w-full">
+    <h1 class="font-bold text-left text-4xl sm:text-6xl mb-10">{{$route.meta.title}}</h1>
     <EventsSection :data="{ size: 'xl' }" class="!p-0" />
-  </NuxtLayout>
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,8 +15,19 @@ export default defineComponent({
   setup() {
     definePageMeta({
       title: "Termine",
-      layout: false
     });
+  },
+  head() {
+    return {
+      title: "Termine",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.$t('upcoming.events.description'),
+        },
+      ],
+    };
   },
 });
 </script>

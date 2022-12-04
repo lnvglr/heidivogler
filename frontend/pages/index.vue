@@ -77,10 +77,23 @@ export default defineComponent({
     Event,
     ContentCollection,
   },
+  head() {
+    return {
+      title: this.page?.attributes?.meta?.title,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.page?.attributes?.hero.copy + " " + this.page?.attributes?.hero.subCopy,
+        },
+      ],
+    };
+  },
   setup() {
     definePageMeta({
       headerInverted: true,
     });
+    console.log("setup");
   },
   data() {
     return {
@@ -88,8 +101,10 @@ export default defineComponent({
     };
   },
   mounted() {
+    console.log("mounted");
     this.$strapi.find("home").then(({data}) => {
       this.page = data;
+      console.log(data?.attributes?.content)
     });
   },
   computed: {

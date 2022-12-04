@@ -17,6 +17,7 @@ import {
   faBoltLightning,
   faRoadBarrier,
   faEyeLowVision,
+  faCircleNotch,
   faBath
 } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
@@ -27,6 +28,7 @@ library.add(
   faTree,
   faWind,
   faEyeLowVision,
+  faCircleNotch,
   faRoadBarrier,
   faScaleBalanced,
   faBoltLightning,

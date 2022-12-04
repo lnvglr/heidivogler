@@ -1,17 +1,21 @@
 <template>
-  <NuxtLayout name="default" class="p-12">
-    <template #title v-if="$route.meta.title">{{ $route.meta.title }}</template>
-    <p class="text-xl mb-12 max-w-2xl" v-if="$route.meta.description">{{ $route.meta.description }}</p>
+  <div class="p-12 mx-auto w-full">
+    <h1 class="font-bold text-left text-4xl sm:text-6xl mb-10">
+      {{ $route.meta.title }}
+    </h1>
+    <p class="text-xl mb-12 max-w-2xl" v-if="$route.meta.description">
+      {{ $route.meta.description }}
+    </p>
     <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5">
-    <Offer
-      v-for="(offer, i) in offers"
-      :key="offer.id"
-      :offer="offer"
-      class="min-w-[360px] h-96"
-      :class="{'lg:col-span-2': featured.includes(offer.id) || i === 0}"
-    />
+      <Offer
+        v-for="(offer, i) in offers"
+        :key="offer.id"
+        :offer="offer"
+        class="min-w-[360px] h-96"
+        :class="{ 'lg:col-span-2': featured.includes(offer.id) || i === 0 }"
+      />
     </div>
-  </NuxtLayout>
+  </div>
 </template>
 
 <script lang="ts">
@@ -25,8 +29,8 @@ export default defineComponent({
   setup() {
     definePageMeta({
       title: "Angebote",
-      description: "Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.",
-      layout: false,
+      description:
+        "Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.",
     });
 
     return {};
@@ -34,7 +38,7 @@ export default defineComponent({
   data() {
     return {
       offers: null,
-      featured: []
+      featured: [],
     };
   },
   async mounted() {

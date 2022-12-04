@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col gap-12 p-6 sm:p-12" v-if="events?.length > 0">
+  <section class="flex flex-col gap-12 p-6 sm:p-12" v-if="(events?.length > 0)">
     <div class="flex flex-col items-start gap-2">
       <NuxtLink to="/termine" class="text-3xl font-bold hover:text-primary-500"
         >{{$t('upcoming.events.title')}}</NuxtLink
@@ -13,6 +13,9 @@
     </div>
   </section>
   <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section>
+  <!-- <section v-else class="p-12 my-24 text-center text-stone-300"><FontAwesomeIcon class="spin" :icon="['fas', 'circle-notch']" size="2xl" /></section> -->
+  <!-- <section v-else-if="loaded" class="p-12 text-center">Keine bevorstehenden Termine</section>
+  <section v-else class="p-12 my-24 text-center text-stone-300"><FontAwesomeIcon class="spin" :icon="['fas', 'circle-notch']" size="2xl" /></section> -->
 </template>
 
 <script lang="ts">
@@ -32,6 +35,7 @@ export default defineComponent({
   data() {
     return {
       events: null,
+      loaded: false,
     };
   },
   async mounted() {
@@ -39,7 +43,7 @@ export default defineComponent({
       this.events = this.page?.attributes.events?.data.filter(
         (event) => event.attributes.end > new Date().toISOString()
       );
-      console.log(this.events);
+      this.loaded = true;
     } else {
       this.events = (
         await this.$strapi.find("events", {
@@ -51,6 +55,7 @@ export default defineComponent({
           },
         })
       ).data;
+      this.loaded = true;
     }
   },
 });

@@ -1,8 +1,7 @@
 <template>
-  <NuxtLayout>
-    <template #title v-if="$route.meta.title">{{ $route.meta.title }}</template>
-    <div class="grid md:grid-cols-2 xl:grid-cols-3 ">
-      <div class="mt-36 p-12">
+  <div>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3">
+      <div class="p-12">
         <div class="col-span-1 md:col-span-2 text-stone-500 font-medium">
           {{ $t("get.in.touch") }}
         </div>
@@ -17,13 +16,20 @@
         >
           <FormKit type="text" name="name" :placeholder="$t('your.name')" />
           <FormKit type="email" name="email" :placeholder="$t('your.email')" />
-          <FormKit type="textarea" name="message" :placeholder="$t('your.message')" />
+          <FormKit
+            type="textarea"
+            name="message"
+            :placeholder="$t('your.message')"
+          />
           <!-- <FormKit type="text" v-model="location"></FormKit> -->
         </FormKit>
         <div class="grid gap-12 my-12">
           <div>
             <p>{{ $t("find.me") }}</p>
-            <p class="font-bold text-2xl" v-html="geolocation?.place_name?.replace(/,/g, '<br>')"></p>
+            <p
+              class="font-bold text-2xl"
+              v-html="geolocation?.place_name?.replace(/,/g, '<br>')"
+            ></p>
           </div>
 
           <div>
@@ -34,25 +40,34 @@
           </div>
         </div>
       </div>
-      <div ref="map" class="h-[50vh] md:h-[100vh] xl:col-span-2" />
+      <div ref="map" class="h-[50vh] md:h-full xl:col-span-2" />
     </div>
-  </NuxtLayout>
+  </div>
 </template>
 
 <script lang="ts">
 import mapboxgl from "mapbox-gl";
 export default defineComponent({
-  head: {
-    link: [
-      {
-        rel: "stylesheet",
-        href: "https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css",
-      },
-    ],
+  head() {
+    return {
+      title: "Kontakt",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.$t("get.in.touch.description"),
+        },
+      ],
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css",
+        },
+      ],
+    };
   },
   setup() {
     definePageMeta({
-      layout: false,
       title: "Kontakt",
     });
 
@@ -97,15 +112,16 @@ export default defineComponent({
         // scrollZoom: false,
         cooperativeGestures: true,
         zoom: 10,
+        pitch: 45,
       });
-      // const marker = new mapboxgl.Marker()
-      //   .setLngLat(this.geolocation?.center)
-      //   .setPopup(
-      //     new mapboxgl.Popup().setHTML(
-      //       `<p>${this.geolocation?.place_name?.replace(/,/g, "<br>")}</p>`
-      //     )
-      //   )
-      //   .addTo(map);
+      const marker = new mapboxgl.Marker().setLngLat(this.geolocation?.center)
+        .setPopup(
+          new mapboxgl.Popup().setHTML(
+            `<p>${this.geolocation?.place_name?.replace(/,/g, "<br>")}</p>`
+          )
+        )
+        .addTo(map);
+      console.log(map, marker)
     },
   },
   watch: {
@@ -128,21 +144,11 @@ export default defineComponent({
       }
     },
   },
-  mounted() {
-    this.initMap();
-    // const map = new mapboxgl.Map({
-    //   accessToken: useRuntimeConfig().public.mapbox.token,
-    //   container: "map", // <div id="map"></div>
-    //   style: "mapbox://styles/mapbox/streets-v11", // default style
-    //   center: [9.225286, 47.8339527], // starting position as [lng, lat]
-    //   zoom: 9,
-    // });
-  },
 });
 </script>
 
 <style lang="scss">
-/* .mapboxgl-popup-content {
+.mapboxgl-popup-content {
   padding: var(--p-5);
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
@@ -152,14 +158,27 @@ export default defineComponent({
   &:focus {
     outline: none;
   }
-} */
-/* .mapboxgl-canvas-container {
-  position: absolute;
+}
+.mapboxgl-canvas-container {
   top: 0;
+  z-index: 1;
+  position: relative;
+}
+.mapboxgl-canvas {
+  position: absolute;
+  inset: 0;
   z-index: -1;
-} */
+}
+.mapboxgl-marker {
+  position: absolute;
+  z-index: 99;
+}
+.mapboxgl-touch-pan-blocker, .mapboxgl-scroll-zoom-blocker, .mapboxgl-control-container {
+  display: none;
+}
 </style>
 <style scoped>
 :root {
   --header-blur: 20px;
-}</style>
+}
+</style>

@@ -21,7 +21,14 @@
       <ContentCollection v-if="page" :content="page.attributes.content" />
     </Transition>
     <div class="flex justify-center items-center md:gap-24 gap-12 p-12 md:p-24">
-    <NuxtLink v-for="logo in logos" :to="logo.link" :title="logo.alt" class="hover:opacity-80" target="_blank"><img :src="logo.src" /></NuxtLink>
+      <NuxtLink
+        v-for="logo in logos"
+        :to="logo.link"
+        :title="logo.alt"
+        class="hover:opacity-80"
+        target="_blank"
+        ><img :src="logo.src"
+      /></NuxtLink>
     </div>
   </div>
 </template>
@@ -62,7 +69,7 @@ export default defineComponent({
           alt: "The Journey",
           link: "https://www.thejourney.com/",
         },
-      ]
+      ],
     };
   },
   methods: {},
@@ -70,7 +77,19 @@ export default defineComponent({
     setTimeout(() => {
       this.show = true;
     }, 500);
-    this.page = (await this.$strapi.find("about", {populate: "*"})).data;
+    this.page = (await this.$strapi.find("about", { populate: "*" })).data;
+  },
+  head() {
+    return {
+      title: "Über Mich",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.page?.attributes.hero.subCopy,
+        },
+      ],
+    };
   },
 });
 </script>
