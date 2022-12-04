@@ -79,14 +79,14 @@ export default defineComponent({
       if (!f) return this.media.formats["thumbnail"];
       return f[1];
     },
-    largest() {
+    largest(): Media {
       return Object.entries((this.media as Media)?.formats).reduce(
         (a, b) => (a[1]?.width > b[1]?.width ? a : b),
         []
       );
     },
-    smallest() {
-      return Object.values((this.media as Media)?.formats).reduce(
+    smallest(): Media {
+      return Object.entries((this.media as Media)?.formats).reduce(
         (a, b) => (a[1]?.width < b[1]?.width ? a : b),
         []
       ) as Media;

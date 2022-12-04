@@ -1,6 +1,6 @@
 import i18n from './config/i18n'
 import postcss from './config/postcss'
-import nuxtCompress from './config/nuxtCompress'
+import compress from './config/compress'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	app: {
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
 	],
 	i18n,
 	postcss,
-	'nuxt-compress': nuxtCompress,
+	'nuxt-compress': compress,
 	runtimeConfig: {
 		public: {
 			mapbox: {

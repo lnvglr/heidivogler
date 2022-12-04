@@ -87,6 +87,13 @@ export default defineComponent({
           content: this.page?.attributes?.hero.copy + " " + this.page?.attributes?.hero.subCopy,
         },
       ],
+      link: [
+      {
+        rel: 'preload',
+        as: 'image',
+        href: this.offers?.[0]?.attributes?.hero.image.data.attributes,
+      },
+    ],
     };
   },
   setup() {

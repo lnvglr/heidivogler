@@ -1,8 +1,8 @@
 export default {
 	gzip: {
-		threshold: 8192,
+		threshold: 4096,
 	},
 	brotli: {
-		threshold: 8192,
+		threshold: 4096,
 	},
 }
