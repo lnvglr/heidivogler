@@ -71,7 +71,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Gramatika', 'sans-serif'],
-      display: ['Noe Display', 'sans-serif'],
+      display: ['Noe Display', 'serif'],
     },
     colors,
     extend: {
