@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col bg-white rounded-2xl p-5 gap-2" :class="size">
+  <div class="container flex flex-col bg-white rounded-2xl p-5 gap-2" :class="computedSize">
     <div class="date flex justify-between">
       <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
       <DownloadEvent :event="event" class="download" />
@@ -7,18 +7,18 @@
     <div class="title font-bold leading-none">
       <span>{{ event.attributes.title }}</span>
     </div>
-    <div class="text-xl" v-if="event.attributes.description && size === 'xl'">
+    <div class="text-xl" v-if="event.attributes.description && computedSize === 'xl'">
       <span>{{ event.attributes.description }}</span>
     </div>
     <div class="date flex gap-6 mt-auto items-end justify-between">
       <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
-        <span v-if="event.attributes.price && 'xl' === size">Preis: {{ event.attributes.price }} Euro</span>
-        <span v-if="event.attributes.groupSize && 'xl' === size">Gruppengröße: {{ event.attributes.groupSize }}</span>
-        <span v-if="location && 'sm' !== size">{{ location }}</span>
-        <span>{{ time }}</span>
+        <span v-if="event.attributes.price && 'xl' === computedSize">Preis: {{ event.attributes.price }} Euro</span>
+        <span v-if="event.attributes.groupSize && 'xl' === computedSize">Gruppengröße: {{ event.attributes.groupSize }}</span>
+        <span v-if="location && 'sm' !== computedSize">{{ location }}</span>
+        <span>{{ time }} Uhr</span>
       </div>
-      <div v-if="(start.getTime() > (new Date).getTime() || end?.getTime() > (new Date).getTime()) && !['sm', 'lg'].includes(size)">
-        <a href="mailto:hallo@heidivogler.de"><Button :class="size === 'md' ? 'sm' : 'md'"
+      <div v-if="(start.getTime() > (new Date).getTime() || end?.getTime() > (new Date).getTime()) && !['sm', 'lg'].includes(computedSize)">
+        <a href="mailto:hallo@heidivogler.de"><Button :class="computedSize === 'md' ? 'sm' : 'md'"
           >{{$t('register')}}</Button
         ></a>
       </div>
@@ -47,7 +47,17 @@ export default defineComponent({
       validate: (e: string) => ["sm", "md", "lg", "xl"].includes(e),
     },
   },
+  data() {
+    return {
+      windowWidth: window?.innerWidth || 0,
+    }
+  },
   methods: {
+
+    viewport() {
+        this.windowWidth = window.innerWidth;
+        console.log(this.windowWidth)
+      },  
     formatRange(start: string, end: string, short: boolean) {
       if (start === end || !end) return start;
       if (short) {
@@ -68,9 +78,20 @@ export default defineComponent({
       return (date.getTime() - day) / (1000 * 60 * 60 * 24);
     },
   },
+  mounted() {
+    window.addEventListener("resize", () => this.viewport());
+    this.viewport()
+  },
+  unmounted() {
+    window.removeEventListener("resize", () => this.viewport());
+  },
   computed: {
     locale() {
       return "de";
+    },
+    computedSize() {
+      if (this.windowWidth < 767) return "md"
+      return this.size
     },
     timeOptions() {
       return {

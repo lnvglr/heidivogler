@@ -11,7 +11,7 @@
     </div>
     <!-- <div class="flex flex-wrap gap-6 overflow-x-auto -mx-5 px-5"> -->
     <div class="flex md:flex-wrap gap-6 overflow-x-auto -mx-5 px-5">
-      <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'md' : 'md'" />
+      <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'xl' : 'md'" />
     </div>
   </section>
   <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section>
