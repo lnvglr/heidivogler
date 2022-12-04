@@ -34,7 +34,7 @@ export default defineComponent({
     };
     strapi.user = (await strapi.fetchUser()).value as StrapiUser;
     if (!app.$strapi) app.provide("strapi", reactive(strapi));
-    if (!app.$state) app.provide("state", reactive({}));
+    if (!app.$state) app.provide("state", reactive({headerColor: null}));
   },
   components: {
     Header,

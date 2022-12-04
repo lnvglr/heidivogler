@@ -43,6 +43,15 @@
       "target": "api::event.event",
       "displayName": "Termine",
       "mappedBy": "offer"
+    },
+    "headerColor": {
+      "type": "enumeration",
+      "enum": [
+        "light",
+        "dark",
+        "default"
+      ],
+      "default": "default"
     }
   }
 }

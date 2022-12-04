@@ -41,7 +41,7 @@ import ContentCollection from "~/components/species/ContentCollection.vue";
 export default defineComponent({
   setup() {
     definePageMeta({
-      headerInverted: true,
+      headerColor: "light",
     });
   },
   components: {

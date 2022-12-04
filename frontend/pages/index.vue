@@ -98,7 +98,7 @@ export default defineComponent({
   },
   setup() {
     definePageMeta({
-      headerInverted: true,
+      headerColor: "default",
     });
   },
   data() {

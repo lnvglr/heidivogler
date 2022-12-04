@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_general_header_farbes",
+  "info": {
+    "displayName": "Header Farbe",
+    "icon": "eye-dropper"
+  },
+  "options": {},
+  "attributes": {
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "light",
+        "dark",
+        "default"
+      ],
+      "default": "default"
+    }
+  }
+}

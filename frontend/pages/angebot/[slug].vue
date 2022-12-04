@@ -34,11 +34,6 @@ export default defineComponent({
 		Image,
 		Event
 	},
-	setup() {
-    definePageMeta({
-      headerInverted: true
-    })
-	},
 	data() {
 		return {
 			offer: null
@@ -48,6 +43,7 @@ export default defineComponent({
 		this.$strapi.find('offers', {populate: ['content', 'hero'], filters: { slug: this.$route.params.slug } })
 			.then(({data}) => {
 				this.offer = data[0]
+				this.$state.headerColor = this.offer.attributes.headerColor
 			})
 	},
 	computed: {

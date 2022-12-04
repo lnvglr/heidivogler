@@ -98,7 +98,9 @@ interface Strapi {
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $state: {},
+    $state: {
+      headerColor: string
+    },
     $strapi: Strapi
   }
 }

@@ -15,6 +15,7 @@ module.exports = createCoreController('api::offer.offer', ({ strapi }) => ({
 			populate: {
 				copy: true,
 				events: true,
+				headerColor: true,
 				hero: {
 					populate: {
 						image: true,

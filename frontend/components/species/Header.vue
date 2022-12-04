@@ -1,8 +1,14 @@
 <template>
   <header
     class="z-50 overflow-hidden absolute w-screen"
-    :class="{ open: menuOpen, 'text-primary-300': inverted && !menuOpen, 'text-stone-700': !inverted && !menuOpen, 'text-white': menuOpen}"
-    style="backdropFilter: blur(var(--header-blur, 0px));"
+    :class="{
+      open: menuOpen,
+      'text-white': headerColor === 'light' || menuOpen,
+      'text-gold-300': headerColor === 'default' && !menuOpen,
+      'text-stone-700': (!headerColor || headerColor === 'dark') && !menuOpen,
+      loaded
+    }"
+    style="backdropfilter: blur(var(--header-blur, 0px))"
   >
     <BurgerIcon
       :active="menuOpen"
@@ -16,7 +22,11 @@
         name="list"
         tag="ul"
         class="flex flex-col md:flex-row items-center gap-x-8 lg:gap-x-12 gap-y-[4vh]"
-        :style="{ '--total': routes.length }"
+        :style="{
+          '--total': routes.length,
+          '--line-width': `${lineWidth}px`,
+          '--line-offset': `${lineOffset}px`,
+        }"
       >
         <li
           v-for="(item, i) in routes"
@@ -25,18 +35,27 @@
           :class="{
             'order-0 md:order-1': item.icon,
             'order-1': !item.icon,
+            'mx-3': true,
           }"
+          :ref="!item.icon && item.path"
         >
+          <!-- @mouseover="(e) => setLine(!item.icon && e)"
+          @mouseleave="() => setLine(false)" -->
           <NuxtLink
             :to="item.path"
-            class="duration-1000 whitespace-nowrap py-2 px-3 rounded-md"
+            class="duration-500 whitespace-nowrap py-2 rounded-md"
             :exactActiveClass="
-              inverted ? `${item.icon ? 'text-gold-400' : 'text-white'}` : 'text-gold-500'
+              headerColor === 'light'
+                ? 'text-white'
+                : headerColor === 'default'
+                ? 'text-gold-400'
+                : 'text-stone-600'
             "
             :title="item.title || item.name"
             :class="{
-              'hover:text-gold-400': inverted,
-              'hover:text-gold-600': !inverted,
+              'hover:text-white': headerColor === 'light',
+              'hover:text-gold-400': headerColor === 'default',
+              'hover:text-stone-600': !headerColor || headerColor === 'dark',
             }"
             @click="menuOpen = false"
           >
@@ -61,60 +80,103 @@ export default defineComponent({
     Icon,
   },
   mounted() {
-    this.routes = [
-      {
-        name: "termine",
-        path: "/termine",
-        title: "Termine",
-      },
-      {
-        name: "angebote",
-        path: "/angebote",
-        title: "Angebote",
-      },
-      {
-        name: "home",
-        path: "/",
-        icon: `${Logo}`,
-      },
-      {
-        name: "ueber-mich",
-        path: "/ueber-mich",
-        title: "Über Mich",
-      },
-      {
-        name: "kontakt",
-        path: "/kontakt",
-        title: "Kontakt",
-      },
-    ];
+    this.$nextTick(() => {
+      this.setLine(false);
+      setTimeout(() => {
+        this.loaded = true;
+      }, 300);
+    });
   },
   data() {
     return {
       Logo,
-      routes: [],
+      routes: [
+        {
+          name: "termine",
+          path: "/termine",
+          title: "Termine",
+        },
+        {
+          name: "angebote",
+          path: "/angebote",
+          title: "Angebote",
+        },
+        {
+          name: "home",
+          path: "/",
+          icon: `${Logo}`,
+        },
+        {
+          name: "ueber-mich",
+          path: "/ueber-mich",
+          title: "Über Mich",
+        },
+        {
+          name: "kontakt",
+          path: "/kontakt",
+          title: "Kontakt",
+        },
+      ],
       menuOpen: false,
+      lineWidth: 0,
+      lineOffset: 0,
+      loaded: false
     };
   },
   methods: {
     offset(i: number, array: number[]) {
       return Math.abs(i - Math.ceil((array.length - 1) / 2));
     },
+    setLine(e: MouseEvent | false) {
+      console.log(this.$route)
+      const target = e ? e.target as HTMLElement : this.$refs[this.$route.path]?.[0];
+      console.log(target)
+      if (!target) {
+        this.lineWidth = 0;
+        return
+      }
+      const rect = target.getBoundingClientRect();
+      this.lineWidth = rect.width;
+      this.lineOffset = target.offsetLeft + rect.width / 2;
+    },
   },
   watch: {
+    $route() {
+      this.setLine(false);
+    },
   },
   computed: {
-    inverted() {
-      return (
-        this.$route.meta.headerInverted &&
-        this.$route.path.split("/")[2] !== "the-journey-eine-innere-reise-zu-dir-selbst"
-      );
+    headerColor() {
+      return this.$route.meta.headerColor;
     },
   },
 });
 </script>
 
 <style lang="scss" scoped>
+header {
+  nav:deep(ul) {
+    position: relative;
+    &:after {
+      background-color: currentColor;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: var(--line-offset, 0);
+      width: var(--line-width, 0);
+      transform: translateX(-50%);
+      height: 2px;
+      z-index: 1;
+      transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition-property: width, left, opacity;
+      opacity: 0;
+    }
+  }
+}
+
+.loaded nav:deep(ul):after {
+  opacity: 0.75;
+}
 @media (max-width: 767px) {
   header {
     nav {
