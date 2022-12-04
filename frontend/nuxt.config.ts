@@ -9,6 +9,30 @@ export default defineNuxtConfig({
 		meta: [
 			{ name: 'description', content: 'Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.' }
 		],
+
+		link: [
+			{
+				rel: 'preload',
+				href: '/fonts/noe-display-regular-italic.woff2',
+				as: 'font',
+				type: 'font/woff2',
+				crossorigin: true
+			},
+			{
+				rel: 'preload',
+				href: '/fonts/Gramatika-Bold.woff2',
+				as: 'font',
+				type: 'font/woff2',
+				crossorigin: true
+			}
+			{
+				rel: 'preload',
+				href: '/fonts/Gramatika-Regular.woff2',
+				as: 'font',
+				type: 'font/woff2',
+				crossorigin: true
+			}
+		]
 	},
 	modules: [
 		'@nuxtjs/strapi',
