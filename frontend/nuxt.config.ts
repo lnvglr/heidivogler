@@ -10,6 +10,9 @@ export default defineNuxtConfig({
 		'@nuxtjs/i18n',
 		'@formkit/nuxt'
 	],
+	buildModules: [
+    ['@nuxt-modules/compression']
+  ],
 	formkit: {
 		configFile: '~/config/formkit.config.ts',
 	},
