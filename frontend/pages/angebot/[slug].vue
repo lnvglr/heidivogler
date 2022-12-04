@@ -1,6 +1,6 @@
 <template>
 	<div v-if="offer">
-    <div class="h-[80vh] min-h-[720px] relative overflow-hidden -mt-36">
+    <div class="h-[60vh] md:h-[80vh] md:min-h-[720px] relative overflow-hidden -mt-36">
 			<ScrollParallax speed="0.2">
 				<Image
 					:media="offer.attributes.hero?.image.data.attributes"
@@ -11,10 +11,10 @@
 			</ScrollParallax>
     </div>
 		<div class="py-24">
-			<div class="relative bg-white rounded-2xl p-12 md:p-24 max-w-5xl mx-auto -mt-64 z-40 flex flex-col gap-5 items-start">
-				<h1 class="text-2xl font-bold text-stone-400">{{ offer.attributes.title }}</h1>
-				<h1 class="text-5xl font-bold mb-2">{{ offer.attributes.hero?.copy }}</h1>
-				<h1 class="text-3xl font-medium">{{ offer.attributes.hero?.subCopy }}</h1>
+			<div class="relative bg-white md:rounded-2xl px-5 py-12 md:p-12 md:p-24 max-w-5xl mx-auto -mt-64 z-40 flex flex-col gap-5 items-start">
+				<h1 class="text-xl md:text-2xl font-bold text-stone-400">{{ offer.attributes.title }}</h1>
+				<h1 class="text-4xl md:text-5xl font-bold mb-2">{{ offer.attributes.hero?.copy }}</h1>
+				<h1 class="text-xl md:text-3xl font-medium">{{ offer.attributes.hero?.subCopy }}</h1>
 			</div>
 			<ContentCollection :content="content" :page="offer" />
 		</div>

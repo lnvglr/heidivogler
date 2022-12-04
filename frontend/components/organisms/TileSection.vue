@@ -1,5 +1,5 @@
 <template>
-  <section ref="tiles" class="bg-stone-100 p-12 min-h-[50vh] grid grid-cols-1 md:grid-cols-2 auto-rows-fr grid-flow-row gap-6 sm:gap-12 max-w-7xl mx-auto" :style="`--total: ${data.tile.length}`">
+  <section ref="tiles" class="bg-stone-100 p-12 min-h-[50vh] grid grid-cols-1 md:grid-cols-2 auto-rows-fr grid-flow-row gap-6 sm:gap-12 max-w-7xl mx-auto" :style="`--total: ${data.tile.length}`" v-if="data.tile.length">
     <Tile v-for="t, i in data.tile" class="flex" :class="{
       'transition-show': inView,
       'transition-hide': !inView,

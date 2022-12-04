@@ -1,7 +1,6 @@
 <template>
-  <div class="p-12 mx-auto w-full">
-    <h1 class="font-bold text-left text-4xl sm:text-6xl mb-10">{{$route.meta.title}}</h1>
-    <EventsSection :data="{ size: 'xl' }" class="!p-0" />
+  <div class="p-5 md:p-12 mx-auto w-full">
+    <EventsSection :data="{ size: 'xl' }" class="!p-0" :title="$route.meta.title" />
   </div>
 </template>
 

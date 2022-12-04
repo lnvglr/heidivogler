@@ -1,6 +1,6 @@
 <template>
-<section class="bg-stone-100 p-12 flex justify-center">
-	<div class="max-w-2xl w-full mx-auto markdown my-12 bg-white rounded-2xl p-12" v-html="content" />
+<section class="bg-stone-100 p-5 md:p-12 flex justify-center">
+	<div class="max-w-2xl w-full mx-auto markdown my-12 bg-white rounded-2xl p-5 md:p-12" v-html="content" />
 </section>
 </template>
 

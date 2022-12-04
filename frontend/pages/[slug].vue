@@ -1,15 +1,18 @@
 <template>
-  <NuxtLayout name="default" v-if="page" class="p-12 max-w-4xl mx-auto">
-    <template #title>{{ page?.attributes.title }}</template>
+  <div v-if="page" class="p-12 max-w-4xl mx-auto">
+    <h1 class="font-bold text-left text-4xl sm:text-6xl mb-10">
+      {{ page?.attributes.title }}
+    </h1>
     <div class="markdown" v-html="content" />
-  </NuxtLayout>
+  </div>
 </template>
 
 <script lang="ts">
 export default defineComponent({
   setup() {
-    definePageMeta({
-      layout: false,
+    const route = useRoute()
+    useHead({
+      title: `${route.meta.title} - Heidi Vogler`,
     });
   },
   data() {

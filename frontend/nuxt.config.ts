@@ -4,7 +4,11 @@ import compress from './config/compress'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	app: {
-		pageTransition: { name: 'page', mode: 'out-in' }
+		pageTransition: { name: 'page', mode: 'out-in' },
+		title: "Heidi Vogler – Reittherapie, Traumabearbeitung, Waldbaden",
+		meta: [
+			{ name: 'description', content: 'Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.' }
+		],
 	},
 	modules: [
 		'@nuxtjs/strapi',

@@ -119,6 +119,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .container {
   width: var(--width, 100%);
+  min-width: var(--width, 100%);
   height: var(--height, 100%);
   aspect-ratio: var(--aspect-ratio, initial);
   .date {

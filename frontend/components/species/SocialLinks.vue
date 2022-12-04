@@ -1,6 +1,6 @@
 <template>
   <ul
-    class="col-span-2 flex flex-col text-xl font-medium"
+    class="col-span-2 flex flex-col text-xl font-medium leading-loose md:leading-normal"
     :style="{ '--total': routes.length }"
     v-if="routes.length > 0"
   >
@@ -10,7 +10,7 @@
         v-else
         :to="item.path"
         target="_blank"
-        class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-2xl"
+        class="duration-75 hover:text-gold-600 whitespace-nowrap py-3 md:py-1"
         exactActiveClass="text-gold-500"
       >
         <ClientOnly>

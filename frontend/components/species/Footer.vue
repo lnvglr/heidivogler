@@ -1,5 +1,5 @@
 <template>
-  <footer class="text-stone-500 bg-stone-200 z-10 w-full p-12 py-24">
+  <footer class="text-stone-500 bg-stone-200 z-10 w-full p-5 md:p-12 py-24">
     <nav class="grid grid-cols-12 gap-6 md:gap-12 max-w-5xl mx-auto w-full">
       <div class="col-span-12 sm:col-span-6 lg:col-span-6 flex flex-col gap-24">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -14,14 +14,14 @@
         </div>
       </div>
       <ul
-        class="col-span-6 sm:col-span-3 lg:col-span-3 flex flex-col text-xl font-medium"
+        class="col-span-6 sm:col-span-3 lg:col-span-3 flex flex-col text-xl font-medium leading-loose md:leading-normal"
         :style="{ '--total': routes.length }"
       >
         <li v-for="(item, i) in routes" :key="item.name" :style="{ '--i': i }">
           <NuxtLink
             :to="item.path"
             v-if="!item.spacer"
-            class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-2xl"
+            class="duration-75 hover:text-gold-600 whitespace-nowrap py-3 md:py-1"
             exactActiveClass="text-gold-500"
           >
             <Icon v-if="item.icon" :icon="item.icon" class="w-36" />

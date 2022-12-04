@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="grid md:grid-cols-2 xl:grid-cols-3">
-      <div class="p-12">
+      <div class="p-5 md:p-12">
         <div class="col-span-1 md:col-span-2 text-stone-500 font-medium">
           {{ $t("get.in.touch") }}
         </div>

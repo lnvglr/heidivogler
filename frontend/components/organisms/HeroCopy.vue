@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-10 items-center text-center from-black/80">
+  <div class="flex flex-col gap-10 items-center text-center from-black/80 overflow-hidden">
     <ScrollParallax class="flex items-center gap-5 text-gold-400" :speed="-0.3">
       <ScrollParallax v-if="ornaments" class="ornaments hidden sm:block" v-html="left" :speed="0.1" direction="x" :left="true"></ScrollParallax>
       <h1 v-if="copy" class="text-5xl sm:text-6xl md:text-7xl font-display italic max-w-xl">{{ copy }}</h1>

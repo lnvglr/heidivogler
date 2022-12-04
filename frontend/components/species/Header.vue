@@ -6,17 +6,17 @@
       'text-white': headerColor === 'light' || menuOpen,
       'text-gold-300': headerColor === 'default' && !menuOpen,
       'text-stone-700': (!headerColor || headerColor === 'dark') && !menuOpen,
-      loaded
+      loaded,
     }"
     style="backdropfilter: blur(var(--header-blur, 0px))"
   >
     <BurgerIcon
       :active="menuOpen"
       @click="menuOpen = !menuOpen"
-      class="absolute cursor-pointer right-12 top-12 z-50 md:hidden"
+      class="absolute cursor-pointer right-5 top-5 z-50 md:hidden"
     />
     <nav
-      class="flex items-center justify-center px-10 text-2xl font-medium h-36 bg-gradient-to-b"
+      class="flex items-center justify-center px-10 text-2xl font-medium h-24 md:h-36 bg-gradient-to-b"
     >
       <transition-group
         name="list"
@@ -47,7 +47,7 @@
             :exactActiveClass="
               headerColor === 'light'
                 ? 'text-white'
-                : headerColor === 'default'
+                : headerColor === 'default' || menuOpen
                 ? 'text-gold-400'
                 : 'text-stone-600'
             "
@@ -124,7 +124,7 @@ export default defineComponent({
       menuOpen: false,
       lineWidth: 0,
       lineOffsetX: 0,
-      loaded: false
+      loaded: false,
     };
   },
   methods: {
@@ -132,10 +132,12 @@ export default defineComponent({
       return Math.abs(i - Math.ceil((array.length - 1) / 2));
     },
     setLine(e: MouseEvent | false) {
-      const target = e ? e.target as HTMLElement : this.$refs[this.$route.path]?.[0];
+      const target = e
+        ? (e.target as HTMLElement)
+        : this.$refs[this.$route.path]?.[0];
       if (!target) {
         this.lineWidth = 0;
-        return
+        return;
       }
       const rect = target.getBoundingClientRect();
       this.lineWidth = rect.width;
@@ -156,30 +158,33 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-header {
-  nav:deep(ul) {
-    position: relative;
-    &:after {
-      background-color: currentColor;
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: var(--line-offset-x, 0);
-      width: var(--line-width, 0);
-      transform: translateX(-50%);
-      height: 2px;
-      z-index: 1;
-      transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-      transition-property: width, left, opacity;
-      opacity: 0;
-      border-radius: 10px;
+.loaded nav:deep(ul):after {
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  header {
+    nav:deep(ul) {
+      position: relative;
+      &:after {
+        background-color: currentColor;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: var(--line-offset-x, 0);
+        width: var(--line-width, 0);
+        transform: translateX(-50%);
+        height: 2px;
+        z-index: 1;
+        transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        transition-property: width, left, opacity;
+        opacity: 0;
+        border-radius: 10px;
+      }
     }
   }
 }
 
-.loaded nav:deep(ul):after {
-  opacity: 0.75;
-}
 @media (max-width: 767px) {
   header {
     nav {
@@ -189,7 +194,7 @@ header {
       align-items: flex-start;
       padding-top: var(--p-6);
       transition-delay: 250ms;
-      padding-top: 10px;
+      padding-top: 20px;
       ul {
         li:not(.order-0) {
           display: block;

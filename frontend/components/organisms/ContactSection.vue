@@ -1,7 +1,7 @@
 <template>
-  <section class="p-12 py-24 bg-stone-50">
+  <section class="p-5 md:p-12 md:py-24 bg-stone-50">
     <div
-      class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2"
+      class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2"
       :class="{
         'md:grid-cols-1': layout === 'column',
       }"
@@ -15,10 +15,8 @@
         {{ data.preCopy }}
       </div>
       <div class="flex flex-col gap-3">
-        <div class="text-4xl mb-12">{{ data.copy }}</div>
+        <div class="text-2xl md:text-4xl mb-12">{{ data.copy }}</div>
       </div>
-      <div v-if="sending">Sending ...</div>
-      <div v-else-if="sending">Erfolgreich gesendet</div>
       <ContactForm :collapsed="true"/>
     </div>
   </section>

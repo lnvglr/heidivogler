@@ -1,15 +1,17 @@
 <template>
-  <section class="flex flex-col gap-12 p-6 sm:p-12" v-if="(events?.length > 0)"  :class="{'max-w-5xl mx-auto p-12 lg:px-0': events?.length < 4}">
+  <section class="flex flex-col gap-12 p-5 sm:p-12" v-if="(events?.length > 0)" :class="{'max-w-5xl mx-auto p-5 md:p-12 lg:px-0': events?.length < 4}">
+
     <div class="flex flex-col items-start gap-2">
       <NuxtLink to="/termine" class="text-3xl font-bold hover:text-primary-500"
-        >{{$t('upcoming.events.title')}}</NuxtLink
+        :class="{'pointer-events-none': title}">{{$t('upcoming.events.title')}}</NuxtLink
       >
       <span class="font-medium text-stone-500"
         >{{$t('upcoming.events.description')}}</span
       >
     </div>
-    <div class="flex flex-wrap gap-6">
-      <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'md' : 'sm'" />
+    <!-- <div class="flex flex-wrap gap-6 overflow-x-auto -mx-5 px-5"> -->
+    <div class="flex md:flex-wrap gap-6 overflow-x-auto -mx-5 px-5">
+      <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'md' : 'md'" />
     </div>
   </section>
   <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section>
@@ -31,6 +33,9 @@ export default defineComponent({
     page: {
       type: Object,
     },
+    title: {
+      type: String,
+    }
   },
   data() {
     return {
