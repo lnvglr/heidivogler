@@ -10,7 +10,7 @@
         v-else
         :to="item.path"
         target="_blank"
-        class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-md"
+        class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-2xl"
         exactActiveClass="text-gold-500"
       >
         <ClientOnly>

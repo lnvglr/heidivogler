@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col gap-12 p-6 sm:p-12" v-if="(events?.length > 0)">
+  <section class="flex flex-col gap-12 p-6 sm:p-12" v-if="(events?.length > 0)"  :class="{'max-w-5xl mx-auto p-12 lg:px-0': events?.length < 4}">
     <div class="flex flex-col items-start gap-2">
       <NuxtLink to="/termine" class="text-3xl font-bold hover:text-primary-500"
         >{{$t('upcoming.events.title')}}</NuxtLink

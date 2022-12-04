@@ -43,7 +43,7 @@
           @mouseleave="() => setLine(false)" -->
           <NuxtLink
             :to="item.path"
-            class="duration-500 whitespace-nowrap py-2 rounded-md"
+            class="duration-500 whitespace-nowrap py-2 rounded-2xl"
             :exactActiveClass="
               headerColor === 'light'
                 ? 'text-white'

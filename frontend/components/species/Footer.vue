@@ -21,7 +21,7 @@
           <NuxtLink
             :to="item.path"
             v-if="!item.spacer"
-            class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-md"
+            class="duration-75 hover:text-gold-600 whitespace-nowrap rounded-2xl"
             exactActiveClass="text-gold-500"
           >
             <Icon v-if="item.icon" :icon="item.icon" class="w-36" />

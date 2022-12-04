@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col bg-white rounded-md p-5 gap-2" :class="size">
+  <div class="container flex flex-col bg-white rounded-2xl p-5 gap-2" :class="size">
     <div class="date flex justify-between">
       <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
       <DownloadEvent :event="event" class="download" />

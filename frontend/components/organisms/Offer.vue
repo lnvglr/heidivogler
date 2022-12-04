@@ -3,7 +3,7 @@
     <NuxtLink
       v-if="offer?.attributes"
       :to="offer.attributes.slug ? `/angebot/${offer.attributes.slug}` : '/angebote'"
-      class="block h-full relative rounded-md bg-stone-700 overflow-hidden duration-300 hover:-translate-y-1"
+      class="block h-full relative rounded-2xl bg-stone-700 overflow-hidden duration-300 hover:-translate-y-1"
     >
       <Image
         v-if="offer.attributes.hero?.image.data"
