@@ -72,6 +72,14 @@
   --fk-bg-submit-hover: var(--color-primary-500);
   --fk-color-placeholder: var(--color-stone-400);
 }
+.success button {
+  --fk-bg-submit: var(--color-success-400) !important;
+  pointer-events: none;
+}
+.alert button {
+  --fk-bg-submit: var(--color-alert-400) !important;
+  --fk-bg-submi-hovert: var(--color-alert-500) !important;
+}
 
 .formkit-inner {
   /* --fk-border-box-shadow: initial; */

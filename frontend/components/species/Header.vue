@@ -25,7 +25,7 @@
         :style="{
           '--total': routes.length,
           '--line-width': `${lineWidth}px`,
-          '--line-offset': `${lineOffset}px`,
+          '--line-offset-x': `${lineOffsetX}px`,
         }"
       >
         <li
@@ -53,9 +53,9 @@
             "
             :title="item.title || item.name"
             :class="{
-              'hover:text-white': headerColor === 'light',
-              'hover:text-gold-400': headerColor === 'default',
-              'hover:text-stone-600': !headerColor || headerColor === 'dark',
+              'hover:text-gold-100': headerColor === 'light',
+              'hover:text-gold-600': headerColor === 'default',
+              'hover:text-stone-900': !headerColor || headerColor === 'dark',
             }"
             @click="menuOpen = false"
           >
@@ -86,6 +86,10 @@ export default defineComponent({
         this.loaded = true;
       }, 300);
     });
+    window.addEventListener("resize", () => this.setLine(false));
+  },
+  unmounted() {
+    window.removeEventListener("resize", () => this.setLine(false));
   },
   data() {
     return {
@@ -119,7 +123,7 @@ export default defineComponent({
       ],
       menuOpen: false,
       lineWidth: 0,
-      lineOffset: 0,
+      lineOffsetX: 0,
       loaded: false
     };
   },
@@ -135,7 +139,7 @@ export default defineComponent({
       }
       const rect = target.getBoundingClientRect();
       this.lineWidth = rect.width;
-      this.lineOffset = target.offsetLeft + rect.width / 2;
+      this.lineOffsetX = target.offsetLeft + rect.width / 2;
     },
   },
   watch: {
@@ -160,7 +164,7 @@ header {
       content: "";
       position: absolute;
       bottom: 0;
-      left: var(--line-offset, 0);
+      left: var(--line-offset-x, 0);
       width: var(--line-width, 0);
       transform: translateX(-50%);
       height: 2px;
@@ -168,6 +172,7 @@ header {
       transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
       transition-property: width, left, opacity;
       opacity: 0;
+      border-radius: 10px;
     }
   }
 }

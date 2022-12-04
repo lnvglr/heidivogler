@@ -91,7 +91,7 @@ interface Strapi {
   authenticateProvider: (provider: StrapiAuthProvider, access_token: string) => Promise<StrapiAuthenticationResponse>;
   user: StrapiUser;
   api: typeof publicRuntimeConfig;
-  client: <T>(contentType: string, data: Partial<T>, method: string) =>  Promise<T>
+  client: <T>(contentType: string, data: Partial<T>, method?: string) =>  Promise<T>
 }
 
 

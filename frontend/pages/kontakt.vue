@@ -8,21 +8,7 @@
         <div class="flex flex-col gap-3">
           <div class="text-4xl mb-12">{{ $t("get.in.touch.description") }}</div>
         </div>
-        <FormKit
-          type="form"
-          v-model="contact"
-          class="flex-grow"
-          style="--fk-max-width-input: 100%"
-        >
-          <FormKit type="text" name="name" :placeholder="$t('your.name')" />
-          <FormKit type="email" name="email" :placeholder="$t('your.email')" />
-          <FormKit
-            type="textarea"
-            name="message"
-            :placeholder="$t('your.message')"
-          />
-          <!-- <FormKit type="text" v-model="location"></FormKit> -->
-        </FormKit>
+        <ContactForm />
         <div class="grid gap-12 my-12">
           <div>
             <p>{{ $t("find.me") }}</p>
@@ -46,7 +32,11 @@
 </template>
 
 <script lang="ts">
+import ContactForm from "@/components/organisms/ContactForm.vue";
 export default defineComponent({
+  components: {
+    ContactForm,
+  },
   head() {
     return {
       title: "Kontakt",
@@ -102,7 +92,7 @@ export default defineComponent({
     async initMap() {
       if (!this.$refs.map) return;
 
-      const mapboxgl = await import('mapbox-gl');
+      const mapboxgl = await import("mapbox-gl");
       const map = new mapboxgl.Map({
         accessToken: this.token,
         attributionControl: true,
@@ -115,7 +105,8 @@ export default defineComponent({
         zoom: 10,
         pitch: 45,
       });
-      const marker = new mapboxgl.Marker().setLngLat(this.geolocation?.center)
+      const marker = new mapboxgl.Marker()
+        .setLngLat(this.geolocation?.center)
         .setPopup(
           new mapboxgl.Popup().setHTML(
             `<p>${this.geolocation?.place_name?.replace(/,/g, "<br>")}</p>`
@@ -145,10 +136,10 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.$state.headerColor = "dark"
+    this.$state.headerColor = "dark";
   },
   unmounted() {
-    this.$state.headerColor = null
+    this.$state.headerColor = null;
   },
 });
 </script>
@@ -179,7 +170,9 @@ export default defineComponent({
   position: absolute;
   z-index: 99;
 }
-.mapboxgl-touch-pan-blocker, .mapboxgl-scroll-zoom-blocker, .mapboxgl-control-container {
+.mapboxgl-touch-pan-blocker,
+.mapboxgl-scroll-zoom-blocker,
+.mapboxgl-control-container {
   display: none;
 }
 </style>
