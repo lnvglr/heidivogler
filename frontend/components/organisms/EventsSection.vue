@@ -49,7 +49,7 @@ export default defineComponent({
         (event) => event.attributes.end > new Date().toISOString()
       );
       this.loaded = true;
-    } else {
+    } else if (!this.data) {
       this.events = (
         await this.$strapi.find("events", {
           sort: "start",
