@@ -96,11 +96,6 @@ export default defineComponent({
     ],
     };
   },
-  setup() {
-    definePageMeta({
-      headerColor: "default",
-    });
-  },
   data() {
     return {
       page: null,
@@ -109,6 +104,7 @@ export default defineComponent({
   mounted() {
     this.$strapi.find("home").then(({data}) => {
       this.page = data;
+      this.$state.headerColor = "default";
     });
   },
   computed: {

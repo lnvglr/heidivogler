@@ -46,6 +46,9 @@ export default defineComponent({
 				this.$state.headerColor = this.offer.attributes.headerColor
 			})
 	},
+	unmounted() {
+		this.$state.headerColor = null
+	},
 	computed: {
 		content() {
 			return this.offer?.attributes.content

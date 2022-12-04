@@ -1,5 +1,5 @@
 <template>
-	<div class="max-w-2xl mx-auto markdown py-24 px-12" v-html="content" />
+	<div v-if="data.editor" class="max-w-2xl mx-auto markdown py-24 px-12" v-html="content" />
 </template>
 
 <script lang="ts">

@@ -39,11 +39,6 @@ import HeroCopy from "~/components/organisms/HeroCopy.vue";
 import ContentCollection from "~/components/species/ContentCollection.vue";
 
 export default defineComponent({
-  setup() {
-    definePageMeta({
-      headerColor: "light",
-    });
-  },
   components: {
     Image,
     HeroCopy,
@@ -78,6 +73,10 @@ export default defineComponent({
       this.show = true;
     }, 500);
     this.page = (await this.$strapi.find("about", { populate: "*" })).data;
+    this.$state.headerColor = "light"
+  },
+  unmounted() {
+    this.$state.headerColor = null
   },
   head() {
     return {

@@ -48,6 +48,10 @@ export default defineComponent({
     this.offers = (
       await this.$strapi.find("offers", { populate: ["content", "hero"] })
     ).data;
+    this.$state.headerColor = "dark"
+  },
+  unmounted() {
+    this.$state.headerColor = null
   },
 });
 </script>

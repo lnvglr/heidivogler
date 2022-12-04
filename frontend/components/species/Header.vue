@@ -145,7 +145,7 @@ export default defineComponent({
   },
   computed: {
     headerColor() {
-      return this.$route.meta.headerColor;
+      return this.$state.headerColor;
     },
   },
 });

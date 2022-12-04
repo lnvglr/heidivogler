@@ -29,6 +29,12 @@ export default defineComponent({
       ],
     };
   },
+  mounted() {
+    this.$state.headerColor = "dark";
+  },
+  unmounted() {
+    this.$state.headerColor = null;
+  },
 });
 </script>
 
