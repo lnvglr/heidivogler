@@ -37,7 +37,7 @@
             'order-1': !item.icon,
             'mx-3': true,
           }"
-          :ref="!item.icon && item.path"
+          :ref="!item.icon ? item.path : ''"
         >
           <!-- @mouseover="(e) => setLine(!item.icon && e)"
           @mouseleave="() => setLine(false)" -->
@@ -128,9 +128,7 @@ export default defineComponent({
       return Math.abs(i - Math.ceil((array.length - 1) / 2));
     },
     setLine(e: MouseEvent | false) {
-      console.log(this.$route)
       const target = e ? e.target as HTMLElement : this.$refs[this.$route.path]?.[0];
-      console.log(target)
       if (!target) {
         this.lineWidth = 0;
         return
