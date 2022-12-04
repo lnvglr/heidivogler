@@ -1,18 +1,19 @@
 import i18n from './config/i18n'
 import postcss from './config/postcss'
+import nuxtCompress from './config/nuxtCompress'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
-  },
+		pageTransition: { name: 'page', mode: 'out-in' }
+	},
 	modules: [
 		'@nuxtjs/strapi',
 		'@nuxtjs/i18n',
 		'@formkit/nuxt'
 	],
 	buildModules: [
-    ['@nuxt-modules/compression']
-  ],
+		'nuxt-compress'
+	],
 	formkit: {
 		configFile: '~/config/formkit.config.ts',
 	},
@@ -26,6 +27,7 @@ export default defineNuxtConfig({
 	],
 	i18n,
 	postcss,
+	'nuxt-compress': nuxtCompress,
 	runtimeConfig: {
 		public: {
 			mapbox: {

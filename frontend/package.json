@@ -29,6 +29,7 @@
     "ics": "^2.41.0",
     "mapbox-gl": "^2.11.0",
     "markdown-it": "^13.0.1",
+    "nuxt-compress": "^5.0.0",
     "slugify": "^1.6.5",
     "tailwind-css-variables": "^3.0.1",
     "tailwindcss-hyphens": "^0.1.0",

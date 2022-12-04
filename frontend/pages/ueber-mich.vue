@@ -27,7 +27,7 @@
         :title="logo.alt"
         class="hover:opacity-80"
         target="_blank"
-        ><img :src="logo.src"
+        ><img :src="logo.src" :alt="logo.alt"
       /></NuxtLink>
     </div>
   </div>
