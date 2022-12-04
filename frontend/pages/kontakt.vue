@@ -46,7 +46,6 @@
 </template>
 
 <script lang="ts">
-import mapboxgl from "mapbox-gl";
 export default defineComponent({
   head() {
     return {
@@ -100,8 +99,10 @@ export default defineComponent({
         })
         .catch((error) => console.error(error));
     },
-    initMap() {
+    async initMap() {
       if (!this.$refs.map) return;
+
+      const mapboxgl = await import('mapbox-gl');
       const map = new mapboxgl.Map({
         accessToken: this.token,
         attributionControl: true,
@@ -121,7 +122,6 @@ export default defineComponent({
           )
         )
         .addTo(map);
-      console.log(map, marker)
     },
   },
   watch: {
