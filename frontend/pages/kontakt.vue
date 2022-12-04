@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-      <div ref="map" class="h-[50vh] md:h-full xl:col-span-2"></div>
+      <div ref="map" class="h-[50vh] md:h-[100vh] xl:col-span-2" />
     </div>
   </NuxtLayout>
 </template>
@@ -46,7 +46,7 @@ export default defineComponent({
     link: [
       {
         rel: "stylesheet",
-        href: "https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css",
+        href: "https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css",
       },
     ],
   },
@@ -81,7 +81,6 @@ export default defineComponent({
       return fetch(url)
         .then((res) => res.json())
         .then(({ features }) => {
-          console.log(features);
           return (this.geolocation = features[0]);
         })
         .catch((error) => console.error(error));
@@ -99,14 +98,14 @@ export default defineComponent({
         cooperativeGestures: true,
         zoom: 10,
       });
-      const marker = new mapboxgl.Marker()
-        .setLngLat(this.geolocation?.center)
-        .setPopup(
-          new mapboxgl.Popup().setHTML(
-            `<p>${this.geolocation?.place_name?.replace(/,/g, "<br>")}</p>`
-          )
-        )
-        .addTo(map);
+      // const marker = new mapboxgl.Marker()
+      //   .setLngLat(this.geolocation?.center)
+      //   .setPopup(
+      //     new mapboxgl.Popup().setHTML(
+      //       `<p>${this.geolocation?.place_name?.replace(/,/g, "<br>")}</p>`
+      //     )
+      //   )
+      //   .addTo(map);
     },
   },
   watch: {
@@ -143,7 +142,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.mapboxgl-popup-content {
+/* .mapboxgl-popup-content {
   padding: var(--p-5);
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
@@ -153,7 +152,7 @@ export default defineComponent({
   &:focus {
     outline: none;
   }
-}
+} */
 /* .mapboxgl-canvas-container {
   position: absolute;
   top: 0;

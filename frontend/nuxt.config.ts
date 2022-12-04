@@ -2,6 +2,9 @@ import i18n from './config/i18n'
 import postcss from './config/postcss'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+	app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
 	modules: [
 		'@nuxtjs/strapi',
 		'@nuxtjs/i18n',
@@ -20,13 +23,11 @@ export default defineNuxtConfig({
 	],
 	i18n,
 	postcss,
-	// publicRuntimeConfig: {
-	// 	mapbox: {
-	// 		token: process.env.MAPBOX_TOKEN,
-	// 	}
-	// },
-	// server: {
-	// 	host: "0.0.0.0",
-	// 	port: Number(process.env.PORT) || 3000,
-	// },
+	runtimeConfig: {
+		public: {
+			mapbox: {
+				token: process.env.MAPBOX_TOKEN,
+			}
+		}
+	},
 })

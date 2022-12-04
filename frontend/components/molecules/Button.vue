@@ -82,7 +82,6 @@ $colors: primary, secondary, info, beige, success, warning, alert;
   border-radius: var(--border-radius);
   position: relative;
   padding: var(--padding);
-  text-align: center;
   line-height: 1.1;
   box-shadow: inset 0 0 0 var(--border-default) var(--border-color);
   text-align: center;
@@ -118,7 +117,7 @@ $colors: primary, secondary, info, beige, success, warning, alert;
   }
   &.sm {
     --size: var(--h-8);
-    --padding: var(--p-1) var(--p-2);
+    --padding: var(--p-1) var(--p-3);
   }
   &.lg {
     --size: var(--h-12);

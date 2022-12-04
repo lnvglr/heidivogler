@@ -18,8 +18,8 @@
         <span>{{ time }}</span>
       </div>
       <div v-if="(start.getTime() > (new Date).getTime() || end?.getTime() > (new Date).getTime()) && !['sm', 'lg'].includes(size)">
-        <a href="mailto:hallo@heidivogler.de"><Button :class="size === 'md' ? 'sm' : 'text-md'"
-          >Anmelden</Button
+        <a href="mailto:hallo@heidivogler.de"><Button :class="size === 'md' ? 'sm' : 'md'"
+          >{{$t('register')}}</Button
         ></a>
       </div>
     </div>
