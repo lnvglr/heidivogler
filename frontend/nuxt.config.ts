@@ -24,7 +24,7 @@ export default defineNuxtConfig({
 				as: 'font',
 				type: 'font/woff2',
 				crossorigin: true
-			}
+			},
 			{
 				rel: 'preload',
 				href: '/fonts/Gramatika-Regular.woff2',
