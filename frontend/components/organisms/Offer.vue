@@ -15,12 +15,12 @@
         class="relative p-8 lg:p-12 z-10 text-white flex flex-col justify-end h-full bg-gradient-to-t from-black/70"
       >
         <div
-          v-if="offer.attributes.events?.data.length > 0"
+          v-if="events.length > 0"
           class="p-12 -m-12 mb-auto bg-gradient-to-b from-black/40"
         >
           <FontAwesomeIcon :icon="['fas', 'calendar']" class="mr-3" fixed-width />
           <span class="font-bold">
-          {{ $t('upcoming.events', { n: offer.attributes.events.data.length }) }}
+          {{ $t('upcoming.events', { n: events.length }) }}
           </span>
         </div>
         <div class="flex flex-col gap-2">
@@ -74,6 +74,13 @@ export default defineComponent({
     getParallaxSpeed() {
       this.parallaxSpeed = window.innerWidth >= 1024 ? this.parallax : 0;
     },
+  },
+  computed: {
+    events() {
+      return this.offer.attributes.events?.data.filter(
+        (event) => event.attributes.end > new Date().toISOString()
+      );
+    }
   }
 });
 </script>
