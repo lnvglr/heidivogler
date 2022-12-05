@@ -2,22 +2,22 @@
   "collectionName": "components_block_iamge_text_blocks",
   "info": {
     "displayName": "Bild/Text Block",
-    "icon": "address-card"
+    "icon": "address-card",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Bild": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "Text": {
       "type": "richtext",
-      "required": true,
-      "maxLength": 200
+      "required": true
     }
   }
 }

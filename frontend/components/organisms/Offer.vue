@@ -25,7 +25,14 @@
       >
         <div
           v-if="events.length > 0"
-          class="p-5 md:p-12 mb-auto bg-gradient-to-b from-black/40 overflow-hidden rounded-2xl"
+          class="p-5 md:p-12 mb-auto overflow-hidden rounded-2xl"
+          :class="{
+            'text-white': offer.attributes.headerColor === 'light',
+            'text-gold-300': offer.attributes.headerColor === 'default',
+            'text-stone-700':
+              !offer.attributes.headerColor ||
+              offer.attributes.headerColor === 'dark',
+          }"
         >
           <FontAwesomeIcon
             :icon="['fas', 'calendar']"
@@ -43,7 +50,9 @@
           >
             {{ offer.attributes.title }}
           </h3>
-          <span class="text-2xl md:text-3xl font-bold leading-none hyphens-auto">
+          <span
+            class="text-2xl md:text-3xl font-bold leading-none hyphens-auto"
+          >
             {{ offer.attributes.hero?.copy || offer.attributes.title }}
           </span>
         </div>
