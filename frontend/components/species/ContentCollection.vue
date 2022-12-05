@@ -22,6 +22,7 @@ import TestimonialsSection from "~/components/organisms/TestimonialsSection.vue"
 import ContactSection from "~/components/organisms/ContactSection.vue";
 import OffersSection from "~/components/organisms/OffersSection.vue";
 import TileSection from "~/components/organisms/TileSection.vue";
+import ImageTextBlock from "~/components/organisms/ImageTextBlock.vue";
 
 export default defineComponent({
   components: {
@@ -36,6 +37,7 @@ export default defineComponent({
     TestimonialsSection,
     OffersSection,
     TileSection,
+    ImageTextBlock
   },
   props: {
     content: Object,
@@ -66,8 +68,8 @@ export default defineComponent({
           return OffersSection;
         case "block.tiles":
           return TileSection;
-        // case "block.tiles":
-        //   return TileSection;
+        case "block.image-text-block":
+          return ImageTextBlock;
       }
     },
   },

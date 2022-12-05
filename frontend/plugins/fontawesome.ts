@@ -18,7 +18,11 @@ import {
   faRoadBarrier,
   faEyeLowVision,
   faCircleNotch,
-  faBath
+  faBath,
+  faPeopleGroup,
+  faCircleNodes,
+  faPersonWalkingArrowRight,
+  faCouch
 } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
 library.add(
@@ -42,7 +46,11 @@ library.add(
   faStar,
   faInstagram,
   faFacebook,
-  faCertificate
+  faCertificate,
+  faPeopleGroup,
+  faCircleNodes,
+  faPersonWalkingArrowRight,
+  faCouch
 )
 
 config.autoAddCss = false

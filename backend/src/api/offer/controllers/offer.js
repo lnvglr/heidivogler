@@ -25,7 +25,12 @@ module.exports = createCoreController('api::offer.offer', ({ strapi }) => ({
 					populate: {
 						image: true,
 						tiles: true,
-						tile: true
+						tile: true,
+						imageTextBlock: {
+							populate: {
+								image: true,
+							}
+						},
 					},
 				},
 			},
