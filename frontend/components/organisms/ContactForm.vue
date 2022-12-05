@@ -83,6 +83,7 @@ export default defineComponent({
         !this.contact.email ||
         !this.contact.name ||
         !this.contact.nachricht ||
+        !this.contact.confirm ||
         this.contact.search
       )
         return;
