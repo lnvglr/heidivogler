@@ -22,7 +22,10 @@ import {
   faPeopleGroup,
   faCircleNodes,
   faPersonWalkingArrowRight,
-  faCouch
+  faCouch,
+  faLeaf,
+  faSpa,
+  faChessKnight
 } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
 library.add(
@@ -50,7 +53,10 @@ library.add(
   faPeopleGroup,
   faCircleNodes,
   faPersonWalkingArrowRight,
-  faCouch
+  faCouch,
+  faLeaf,
+  faSpa,
+  faChessKnight
 )
 
 config.autoAddCss = false

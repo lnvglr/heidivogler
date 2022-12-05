@@ -81,18 +81,18 @@ svg {
   .couch & {
     color: var(--color-gold-400);
   }
-  .tree & {
+  .tree &, .leaf & {
     color: var(--color-success-400);
   }
   .wind &,
   .kite &,
-  .circle-nodes & {
+  .circle-nodes &, .spa & {
     color: var(--color-info-300);
   }
   .person-hiking &,
   .person-walking-arrow-right &,
   .people-group &,
-  .eye-low-vision & {
+  .eye-low-vision &, .chess-knight & {
     color: var(--color-stone-400);
   }
 }
