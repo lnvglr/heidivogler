@@ -1,19 +1,22 @@
 <template>
-  <section role="figure" :aria-labelledby="captionId">
-    <div class="h-min md:min-h-[360px] max-h-[90vh] overflow-hidden">
-      <Image
-        :media="content"
-        class="h-full -z-10 -translate-y-1/3 md:-translate-y-1/4 scale-105"
-        width="full"
-      />
-    </div>
-		{{data}}
-    <p
+  <section
+    role="figure"
+    :aria-labelledby="captionId"
+    class="grid md:grid-cols-2 md:max-h-screen my-10 md:my-24 bg-stone-50 "
+  >
+    <Image
+      :media="image"
+      class="h-[80vh] md:h-auto max-h-screen"
+      width="full"
+    />
+    <div class="flex items-center justify-center">
+    <div
       :id="captionId"
-      class="max-w-5xl mx-auto my-3 px-5 md:px-12 markdown"
-			v-if="data.Text"
-			v-html="text"
-    ></p>
+      class="p-10 md:p-12 markdown"
+      v-if="data.text"
+      v-html="text"
+    ></div>
+  </div>
   </section>
 </template>
 
@@ -31,12 +34,13 @@ export default defineComponent({
   },
   data: () => ({ captionId: uuid.v4() }),
   computed: {
-    content() {
+    image() {
       return this.data.image?.data.attributes;
     },
-		text() {
-			return useMarkdown(this.data.Text)
-		}
+    text() {
+      if (!this.data.text) return "";
+      return useMarkdown(this.data.text);
+    },
   },
 });
 </script>
