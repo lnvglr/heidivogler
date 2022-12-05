@@ -34,7 +34,8 @@
         "block.image",
         "block.quote",
         "block.offers",
-        "block.tiles"
+        "block.tiles",
+        "block.image-text-block"
       ]
     },
     "events": {

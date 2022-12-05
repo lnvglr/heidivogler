@@ -1,0 +1,76 @@
+{
+  "key": "plugin_content_manager_configuration_components::block.events",
+  "value": {
+    "uid": "block.events",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "size": {
+        "edit": {
+          "label": "Größe",
+          "description": "Die Größe der Event-Kachel",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "size",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "filter": {
+        "edit": {
+          "label": "Filter",
+          "description": "Sollen alle Events dargestellt werden oder nur die, die mit dem aktuellen Angebot verknüpft sind (weiter unten einstellbar)",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "filter",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "size",
+        "filter"
+      ],
+      "edit": [
+        [
+          {
+            "name": "size",
+            "size": 6
+          },
+          {
+            "name": "filter",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
