@@ -1,5 +1,8 @@
 <template>
-  <div class="container flex flex-col bg-white rounded-2xl p-5 gap-2" :class="computedSize">
+  <div
+    class="container flex flex-col bg-white rounded-2xl p-5 gap-2"
+    :class="computedSize"
+  >
     <div class="date flex justify-between">
       <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
       <DownloadEvent :event="event" class="download" />
@@ -7,20 +10,35 @@
     <div class="title font-bold leading-none">
       <span>{{ event.attributes.title }}</span>
     </div>
-    <div class="text-xl" v-if="event.attributes.description && computedSize === 'xl'">
+    <div
+      class="text-xl"
+      v-if="event.attributes.description && computedSize === 'xl'"
+    >
       <span>{{ event.attributes.description }}</span>
     </div>
     <div class="date flex gap-6 mt-auto items-end justify-between">
       <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
-        <span v-if="event.attributes.price && 'xl' === computedSize">Preis: {{ event.attributes.price }} Euro</span>
-        <span v-if="event.attributes.groupSize && 'xl' === computedSize">Gruppengröße: {{ event.attributes.groupSize }}</span>
+        <span v-if="event.attributes.price && 'xl' === computedSize"
+          >Preis: {{ event.attributes.price }} Euro</span
+        >
+        <span v-if="event.attributes.groupSize && 'xl' === computedSize"
+          >Gruppengröße: {{ event.attributes.groupSize }}</span
+        >
         <span v-if="location && 'sm' !== computedSize">{{ location }}</span>
         <span>{{ time }} Uhr</span>
       </div>
-      <div v-if="(start.getTime() > (new Date).getTime() || end?.getTime() > (new Date).getTime()) && !['sm', 'lg'].includes(computedSize)">
-        <a href="mailto:hallo@heidivogler.de"><Button :class="computedSize === 'md' ? 'sm' : 'md'"
-          >{{$t('register')}}</Button
-        ></a>
+      <div
+        v-if="
+          (start.getTime() > new Date().getTime() ||
+            end?.getTime() > new Date().getTime()) &&
+          !['sm', 'lg'].includes(computedSize)
+        "
+      >
+        <a href="mailto:hallo@heidivogler.de"
+          ><Button :class="computedSize === 'md' ? 'sm' : 'md'">{{
+            $t("register")
+          }}</Button></a
+        >
       </div>
     </div>
   </div>
@@ -34,7 +52,7 @@ import DownloadEvent from "~/components/molecules/DownloadEvent.vue";
 export default defineComponent({
   components: {
     Button,
-    DownloadEvent
+    DownloadEvent,
   },
   props: {
     event: {
@@ -50,22 +68,18 @@ export default defineComponent({
   data() {
     return {
       windowWidth: window?.innerWidth || 0,
-    }
+    };
   },
   methods: {
-
     viewport() {
-        this.windowWidth = window.innerWidth;
-        console.log(this.windowWidth)
-      },  
+      this.windowWidth = window.innerWidth;
+    },
     formatRange(start: string, end: string, short: boolean) {
       if (start === end || !end) return start;
       if (short) {
         const endDate = end.split(" ");
         const startDate = start.split(" ");
-        start = startDate
-          .filter((f, i) => f !== endDate[i])
-          .join(" ");
+        start = startDate.filter((f, i) => f !== endDate[i]).join(" ");
       }
       return [start, end].join(" – ");
     },
@@ -80,7 +94,7 @@ export default defineComponent({
   },
   mounted() {
     window.addEventListener("resize", () => this.viewport());
-    this.viewport()
+    this.viewport();
   },
   unmounted() {
     window.removeEventListener("resize", () => this.viewport());
@@ -90,8 +104,8 @@ export default defineComponent({
       return "de";
     },
     computedSize() {
-      if (this.windowWidth < 767) return "md"
-      return this.size
+      if (this.windowWidth < 767) return "md";
+      return this.size;
     },
     timeOptions() {
       return {
@@ -110,7 +124,9 @@ export default defineComponent({
       return new Date(this.event.attributes.start);
     },
     end(): Date | null {
-      return this.event.attributes.end ? new Date(this.event.attributes.end) : null;
+      return this.event.attributes.end
+        ? new Date(this.event.attributes.end)
+        : null;
     },
     time() {
       return this.formatRange(
@@ -121,7 +137,9 @@ export default defineComponent({
     date() {
       const daysToGo = this.unixDay(this.start) - this.unixDay(new Date());
       if (daysToGo < 1 && daysToGo > -1) {
-        const rtf = new Intl.RelativeTimeFormat(this.locale, { numeric: "auto" });
+        const rtf = new Intl.RelativeTimeFormat(this.locale, {
+          numeric: "auto",
+        });
         return rtf.format(daysToGo, "day");
       }
       return this.formatRange(

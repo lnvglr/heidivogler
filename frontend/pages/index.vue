@@ -10,8 +10,8 @@
         v-if="page?.attributes?.hero"
         :copy="page.attributes.hero.copy"
         :subCopy="page.attributes.hero.subCopy"
+        class="p-5 md:p-12 lg:p-24 pt-24 pb-12 w-full"
         :ornaments="true"
-        class="p-6 sm:p-12 lg:p-24 pt-24 pb-12 w-full"
         style="--i: 2"
         :key="2"
       />

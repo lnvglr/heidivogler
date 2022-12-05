@@ -11,7 +11,7 @@
         v-for="(offer, i) in offers"
         :key="offer.id"
         :offer="offer"
-        class="min-w-[360px] h-96"
+        class="md:min-w-[360px] h-96"
         :class="{ 'lg:col-span-2': featured.includes(offer.id) || i === 0 }"
       />
     </div>

@@ -6,15 +6,15 @@
 					:media="offer.attributes.hero?.image.data.attributes"
 					class="h-full -z-10"
 					width="full"
-					aspectRatio="16/10"
+					aspectRatio="16/12"
 				/>
 			</ScrollParallax>
     </div>
 		<div class="py-24">
-			<div class="relative bg-white md:rounded-2xl px-5 py-12 md:p-12 md:p-24 max-w-5xl mx-auto -mt-64 z-40 flex flex-col gap-5 items-start">
+			<div class="relative bg-white md:rounded-2xl px-5 py-10 md:px-12 md:py-24 max-w-5xl mx-auto -mt-64 z-40 flex flex-col gap-5 items-start">
 				<h1 class="text-xl md:text-2xl font-bold text-stone-400">{{ offer.attributes.title }}</h1>
-				<h1 class="text-4xl md:text-5xl font-bold mb-2">{{ offer.attributes.hero?.copy }}</h1>
-				<h1 class="text-xl md:text-3xl font-medium">{{ offer.attributes.hero?.subCopy }}</h1>
+				<h1 class="text-3xl md:text-5xl font-bold">{{ offer.attributes.hero?.copy }}</h1>
+				<h1 class="text-xl md:text-3xl font-medium mt-2" v-if="offer.attributes.hero?.subCopy">{{ offer.attributes.hero?.subCopy }}</h1>
 			</div>
 			<ContentCollection :content="content" :page="offer" />
 		</div>

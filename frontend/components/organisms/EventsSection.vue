@@ -14,18 +14,20 @@
       <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'xl' : 'md'" />
     </div>
   </section>
-  <section v-else class="p-12 text-center">Keine bevorstehenden Termine</section>
+  <section v-else class="px-5 py-10 md:p-12 text-center flex item-center justify-center flex-col text-stone-400"><div><FontAwesomeIcon :icon="['fas', 'calendar']" fixed-width /></div><span>{{$t('events:noEvents')}}</span></section>
   <!-- <section v-else class="p-12 my-24 text-center text-stone-300"><FontAwesomeIcon class="spin" :icon="['fas', 'circle-notch']" size="2xl" /></section> -->
   <!-- <section v-else-if="loaded" class="p-12 text-center">Keine bevorstehenden Termine</section>
   <section v-else class="p-12 my-24 text-center text-stone-300"><FontAwesomeIcon class="spin" :icon="['fas', 'circle-notch']" size="2xl" /></section> -->
 </template>
 
 <script lang="ts">
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Event from "~/components/cells/Event.vue";
 export default defineComponent({
   components: {
     Event,
-  },
+    FontAwesomeIcon
+},
   props: {
     data: {
       type: Object,

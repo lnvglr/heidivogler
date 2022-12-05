@@ -1,19 +1,27 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
   font-family: 'Noe Display';
-  src: url('../fonts/NoeDisplay-Regular.woff2') format('woff2');
+  src: url('/fonts/Noe-Display-Regular-Italic.woff2') format('woff2');
+  font-style: italic;
 }
+
 @font-face {
-  font-family: 'Gramatka';
-  src: url('../fonts/NoeDisplay-Regular.woff2') format('woff2');
+  font-family: 'Gramatika';
+  src: url('/fonts/Gramatika-Regular.woff2') format('woff2'), url('/fonts/Gramatika-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Gramatika';
+  src: url('/fonts/Gramatika-Bold.woff2') format('woff2'), url('/fonts/Gramatika-Bold.woff') format('woff');
+  font-weight: bold;
 }
 
 
 .markdown {
+
   h1,
   h2,
   h3,
@@ -46,20 +54,46 @@
       text-decoration: underline;
     }
   }
+
   hr {
     border: 1px solid var(--color-stone-200);
     margin-block: var(--h-12);
   }
+
   p+p {
     margin-top: var(--m-3);
   }
+  p+ul {
+    margin-top: var(--m-3);
+  }
+
   ul {
     list-style: disc;
     padding-left: var(--p-5)
   }
+
   ol {
     list-style: decimal;
     padding-left: var(--p-5)
+  }
+
+  @media (max-width: 767px) {
+    h1 {
+      font-size: var(--text-3xl);
+    }
+
+    h2 {
+      font-size: var(--text-2xl);
+    }
+
+    h3 {
+      font-size: var(--text-1xl);
+    }
+
+    h4 {
+      font-size: var(--text-lg);
+    }
+
   }
 }
 
@@ -85,10 +119,12 @@
   --fk-bg-submit-hover: var(--color-primary-500);
   --fk-color-placeholder: var(--color-stone-400);
 }
+
 .success button {
   --fk-bg-submit: var(--color-success-400) !important;
   pointer-events: none;
 }
+
 .alert button {
   --fk-bg-submit: var(--color-alert-400) !important;
   --fk-bg-submi-hovert: var(--color-alert-500) !important;

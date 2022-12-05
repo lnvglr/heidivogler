@@ -13,19 +13,19 @@
           v-if="page && show"
           :copy="page.attributes.hero.copy"
           :subCopy="page.attributes.hero.subCopy"
-          class="absolute bottom-0 px-12 py-24 w-full bg-gradient-to-t z-20"
+          class="absolute bottom-0 px-5 py-10 md:px-12 py-24 w-full bg-gradient-to-t z-20"
         />
       </TransitionGroup>
     </div>
     <Transition name="slide-in">
       <ContentCollection v-if="page" :content="page.attributes.content" />
     </Transition>
-    <div class="flex justify-center items-center md:gap-24 gap-12 p-12 md:p-24">
+    <div class="flex justify-center items-center md:gap-24 gap-12 px-5 py-10 md:px-12 md:py-24 flex-wrap">
       <NuxtLink
         v-for="logo in logos"
         :to="logo.link"
         :title="logo.alt"
-        class="hover:opacity-80"
+        class="hover:opacity-80 w-32 md:w-36"
         target="_blank"
         ><img :src="logo.src" :alt="logo.alt"
       /></NuxtLink>

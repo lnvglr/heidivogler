@@ -1,15 +1,15 @@
 <template>
-	<section class="" role="figure" :aria-labelledby="captionId">
-		<div class="h-min min-h-[360px] max-h-[90vh] overflow-hidden">
+	<section role="figure" :aria-labelledby="captionId">
+		<div class="h-min md:min-h-[360px] max-h-[90vh] overflow-hidden">
 			<ScrollParallax :speed="0.1">
 				<Image
 					:media="content"
-					class="h-full -z-10 -translate-y-1/4 scale-105"
+					class="h-full -z-10 -translate-y-1/3 md:-translate-y-1/4 scale-105"
 					width="full"
 				/>
 			</ScrollParallax>
 		</div>
-		<p :id="captionId" class="max-w-7xl mx-auto my-3 px-12 text-stone-400">{{content.caption}}</p>
+		<p :id="captionId" class="max-w-5xl mx-auto my-3 px-5 md:px-12 text-stone-400 leading-snug">{{content.caption}}</p>
 	</section>
 </template>
 

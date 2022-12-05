@@ -1,33 +1,49 @@
 <template>
-  <component :is="parallaxSpeed ? ScrollParallax : 'div'" :speed="parallaxSpeed / -10" direction="y" :up="true">
+  <component
+    :is="parallaxSpeed ? ScrollParallax : 'div'"
+    :speed="parallaxSpeed / -10"
+    direction="y"
+    :up="true"
+  >
     <NuxtLink
       v-if="offer?.attributes"
-      :to="offer.attributes.slug ? `/angebot/${offer.attributes.slug}` : '/angebote'"
+      :to="
+        offer.attributes.slug
+          ? `/angebot/${offer.attributes.slug}`
+          : '/angebote'
+      "
       class="block h-full relative rounded-2xl bg-stone-700 overflow-hidden duration-300 hover:-translate-y-1"
     >
       <Image
         v-if="offer.attributes.hero?.image.data"
         :media="offer.attributes.hero.image.data.attributes"
-        class="absolute top-0 left-0 h-full"
+        class="absolute inset-0 h-full"
         width="full"
       />
       <div
-        class="relative p-8 lg:p-12 z-10 text-white flex flex-col justify-end h-full bg-gradient-to-t from-black/70"
+        class="relative z-10 text-white flex flex-col justify-end h-full bg-gradient-to-t from-black/70 rounded-2xl"
       >
         <div
           v-if="events.length > 0"
-          class="p-12 -m-12 mb-auto bg-gradient-to-b from-black/40"
+          class="p-5 lg:p-12 mb-auto bg-gradient-to-b from-black/40 overflow-hidden rounded-2xl"
         >
-          <FontAwesomeIcon :icon="['fas', 'calendar']" class="mr-3" fixed-width />
+          <FontAwesomeIcon
+            :icon="['fas', 'calendar']"
+            class="mr-3"
+            fixed-width
+          />
           <span class="font-bold">
-          {{ $t('upcoming.events', { n: events.length }) }}
+            {{ $t("upcoming.events", { n: events.length }) }}
           </span>
         </div>
-        <div class="flex flex-col gap-2">
-          <h3 class="text-xl font-medium opacity-70" v-if="offer.attributes.hero?.copy">
+        <div class="flex flex-col gap-2 p-5 lg:p-12">
+          <h3
+            class="textlg md:text-xl leading-none font-medium opacity-70"
+            v-if="offer.attributes.hero?.copy"
+          >
             {{ offer.attributes.title }}
           </h3>
-          <span class="text-3xl font-bold leading-none hyphens-auto">
+          <span class="text-2xl md:text-3xl font-bold leading-none hyphens-auto">
             {{ offer.attributes.hero?.copy || offer.attributes.title }}
           </span>
         </div>
@@ -61,14 +77,14 @@ export default defineComponent({
   data() {
     return {
       ScrollParallax: markRaw(ScrollParallax),
-      parallaxSpeed: this.parallax
-    }
+      parallaxSpeed: this.parallax,
+    };
   },
   mounted() {
     window.addEventListener("resize", () => {
-      this.getParallaxSpeed()
-    })
-    this.getParallaxSpeed()
+      this.getParallaxSpeed();
+    });
+    this.getParallaxSpeed();
   },
   methods: {
     getParallaxSpeed() {
@@ -80,8 +96,8 @@ export default defineComponent({
       return this.offer.attributes.events?.data.filter(
         (event) => event.attributes.end > new Date().toISOString()
       );
-    }
-  }
+    },
+  },
 });
 </script>
 

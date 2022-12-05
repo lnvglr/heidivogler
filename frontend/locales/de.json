@@ -16,5 +16,6 @@
   "find.me": "Hier kannst du mich finden",
   "contact.me": "Hier kannst du mich kontaktieren",
   "confirm.data": "Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden.",
-  "register": "Anmelden"
+  "register": "Anmelden",
+  "events:noEvents": "Keine anstehenden Termine"
 }

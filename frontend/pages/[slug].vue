@@ -1,6 +1,6 @@
 <template>
-  <div v-if="page" class="p-12 max-w-4xl mx-auto">
-    <h1 class="font-bold text-left text-4xl sm:text-6xl mb-10">
+  <div v-if="page" class="p-5 pb-10 md:p-12 max-w-4xl mx-auto">
+    <h1 class="font-bold text-left text-3xl md:text-4xl sm:text-6xl mb-10 hyphens-auto">
       {{ page?.attributes.title }}
     </h1>
     <div class="markdown" v-html="content" />
