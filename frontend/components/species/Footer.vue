@@ -3,8 +3,8 @@
     <nav class="grid grid-cols-12 gap-6 md:gap-12 max-w-5xl mx-auto w-full">
       <div class="col-span-12 sm:col-span-6 lg:col-span-6 flex flex-col gap-24">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <NuxtLink to="/" class="" title="home" @click="scrollTop">
-            <Icon v-if="Logo" :icon="Logo" class="w-full max-w-[160px]" />
+          <NuxtLink to="/" class="w-full max-w-[160px] h-min" title="home" @click="scrollTop">
+            <Icon v-if="Logo" :icon="Logo"  />
           </NuxtLink>
           <ul>
             <li>Reittherapie</li>

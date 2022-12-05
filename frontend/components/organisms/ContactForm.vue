@@ -3,7 +3,7 @@
     type="form"
     v-model="contact"
     class="flex-grow"
-    style="--fk-max-width-input: 100%"
+    style="--fk-max-width-input: 100%; --fk-margin-decorator: 0"
     @submit="send"
     :submit-label="
       sending
@@ -17,6 +17,7 @@
     :submit-attrs="{
       wrapperClass: sent ? 'success' : error ? 'alert' : '',
     }"
+
   >
     <FormKit
       type="text"
@@ -39,6 +40,14 @@
       :placeholder="$t('your.message')"
       @focus="touched = true"
     />
+    <FormKit
+      type="checkbox"
+      name="confirm"
+      validation="required"
+      :label="$t('confirm.data')"
+      label-class="!text-sm !leading-tight text-stone-400 !ml-5"
+      v-if="touched"
+    />
     <!-- <FormKit type="search" outer-class="invisible absolute" name="search" /> -->
   </FormKit>
 </template>
@@ -59,6 +68,7 @@ export default defineComponent({
         name: "",
         email: "",
         nachricht: "",
+        confirm: false,
         search: "",
       },
       sending: false,
