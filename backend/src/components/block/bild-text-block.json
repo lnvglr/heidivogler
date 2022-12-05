@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_block_bild_text_blocks",
+  "info": {
+    "displayName": "Bild/Text Block",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "Bild": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "Text": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 200
+    }
+  }
+}

@@ -25,7 +25,7 @@
       >
         <div
           v-if="events.length > 0"
-          class="p-5 lg:p-12 mb-auto bg-gradient-to-b from-black/40 overflow-hidden rounded-2xl"
+          class="p-5 md:p-12 mb-auto bg-gradient-to-b from-black/40 overflow-hidden rounded-2xl"
         >
           <FontAwesomeIcon
             :icon="['fas', 'calendar']"

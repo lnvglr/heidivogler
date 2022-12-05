@@ -66,6 +66,8 @@ export default defineComponent({
           return OffersSection;
         case "block.tiles":
           return TileSection;
+        // case "block.tiles":
+        //   return TileSection;
       }
     },
   },

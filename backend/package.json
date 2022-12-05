@@ -17,6 +17,7 @@
     "@strapi/strapi": "^4.5.3",
     "pg": "8.8.0",
     "slugify": "^1.6.5",
+    "strapi-plugin-config-sync": "^1.0.4",
     "strapi-plugin-populate-deep": "^1.1.2",
     "strapi-plugin-rest-cache": "^4.2.4",
     "strapi-provider-rest-cache-memory": "^4.2.4"

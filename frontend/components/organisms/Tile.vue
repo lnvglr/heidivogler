@@ -48,7 +48,7 @@ svg {
     color: var(--color-alert-500);
   }
   .briefcase &, .bolt-lightning & {
-    color: var(--color-gold-500);
+    color: var(--color-gold-400);
   }
   .tree & {
     color: var(--color-success-400);
