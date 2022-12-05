@@ -10,14 +10,14 @@
     "Bild": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
     },
     "Text": {
       "type": "richtext",
-      "required": true
+      "required": false
     }
   }
 }
