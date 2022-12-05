@@ -18,34 +18,15 @@
       {{ title }}
     </h3>
   </div>
-  <Transition name="page" style="--total: 1; --i: 1">
-    <div
-      v-if="open"
-      class="fixed flex items-center justify-center top-0 left-0 w-screen h-screen bg-black/60 z-50"
-      @click.self="open = !open"
-    >
-      <div
-        class="bg-white rounded-2xl p-5 m-3 sm:p-12 shadow-2xl max-w-2xl max-h-[90vh] overflow-auto"
-      >
-        <h3
-          class="text-2xl md:text-3xl gap-12 -top-8 -mt-8 pt-8 sm:-top-12 sm:-mt-12 sm:pt-12 pb-6 font-bold flex justify-between sticky bg-white"
-        >
-          {{ title
-          }}<button
-            class="font-normal text-4xl md:text-6xl h-12 w-12 min-w-[48px] md:h-16 md:w-16 md:min-w-[48px] items-center justify-center -m-3 md:-m-5 text-stone-400 hover:text-primary-500 rounded-xl"
-            @click="open = !open"
-          >
-            &times;
-          </button>
-        </h3>
-        <p class="markdown" v-html="content" />
-      </div>
-    </div>
-  </Transition>
+  <Popup :title="title" :content="content" :open="open" @close="open = false" />
 </template>
 
 <script lang="ts">
+import Popup from '../molecules/Popup.vue';
 export default defineComponent({
+  components: {
+    Popup,
+  },
   props: {
     icon: {
       type: String,
@@ -64,6 +45,7 @@ export default defineComponent({
   },
   computed: {
     content() {
+      if (!this.description) return ""
       return useMarkdown(this.description);
     },
   },

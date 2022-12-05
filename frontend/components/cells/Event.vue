@@ -2,6 +2,7 @@
   <div
     class="container flex flex-col bg-white rounded-2xl p-5 gap-2"
     :class="computedSize"
+    @click="open = true"
   >
     <div class="date flex justify-between">
       <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
@@ -27,14 +28,8 @@
         <span v-if="location && 'sm' !== computedSize">{{ location }}</span>
         <span>{{ time }} Uhr</span>
       </div>
-      <div
-        v-if="
-          (start.getTime() > new Date().getTime() ||
-            end?.getTime() > new Date().getTime()) &&
-          !['sm', 'lg'].includes(computedSize)
-        "
-      >
-        <a href="mailto:hallo@heidivogler.de"
+      <div v-if="futureEvent && !['sm', 'lg'].includes(computedSize)">
+        <a :href="signUpEmail"
           ><Button :class="computedSize === 'md' ? 'sm' : 'md'">{{
             $t("register")
           }}</Button></a
@@ -42,15 +37,41 @@
       </div>
     </div>
   </div>
+  <Popup :title="event.attributes.title" :open="open" @close="open = false">
+    <template #pretitle
+      ><span class="text-primary-500 font-bold leading-none">{{
+        date
+      }}</span></template
+    >
+    <template #default>
+      <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none mb-12">
+        <span v-if="event.attributes.price"
+          >Preis: {{ event.attributes.price }} Euro</span
+        >
+        <span v-if="event.attributes.groupSize"
+          >Gruppengröße: {{ event.attributes.groupSize }}</span
+        >
+        <span v-if="location">{{ location }}</span>
+        <span>{{ time }} Uhr</span>
+      </div>
+      <div v-if="futureEvent">
+        <a :href="signUpEmail"
+          ><Button class="md">{{ $t("register") }}</Button></a
+        >
+      </div></template
+    >
+  </Popup>
 </template>
 
 <script lang="ts">
 import Button from "~/components/molecules/Button.vue";
+import Popup from "~/components/molecules/Popup.vue";
 import { Event, EventAttributes } from "~/types";
 import DownloadEvent from "~/components/molecules/DownloadEvent.vue";
 
 export default defineComponent({
   components: {
+    Popup,
     Button,
     DownloadEvent,
   },
@@ -68,6 +89,8 @@ export default defineComponent({
   data() {
     return {
       windowWidth: window?.innerWidth || 0,
+      open: false,
+      email: ""
     };
   },
   methods: {
@@ -95,6 +118,7 @@ export default defineComponent({
   mounted() {
     window.addEventListener("resize", () => this.viewport());
     this.viewport();
+    this.email = process.env?.ADDRESS_TO || ""
   },
   unmounted() {
     window.removeEventListener("resize", () => this.viewport());
@@ -128,6 +152,12 @@ export default defineComponent({
         ? new Date(this.event.attributes.end)
         : null;
     },
+    futureEvent(): boolean {
+      return (
+        this.unixDay(this.start) >= this.unixDay(new Date()) ||
+        this.unixDay(this.end) >= this.unixDay(new Date())
+      );
+    },
     time() {
       return this.formatRange(
         this.start.toLocaleTimeString(this.locale, this.timeOptions),
@@ -150,6 +180,15 @@ export default defineComponent({
     },
     location() {
       return false;
+    },
+    signUpEmail() {
+      const email = process.env?.ADDRESS_TO || "";
+      const subject = `Anmeldung ${this.event.attributes.title}, ${this.date}`;
+      const body = `Hallo Heidi,\nich würde mich gerne für ${this.event.attributes.title} am ${this.date} anmelden.
+      `;
+      return `mailto:${email}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
     },
   },
 });
