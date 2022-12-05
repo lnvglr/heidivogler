@@ -1,6 +1,17 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Noe Display';
+  src: url('../fonts/NoeDisplay-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Gramatka';
+  src: url('../fonts/NoeDisplay-Regular.woff2') format('woff2');
+}
+
 
 .markdown {
   h1,
