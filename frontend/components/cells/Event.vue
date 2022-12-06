@@ -44,25 +44,30 @@
     >
     <template #default>
       <div class="flex justify-between items-end">
-      <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
-        <span v-if="event.attributes.price"
-          >Preis: {{ event.attributes.price }} Euro</span
-        >
-        <span v-if="event.attributes.groupSize"
-          >Gruppengröße: {{ event.attributes.groupSize }}</span
-        >
-        <span v-if="location">{{ location }}</span>
-        <span>{{ time }} Uhr</span>
-        <DownloadEvent :event="event" class="mt-10 flex gap-2 font-normal hover:underline"><FontAwesomeIcon :icon="['fas', 'calendar-plus']" /> {{ $t("events:add.to.calendar") }}</DownloadEvent>
-      </div>
+        <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
+          <span v-if="event.attributes.price"
+            >Preis: {{ event.attributes.price }} Euro</span
+          >
+          <span v-if="event.attributes.groupSize"
+            >Gruppengröße: {{ event.attributes.groupSize }}</span
+          >
+          <span v-if="location">{{ location }}</span>
+          <span>{{ time }} Uhr</span>
+          <DownloadEvent
+            :event="event"
+            class="mt-10 flex gap-2 font-normal hover:underline"
+            ><FontAwesomeIcon :icon="['fas', 'calendar-plus']" />
+            {{ $t("events:add.to.calendar") }}</DownloadEvent
+          >
+        </div>
 
-      <div v-if="futureEvent" class="ml-auto">
-        <a :href="signUpEmail"
-          ><Button class="md">{{ $t("register") }}</Button></a
-        >
-      </div></div>
-      </template
-    >
+        <div v-if="futureEvent" class="ml-auto">
+          <a :href="signUpEmail"
+            ><Button class="md">{{ $t("register") }}</Button></a
+          >
+        </div>
+      </div>
+    </template>
   </Popup>
 </template>
 
@@ -93,7 +98,7 @@ export default defineComponent({
     return {
       windowWidth: window?.innerWidth || 0,
       open: false,
-      email: useRuntimeConfig().public.email.to
+      email: useRuntimeConfig().public.email.to,
     };
   },
   methods: {
