@@ -90,7 +90,7 @@ export default defineComponent({
     return {
       windowWidth: window?.innerWidth || 0,
       open: false,
-      email: ""
+      email: useRuntimeConfig().public.email.to
     };
   },
   methods: {
@@ -118,7 +118,6 @@ export default defineComponent({
   mounted() {
     window.addEventListener("resize", () => this.viewport());
     this.viewport();
-    this.email = process.env?.ADDRESS_TO || ""
   },
   unmounted() {
     window.removeEventListener("resize", () => this.viewport());
@@ -182,11 +181,10 @@ export default defineComponent({
       return false;
     },
     signUpEmail() {
-      const email = process.env?.ADDRESS_TO || "";
       const subject = `Anmeldung ${this.event.attributes.title}, ${this.date}`;
       const body = `Hallo Heidi,\nich würde mich gerne für ${this.event.attributes.title} am ${this.date} anmelden.
       `;
-      return `mailto:${email}?subject=${encodeURIComponent(
+      return `mailto:${this.email}?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
     },

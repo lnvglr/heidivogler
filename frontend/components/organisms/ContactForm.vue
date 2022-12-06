@@ -91,7 +91,7 @@ export default defineComponent({
       this.sending = true;
       this.$strapi
         .client("email", {
-          to: process.env.ADDRESS_TO,
+          to: useRuntimeConfig().public.email.to,
           from: this.contact.email,
           subject: this.contact.name + " hat dir eine Nachricht geschrieben!",
           text: this.contact.nachricht,
