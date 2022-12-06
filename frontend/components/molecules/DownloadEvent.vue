@@ -1,9 +1,5 @@
 <template>
-  <FontAwesomeIcon
-    :icon="['fas', 'calendar-plus']"
-    class="duration-75 text-stone-600 hover:text-primary-500 cursor-pointer text-2xl -mb-5"
-    @click="downloadEvent"
-  />
+  <div @click="downloadEvent" class="cursor-pointer"><slot></slot></div>
 </template>
 
 <script lang="ts">
@@ -48,12 +44,12 @@ export default defineComponent({
           endOutputType: 'local',
 
           title: this.event.attributes.title,
-          description: this.event.attributes.description,
+          description: this.event.attributes.description || "",
           // location: this.location,
           busyStatus: 'BUSY',
         } as EventAttributes
 
-        const fontName =
+        const eventName =
           slugify(
             [this.event.attributes.title, event.start.join('-')].join('-'),
             {
@@ -63,9 +59,9 @@ export default defineComponent({
           ) + '.ics'
         ics.createEvent(event, (error, value) => {
           if (error) return console.log(error)
-          const elem = window.document.createElement('a')
+          const elem = document.createElement('a')
           elem.href = this.makeTextFile(value)
-          elem.download = fontName
+          elem.download = eventName
           document.body.appendChild(elem)
           elem.click()
           document.body.removeChild(elem)

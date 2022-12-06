@@ -119,7 +119,9 @@
   --fk-bg-submit-hover: var(--color-primary-500);
   --fk-color-placeholder: var(--color-stone-400);
 }
-
+.formkit-outer + .formkit-messages {
+  margin-top: -1.5em;
+}
 .success button {
   --fk-bg-submit: var(--color-success-400) !important;
   pointer-events: none;

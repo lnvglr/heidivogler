@@ -17,5 +17,6 @@
   "contact.me": "Hier kannst du mich kontaktieren",
   "confirm.data": "Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden.",
   "register": "Anmelden",
-  "events:noEvents": "Keine anstehenden Termine"
+  "events:noEvents": "Keine anstehenden Termine",
+  "events:add.to.calendar": "Zum Kalender hinzufügen"
 }

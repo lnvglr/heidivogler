@@ -1,12 +1,11 @@
 <template>
   <div
-    class="container flex flex-col bg-white rounded-2xl p-5 gap-2"
+    class="container group cursor-pointer flex flex-col bg-white rounded-2xl p-5 gap-2 duration-300 hover:-translate-y-1"
     :class="computedSize"
-    @click="open = true"
+    @click.self="open = true"
   >
     <div class="date flex justify-between">
       <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
-      <DownloadEvent :event="event" class="download" />
     </div>
     <div class="title font-bold leading-none">
       <span>{{ event.attributes.title }}</span>
@@ -44,7 +43,8 @@
       }}</span></template
     >
     <template #default>
-      <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none mb-12">
+      <div class="flex justify-between items-end">
+      <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
         <span v-if="event.attributes.price"
           >Preis: {{ event.attributes.price }} Euro</span
         >
@@ -53,12 +53,15 @@
         >
         <span v-if="location">{{ location }}</span>
         <span>{{ time }} Uhr</span>
+        <DownloadEvent :event="event" class="mt-10 flex gap-2 font-normal hover:underline"><FontAwesomeIcon :icon="['fas', 'calendar-plus']" /> {{ $t("events:add.to.calendar") }}</DownloadEvent>
       </div>
-      <div v-if="futureEvent">
+
+      <div v-if="futureEvent" class="ml-auto">
         <a :href="signUpEmail"
           ><Button class="md">{{ $t("register") }}</Button></a
         >
-      </div></template
+      </div></div>
+      </template
     >
   </Popup>
 </template>
@@ -203,16 +206,6 @@ export default defineComponent({
   }
   .title {
     font-size: var(--text-title, var(--text-xl));
-  }
-  .download {
-    opacity: 0;
-    pointer-events: none;
-  }
-  &:hover {
-    .download {
-      opacity: 1;
-      pointer-events: auto;
-    }
   }
   &.sm {
     --width: 12rem;

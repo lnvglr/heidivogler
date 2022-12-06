@@ -11,7 +11,7 @@
         : sent
         ? 'Erfolgreich gesendet'
         : error
-        ? 'Fehler'
+        ? error
         : 'Senden'
     "
     :submit-attrs="{
@@ -43,10 +43,13 @@
     <FormKit
       type="checkbox"
       name="confirm"
-      validation="required"
+      validation="accepted"
       :label="$t('confirm.data')"
       label-class="!text-sm !leading-tight text-stone-400 !ml-5"
       v-if="touched"
+      :validation-messages="{
+        accepted: 'Bitte akzeptieren.'
+      }"
     />
     <!-- <FormKit type="search" outer-class="invisible absolute" name="search" /> -->
   </FormKit>
@@ -79,6 +82,7 @@ export default defineComponent({
   methods: {
     async send() {
       console.log("clicked");
+      this.error = false;
       if (
         !this.contact.email ||
         !this.contact.name ||
@@ -94,6 +98,7 @@ export default defineComponent({
           to: useRuntimeConfig().public.email.to,
           from: this.contact.email,
           subject: this.contact.name + " hat dir eine Nachricht geschrieben!",
+          replyTo: this.contact.email,
           text: this.contact.nachricht,
         })
         .then((res) => {
@@ -102,7 +107,7 @@ export default defineComponent({
         })
         .catch((err) => {
           console.log(err);
-          this.error = false;
+          this.error = err.error.message;
         })
         .finally(() => {
           this.sending = false;
