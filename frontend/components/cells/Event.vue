@@ -25,7 +25,7 @@
           >Gruppengröße: {{ event.attributes.groupSize }}</span
         >
         <span v-if="location && 'sm' !== computedSize">{{ location }}</span>
-        <span>{{ time }} Uhr</span>
+        <span v-if="time">{{ time }}</span>
       </div>
       <div v-if="futureEvent && !['sm', 'lg'].includes(computedSize)">
         <a :href="signUpEmail"
@@ -52,7 +52,9 @@
             >Gruppengröße: {{ event.attributes.groupSize }}</span
           >
           <span v-if="location">{{ location }}</span>
-          <span>{{ time }} Uhr</span>
+          <span v-if="time">{{ time }}</span>
+
+        <NuxtLink v-if="event.attributes.offer?.data" :to="`angebot/${event.attributes.offer.data.attributes.slug}`" class="w-min whitespace-nowrap flex items-center gap-2 text-primary-500 hover:underline font-bold mt-5">{{ $t("toTheOffer") }}<FontAwesomeIcon :icon="['fas', 'arrow-right']" /></NuxtLink>
           <DownloadEvent
             :event="event"
             class="mt-10 flex gap-2 font-normal hover:underline"
@@ -167,10 +169,7 @@ export default defineComponent({
       );
     },
     time() {
-      return this.formatRange(
-        this.start.toLocaleTimeString(this.locale, this.timeOptions),
-        this.end?.toLocaleTimeString(this.locale, this.timeOptions)
-      );
+      return this.event.attributes.time;
     },
     date() {
       const daysToGo = this.unixDay(this.start) - this.unixDay(new Date());

@@ -7,17 +7,7 @@
   },
   "options": {},
   "attributes": {
-    "size": {
-      "type": "enumeration",
-      "enum": [
-        "sm",
-        "md",
-        "lg",
-        "xl"
-      ],
-      "default": "sm"
-    },
-    "filter": {
+    "Anzeigen": {
       "type": "enumeration",
       "enum": [
         "all",
