@@ -13,11 +13,11 @@
   "pluginOptions": {},
   "attributes": {
     "start": {
-      "type": "datetime",
+      "type": "date",
       "required": true
     },
     "end": {
-      "type": "datetime"
+      "type": "date"
     },
     "title": {
       "type": "string"
@@ -42,6 +42,10 @@
     },
     "groupSize": {
       "type": "integer"
+    },
+    "time": {
+      "type": "string",
+      "default": "12:00 Uhr"
     }
   }
 }

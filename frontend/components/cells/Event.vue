@@ -124,6 +124,7 @@ export default defineComponent({
     },
   },
   mounted() {
+    console.log(this.event)
     window.addEventListener("resize", () => this.viewport());
     this.viewport();
   },

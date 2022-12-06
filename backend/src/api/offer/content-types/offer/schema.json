@@ -42,7 +42,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event",
-      "displayName": "Termine",
       "mappedBy": "offer"
     },
     "headerColor": {

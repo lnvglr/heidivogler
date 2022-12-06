@@ -13,6 +13,9 @@ module.exports = createCoreController('api::event.event', ({ strapi }) => ({
 
 		let entity = (await strapi.entityService.findMany('api::event.event', {
 			...query,
+			populate: {
+				offer: true
+			}
 		}))
 
 		// if (query?.filters.start.$contains === 'future') {
