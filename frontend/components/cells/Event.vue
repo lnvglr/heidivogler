@@ -1,7 +1,7 @@
 <template>
   <div
     class="container group cursor-pointer flex flex-col bg-white rounded-2xl p-5 gap-2 duration-300 hover:-translate-y-1"
-    :class="computedSize"
+    :class="{[computedSize]: true, 'col-span-full': i === 0, auto: grid }"
     @click.self="open = true"
   >
     <div class="date flex justify-between">
@@ -95,6 +95,14 @@ export default defineComponent({
       default: "sm",
       validate: (e: string) => ["sm", "md", "lg", "xl"].includes(e),
     },
+    i: {
+      type: Number,
+      default: 0,
+    },
+    grid: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -139,7 +147,7 @@ export default defineComponent({
     },
     computedSize() {
       if (this.windowWidth < 767) return "md";
-      return this.size;
+      return this.i === 0 ? "xl" : "md";
     },
     timeOptions() {
       return {
@@ -203,7 +211,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .container {
   width: var(--width, 100%);
-  min-width: var(--width, 100%);
+  min-width: min(var(--width, 100%), 100%);
+  max-width: 100%;
   height: var(--height, 100%);
   aspect-ratio: var(--aspect-ratio, initial);
   .date {
@@ -219,6 +228,11 @@ export default defineComponent({
   &.md {
     --width: 18rem;
     --height: 12rem;
+  }
+  @media (min-width: 767px) {
+    &.auto {
+      --width: 100% !important;
+    }
   }
   &.lg {
     --width: 18rem;

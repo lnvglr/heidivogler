@@ -1,7 +1,7 @@
 <template>
   <section
     ref="tiles"
-    class="bg-stone-100 p-5 md:p-12 grid grid-cols-1 auto-rows-fr grid-flow-row gap-5 sm:gap-12 max-w-7xl mx-auto md:grid-cols-2 "
+    class="bg-stone-100 p-5 md:p-12 grid grid-cols-1 auto-rows-fr grid-flow-row gap-5 md:gap-12 max-w-7xl mx-auto md:grid-cols-2 "
     :class="{
       'lg:grid-cols-3 min-h-[30vh] ': data.size === 'sm',
       'min-h-[50vh] ': data.size !== 'sm'

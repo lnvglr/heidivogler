@@ -1,20 +1,34 @@
 <template>
-  <section class="flex flex-col gap-12 p-5 sm:p-12" v-if="(events?.length > 0)" :class="{'max-w-5xl mx-auto p-5 md:p-12 lg:px-0': events?.length < 4}">
-
+  <section
+    class="flex flex-col gap-12 p-5 sm:p-12"
+    v-if="events?.length > 0"
+    :class="{ 'max-w-5xl mx-auto p-5 md:p-12 lg:px-0': events?.length < 4 }"
+  >
     <div class="flex flex-col items-start gap-2">
-      <NuxtLink to="/termine" class="text-3xl font-bold hover:text-primary-500"
-        :class="{'pointer-events-none': title}">{{$t('upcoming.events.title')}}</NuxtLink
+      <NuxtLink
+        to="/termine"
+        class="text-3xl font-bold hover:text-primary-500"
+        :class="{ 'pointer-events-none': title }"
+        >{{ $t("upcoming.events.title") }}</NuxtLink
       >
-      <span class="font-medium text-stone-500"
-        >{{$t('upcoming.events.description')}}</span
-      >
+      <span class="font-medium text-stone-500">{{
+        $t("upcoming.events.description")
+      }}</span>
     </div>
     <!-- <div class="flex flex-wrap gap-6 overflow-x-auto -mx-5 px-5"> -->
-    <div class="flex md:flex-wrap gap-6 overflow-x-auto -mx-5 p-5">
-      <Event :event="event" v-for="event, i in events" :size="i === 0 ? 'xl' : 'md'" />
+    <div
+      class="events-grid flex md:grid gap-5 md:gap-12 overflow-x-auto -mx-5 sm:-mx-12 md:mx-0 p-5 sm:px-12 md:px-0"
+    >
+      <Event :event="event" v-for="(event, i) in events" :i="i" :grid="true" />
     </div>
   </section>
-  <section v-else class="px-5 py-10 md:p-12 text-center flex item-center justify-center flex-col text-stone-400"><div><FontAwesomeIcon :icon="['fas', 'calendar']" fixed-width /></div><span>{{$t('events:noEvents')}}</span></section>
+  <section
+    v-else
+    class="px-5 py-10 md:p-12 text-center flex item-center justify-center flex-col text-stone-400"
+  >
+    <div><FontAwesomeIcon :icon="['fas', 'calendar']" fixed-width /></div>
+    <span>{{ $t("events:noEvents") }}</span>
+  </section>
   <!-- <section v-else class="p-12 my-24 text-center text-stone-300"><FontAwesomeIcon class="spin" :icon="['fas', 'circle-notch']" size="2xl" /></section> -->
   <!-- <section v-else-if="loaded" class="p-12 text-center">Keine bevorstehenden Termine</section>
   <section v-else class="p-12 my-24 text-center text-stone-300"><FontAwesomeIcon class="spin" :icon="['fas', 'circle-notch']" size="2xl" /></section> -->
@@ -26,8 +40,8 @@ import Event from "~/components/cells/Event.vue";
 export default defineComponent({
   components: {
     Event,
-    FontAwesomeIcon
-},
+    FontAwesomeIcon,
+  },
   props: {
     data: {
       type: Object,
@@ -37,7 +51,7 @@ export default defineComponent({
     },
     title: {
       type: String,
-    }
+    },
   },
   data() {
     return {
@@ -46,7 +60,10 @@ export default defineComponent({
     };
   },
   async mounted() {
-    if (this.data.filter !== "all" && this.page?.attributes.events?.data.length > 0) {
+    if (
+      this.data.filter !== "all" &&
+      this.page?.attributes.events?.data.length > 0
+    ) {
       this.events = this.page?.attributes.events?.data.filter(
         (event) => event.attributes.end > new Date().toISOString()
       );
@@ -67,4 +84,8 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.events-grid {
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+</style>
