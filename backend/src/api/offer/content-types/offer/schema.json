@@ -35,7 +35,8 @@
         "block.quote",
         "block.offers",
         "block.tiles",
-        "block.image-text-block"
+        "block.image-text-block",
+        "block.price-group"
       ]
     },
     "events": {
