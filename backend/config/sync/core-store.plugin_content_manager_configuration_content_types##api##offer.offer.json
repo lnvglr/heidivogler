@@ -1,0 +1,182 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::offer.offer",
+  "value": {
+    "uid": "api::offer.offer",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Titel des Angebots",
+          "description": "Das ist der Name des Angebots",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "URL-Name",
+          "description": "Das hier ist wichtig für SEO, ist dann aber nur in der URL sichtbar. Sollte am besten ein bisschen beschreibender sein als nur der Titel",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "hero": {
+        "edit": {
+          "label": "Überschriften und Bild",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hero",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "content": {
+        "edit": {
+          "label": "Inhalt",
+          "description": "Hier kannst du beliebig viele Inhaltstypen aneinanderreihen. Mit den Pfeilen rechts oben kannst du EinInhaltselement nach oben oder unten verschieben.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "content",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "events": {
+        "edit": {
+          "label": "Veranstaltungen",
+          "description": "Die Veranstaltungen, die mit diesem Angebot verknüpft sind",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "events",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "headerColor": {
+        "edit": {
+          "label": "Header Farbe",
+          "description": "Wenn das Bild des Angebots oben dunkel ist, dann sollte die Header Farbe auf \"Light\" gestellt sein. Sonst auf \"Dark\" oder \"default\"",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headerColor",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 4
+          },
+          {
+            "name": "slug",
+            "size": 4
+          },
+          {
+            "name": "headerColor",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "hero",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "content",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "events",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "events"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

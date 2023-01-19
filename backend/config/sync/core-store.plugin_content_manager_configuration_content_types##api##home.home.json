@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::general.address",
+  "key": "plugin_content_manager_configuration_content_types::api::home.home",
   "value": {
-    "uid": "general.address",
+    "uid": "api::home.home",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "street",
-      "defaultSortBy": "street",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,112 +16,110 @@
         "edit": {},
         "list": {
           "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "hero": {
+        "edit": {
+          "label": "hero",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hero",
           "searchable": false,
           "sortable": false
         }
       },
-      "street": {
+      "content": {
         "edit": {
-          "label": "Straße",
+          "label": "content",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "street",
+          "label": "content",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "offers": {
+        "edit": {
+          "label": "Ausgewählte Angebote",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "offers",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
-      "housenumber": {
+      "updatedAt": {
         "edit": {
-          "label": "Hausnummer",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
-          "visible": true,
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "housenumber",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "country": {
-        "edit": {
-          "label": "country",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "country",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "postcode": {
-        "edit": {
-          "label": "PLZ",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "postcode",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "city": {
-        "edit": {
-          "label": "Ort",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "city",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "street",
-        "housenumber",
-        "country"
-      ],
       "edit": [
         [
           {
-            "name": "street",
-            "size": 8
-          },
-          {
-            "name": "housenumber",
-            "size": 4
+            "name": "hero",
+            "size": 12
           }
         ],
         [
           {
-            "name": "postcode",
-            "size": 4
-          },
+            "name": "offers",
+            "size": 12
+          }
+        ],
+        [
           {
-            "name": "city",
-            "size": 8
+            "name": "content",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "hero",
+        "createdAt",
+        "updatedAt"
       ]
-    },
-    "isComponent": true
+    }
   },
   "type": "object",
   "environment": null,

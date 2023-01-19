@@ -74,15 +74,19 @@
         [
           {
             "name": "copy",
-            "size": 4
-          },
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "subCopy",
-            "size": 4
-          },
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "image",
-            "size": 4
+            "size": 12
           }
         ]
       ]

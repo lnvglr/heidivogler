@@ -1,7 +1,7 @@
 {
-  "key": "plugin_content_manager_configuration_components::block.events",
+  "key": "plugin_content_manager_configuration_components::block.price-group",
   "value": {
-    "uid": "block.events",
+    "uid": "block.price-group",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -20,16 +20,30 @@
           "sortable": false
         }
       },
-      "Anzeigen": {
+      "Price": {
         "edit": {
-          "label": "Anzeigen",
+          "label": "Price",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Anzeigen",
+          "label": "Price",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "Size": {
+        "edit": {
+          "label": "Size",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Size",
           "searchable": true,
           "sortable": true
         }
@@ -38,12 +52,19 @@
     "layouts": {
       "list": [
         "id",
-        "Anzeigen"
+        "Price",
+        "Size"
       ],
       "edit": [
         [
           {
-            "name": "Anzeigen",
+            "name": "Price",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "Size",
             "size": 6
           }
         ]

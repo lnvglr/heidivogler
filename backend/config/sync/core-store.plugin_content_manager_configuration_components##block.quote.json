@@ -1,7 +1,7 @@
 {
-  "key": "plugin_content_manager_configuration_components::block.events",
+  "key": "plugin_content_manager_configuration_components::block.quote",
   "value": {
-    "uid": "block.events",
+    "uid": "block.quote",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -20,16 +20,16 @@
           "sortable": false
         }
       },
-      "Anzeigen": {
+      "quote": {
         "edit": {
-          "label": "Anzeigen",
+          "label": "Zitat",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Anzeigen",
+          "label": "quote",
           "searchable": true,
           "sortable": true
         }
@@ -38,13 +38,13 @@
     "layouts": {
       "list": [
         "id",
-        "Anzeigen"
+        "quote"
       ],
       "edit": [
         [
           {
-            "name": "Anzeigen",
-            "size": 6
+            "name": "quote",
+            "size": 12
           }
         ]
       ]

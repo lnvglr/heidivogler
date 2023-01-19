@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::block.image-text-block",
+  "key": "plugin_content_manager_configuration_components::block.tile",
   "value": {
-    "uid": "block.image-text-block",
+    "uid": "block.tile",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "mainField": "icon",
+      "defaultSortBy": "icon",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,50 +20,69 @@
           "sortable": false
         }
       },
-      "image": {
+      "title": {
         "edit": {
-          "label": "Bild",
+          "label": "Titel",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "image",
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "Beschreibung",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
           "searchable": false,
           "sortable": false
         }
       },
-      "text": {
+      "icon": {
         "edit": {
-          "label": "Text",
+          "label": "Icon",
           "description": "",
-          "placeholder": "",
+          "placeholder": "tree",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "text",
-          "searchable": false,
-          "sortable": false
+          "label": "icon",
+          "searchable": true,
+          "sortable": true
         }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "image"
+        "title",
+        "icon"
       ],
       "edit": [
         [
           {
-            "name": "image",
-            "size": 12
+            "name": "title",
+            "size": 6
+          },
+          {
+            "name": "icon",
+            "size": 6
           }
         ],
         [
           {
-            "name": "text",
+            "name": "description",
             "size": 12
           }
         ]

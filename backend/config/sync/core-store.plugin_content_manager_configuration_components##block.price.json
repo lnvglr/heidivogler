@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::general.address",
+  "key": "plugin_content_manager_configuration_components::block.price",
   "value": {
-    "uid": "general.address",
+    "uid": "block.price",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "street",
-      "defaultSortBy": "street",
+      "mainField": "Title",
+      "defaultSortBy": "Title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,72 +20,72 @@
           "sortable": false
         }
       },
-      "street": {
+      "Title": {
         "edit": {
-          "label": "Straße",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "street",
+          "label": "Title",
           "searchable": true,
           "sortable": true
         }
       },
-      "housenumber": {
+      "Price": {
         "edit": {
-          "label": "Hausnummer",
+          "label": "Price",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "housenumber",
+          "label": "Price",
           "searchable": true,
           "sortable": true
         }
       },
-      "country": {
+      "Discount": {
         "edit": {
-          "label": "country",
+          "label": "Discount",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "country",
+          "label": "Discount",
           "searchable": true,
           "sortable": true
         }
       },
-      "postcode": {
+      "Popular": {
         "edit": {
-          "label": "PLZ",
+          "label": "Popular",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "postcode",
+          "label": "Popular",
           "searchable": true,
           "sortable": true
         }
       },
-      "city": {
+      "Unit": {
         "edit": {
-          "label": "Ort",
+          "label": "Unit",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "city",
+          "label": "Unit",
           "searchable": true,
           "sortable": true
         }
@@ -94,29 +94,33 @@
     "layouts": {
       "list": [
         "id",
-        "street",
-        "housenumber",
-        "country"
+        "Title",
+        "Price",
+        "Discount"
       ],
       "edit": [
         [
           {
-            "name": "street",
+            "name": "Title",
             "size": 8
           },
           {
-            "name": "housenumber",
+            "name": "Popular",
             "size": 4
           }
         ],
         [
           {
-            "name": "postcode",
+            "name": "Price",
             "size": 4
           },
           {
-            "name": "city",
-            "size": 8
+            "name": "Unit",
+            "size": 4
+          },
+          {
+            "name": "Discount",
+            "size": 4
           }
         ]
       ]

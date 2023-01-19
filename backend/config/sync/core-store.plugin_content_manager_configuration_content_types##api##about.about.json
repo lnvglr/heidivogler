@@ -1,7 +1,7 @@
 {
-  "key": "plugin_content_manager_configuration_components::block.image-text-block",
+  "key": "plugin_content_manager_configuration_content_types::api::about.about",
   "value": {
-    "uid": "block.image-text-block",
+    "uid": "api::about.about",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -16,60 +16,89 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
-      "image": {
+      "hero": {
         "edit": {
-          "label": "Bild",
+          "label": "hero",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "image",
+          "label": "hero",
           "searchable": false,
           "sortable": false
         }
       },
-      "text": {
+      "content": {
         "edit": {
-          "label": "Text",
+          "label": "content",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "text",
+          "label": "content",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
         }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "image"
+        "hero",
+        "createdAt",
+        "updatedAt"
       ],
       "edit": [
         [
           {
-            "name": "image",
+            "name": "content",
             "size": 12
           }
         ],
         [
           {
-            "name": "text",
+            "name": "hero",
             "size": 12
           }
         ]
       ]
-    },
-    "isComponent": true
+    }
   },
   "type": "object",
   "environment": null,

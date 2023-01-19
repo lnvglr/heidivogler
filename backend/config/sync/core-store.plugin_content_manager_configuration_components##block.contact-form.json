@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::block.events",
+  "key": "plugin_content_manager_configuration_components::block.contact-form",
   "value": {
-    "uid": "block.events",
+    "uid": "block.contact-form",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "mainField": "preCopy",
+      "defaultSortBy": "preCopy",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,16 +20,30 @@
           "sortable": false
         }
       },
-      "Anzeigen": {
+      "preCopy": {
         "edit": {
-          "label": "Anzeigen",
+          "label": "preCopy",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Anzeigen",
+          "label": "preCopy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "copy": {
+        "edit": {
+          "label": "copy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "copy",
           "searchable": true,
           "sortable": true
         }
@@ -38,12 +52,17 @@
     "layouts": {
       "list": [
         "id",
-        "Anzeigen"
+        "preCopy",
+        "copy"
       ],
       "edit": [
         [
           {
-            "name": "Anzeigen",
+            "name": "preCopy",
+            "size": 6
+          },
+          {
+            "name": "copy",
             "size": 6
           }
         ]

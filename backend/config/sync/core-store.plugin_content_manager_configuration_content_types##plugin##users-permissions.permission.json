@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::general.address",
+  "key": "plugin_content_manager_configuration_content_types::plugin::users-permissions.permission",
   "value": {
-    "uid": "general.address",
+    "uid": "plugin::users-permissions.permission",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "street",
-      "defaultSortBy": "street",
+      "mainField": "action",
+      "defaultSortBy": "action",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,76 +16,63 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "street": {
-        "edit": {
-          "label": "Straße",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "street",
           "searchable": true,
           "sortable": true
         }
       },
-      "housenumber": {
+      "action": {
         "edit": {
-          "label": "Hausnummer",
+          "label": "action",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "housenumber",
+          "label": "action",
           "searchable": true,
           "sortable": true
         }
       },
-      "country": {
+      "role": {
         "edit": {
-          "label": "country",
+          "label": "role",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "name"
         },
         "list": {
-          "label": "country",
+          "label": "role",
           "searchable": true,
           "sortable": true
         }
       },
-      "postcode": {
+      "createdAt": {
         "edit": {
-          "label": "PLZ",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
-          "visible": true,
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "postcode",
+          "label": "createdAt",
           "searchable": true,
           "sortable": true
         }
       },
-      "city": {
+      "updatedAt": {
         "edit": {
-          "label": "Ort",
+          "label": "updatedAt",
           "description": "",
           "placeholder": "",
-          "visible": true,
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "city",
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }
@@ -94,34 +81,23 @@
     "layouts": {
       "list": [
         "id",
-        "street",
-        "housenumber",
-        "country"
+        "action",
+        "role",
+        "createdAt"
       ],
       "edit": [
         [
           {
-            "name": "street",
-            "size": 8
+            "name": "action",
+            "size": 6
           },
           {
-            "name": "housenumber",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "postcode",
-            "size": 4
-          },
-          {
-            "name": "city",
-            "size": 8
+            "name": "role",
+            "size": 6
           }
         ]
       ]
-    },
-    "isComponent": true
+    }
   },
   "type": "object",
   "environment": null,
