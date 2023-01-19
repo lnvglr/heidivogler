@@ -1,0 +1,85 @@
+{
+  "name": "Authenticated",
+  "description": "Default role given to authenticated user.",
+  "type": "authenticated",
+  "permissions": [
+    {
+      "action": "api::about.about.delete"
+    },
+    {
+      "action": "api::about.about.find"
+    },
+    {
+      "action": "api::about.about.update"
+    },
+    {
+      "action": "api::datenschutz.datenschutz.delete"
+    },
+    {
+      "action": "api::datenschutz.datenschutz.find"
+    },
+    {
+      "action": "api::datenschutz.datenschutz.update"
+    },
+    {
+      "action": "api::event.event.create"
+    },
+    {
+      "action": "api::event.event.delete"
+    },
+    {
+      "action": "api::event.event.find"
+    },
+    {
+      "action": "api::event.event.findOne"
+    },
+    {
+      "action": "api::event.event.update"
+    },
+    {
+      "action": "api::home.home.find"
+    },
+    {
+      "action": "api::impressum.impressum.delete"
+    },
+    {
+      "action": "api::impressum.impressum.find"
+    },
+    {
+      "action": "api::impressum.impressum.update"
+    },
+    {
+      "action": "api::offer.offer.create"
+    },
+    {
+      "action": "api::offer.offer.delete"
+    },
+    {
+      "action": "api::offer.offer.find"
+    },
+    {
+      "action": "api::offer.offer.findOne"
+    },
+    {
+      "action": "api::offer.offer.update"
+    },
+    {
+      "action": "plugin::upload.content-api.destroy"
+    },
+    {
+      "action": "plugin::upload.content-api.find"
+    },
+    {
+      "action": "plugin::upload.content-api.findOne"
+    },
+    {
+      "action": "plugin::upload.content-api.upload"
+    },
+    {
+      "action": "plugin::users-permissions.auth.connect"
+    },
+    {
+      "action": "plugin::users-permissions.user.me"
+    }
+  ]
+}

@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_components::block.tile",
+  "key": "plugin_content_manager_configuration_content_types::api::datenschutz.datenschutz",
   "value": {
-    "uid": "block.tile",
+    "uid": "api::datenschutz.datenschutz",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
       "mainField": "title",
-      "defaultSortBy": "icon",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,8 +16,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "title": {
@@ -34,61 +34,71 @@
           "sortable": true
         }
       },
-      "description": {
+      "content": {
         "edit": {
-          "label": "Beschreibung",
+          "label": "Inhalt",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "content",
           "searchable": false,
           "sortable": false
         }
       },
-      "icon": {
+      "createdAt": {
         "edit": {
-          "label": "Icon",
+          "label": "createdAt",
           "description": "",
-          "placeholder": "tree",
-          "visible": true,
+          "placeholder": "",
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "icon",
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
           "searchable": true,
           "sortable": true
         }
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "icon"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
-          },
-          {
-            "name": "icon",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
-            "name": "description",
+            "name": "content",
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "createdAt",
+        "updatedAt"
       ]
-    },
-    "isComponent": true
+    }
   },
   "type": "object",
   "environment": null,

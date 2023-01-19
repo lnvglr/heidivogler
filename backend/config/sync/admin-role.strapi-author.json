@@ -1,0 +1,386 @@
+{
+  "name": "Author",
+  "code": "strapi-author",
+  "description": "Authors can manage the content they have created.",
+  "permissions": [
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::about.about",
+      "properties": {
+        "fields": [
+          "content",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::about.about",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::about.about",
+      "properties": {
+        "fields": [
+          "content",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::about.about",
+      "properties": {
+        "fields": [
+          "content",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::datenschutz.datenschutz",
+      "properties": {
+        "fields": [
+          "content",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::datenschutz.datenschutz",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::datenschutz.datenschutz",
+      "properties": {
+        "fields": [
+          "content",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::datenschutz.datenschutz",
+      "properties": {
+        "fields": [
+          "content",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::event.event",
+      "properties": {
+        "fields": [
+          "address.city",
+          "address.country",
+          "address.housenumber",
+          "address.postcode",
+          "address.street",
+          "description",
+          "end",
+          "groupSize",
+          "offer",
+          "price",
+          "start",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::event.event",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::event.event",
+      "properties": {
+        "fields": [
+          "address.city",
+          "address.country",
+          "address.housenumber",
+          "address.postcode",
+          "address.street",
+          "description",
+          "end",
+          "groupSize",
+          "offer",
+          "price",
+          "start",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::event.event",
+      "properties": {
+        "fields": [
+          "address.city",
+          "address.country",
+          "address.housenumber",
+          "address.postcode",
+          "address.street",
+          "description",
+          "end",
+          "groupSize",
+          "offer",
+          "price",
+          "start",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::home.home",
+      "properties": {
+        "fields": [
+          "content",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy",
+          "offers"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::home.home",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::home.home",
+      "properties": {
+        "fields": [
+          "content",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy",
+          "offers"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::home.home",
+      "properties": {
+        "fields": [
+          "content",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy",
+          "offers"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::impressum.impressum",
+      "properties": {
+        "fields": [
+          "content",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::impressum.impressum",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::impressum.impressum",
+      "properties": {
+        "fields": [
+          "content",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::impressum.impressum",
+      "properties": {
+        "fields": [
+          "content",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::offer.offer",
+      "properties": {
+        "fields": [
+          "content",
+          "events",
+          "headerColor",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy",
+          "slug",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::offer.offer",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::offer.offer",
+      "properties": {
+        "fields": [
+          "content",
+          "events",
+          "headerColor",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy",
+          "slug",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::offer.offer",
+      "properties": {
+        "fields": [
+          "content",
+          "events",
+          "headerColor",
+          "hero.copy",
+          "hero.image",
+          "hero.subCopy",
+          "slug",
+          "title"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    }
+  ]
+}
