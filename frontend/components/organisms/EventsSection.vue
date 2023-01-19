@@ -61,7 +61,7 @@ export default defineComponent({
   },
   async mounted() {
     if (
-      this.data.filter !== "all" &&
+      this.data?.filter !== "all" &&
       this.page?.attributes.events?.data.length > 0
     ) {
       this.events = this.page?.attributes.events?.data.filter(
