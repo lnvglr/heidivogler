@@ -6,7 +6,7 @@
       @click.self="$emit('close')"
     >
       <div
-        class="bg-white rounded-2xl p-5 m-3 sm:p-12 shadow-2xl h-[480px] max-h-screen w-[960px] max-w-screen max-h-[90vh] overflow-auto flex flex-col justify-between"
+        class="bg-white rounded-2xl p-5 m-3 sm:p-12 shadow-2xl w-[960px] max-w-screen max-h-[90vh] overflow-auto flex flex-col justify-between"
       >
         <div class="flex justify-between gap-12">
           <div class="flex flex-col">

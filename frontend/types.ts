@@ -5,6 +5,21 @@ import { useStrapiAuth } from '@nuxtjs/strapi/dist/runtime/composables/useStrapi
 import { StrapiAuthenticationData, StrapiAuthenticationResponse, StrapiAuthProvider, StrapiEmailConfirmationData, StrapiForgotPasswordData, StrapiRegistrationData, StrapiResetPasswordData, Strapi4RequestParams } from '@nuxtjs/strapi/dist/runtime/types'
 export { Strapi4Response, Strapi4ResponseData, Strapi4RequestParams } from '@nuxtjs/strapi/dist/runtime/types'
 export { EventAttributes } from 'ics/index'
+
+export interface Event {
+  attributes: {
+    title: string;
+    description: string;
+    price: number;
+    groupSize: number;
+    start: string;
+    end: string;
+    time: string;
+    offer: {
+      data: Offer
+    }
+  }
+}
 export interface Offer {
   id: number;
   attributes: {

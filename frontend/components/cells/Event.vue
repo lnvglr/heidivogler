@@ -2,7 +2,7 @@
   <div
     class="container group cursor-pointer flex flex-col bg-white rounded-2xl p-5 gap-2 duration-300 hover:-translate-y-1"
     :class="{[computedSize]: true, 'col-span-full': i === 0, auto: grid }"
-    @click.self="open = true"
+    @click="open = true"
   >
     <div class="date flex justify-between">
       <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
@@ -24,10 +24,10 @@
         <span v-if="event.attributes.groupSize && 'xl' === computedSize"
           >Gruppengröße: {{ event.attributes.groupSize }}</span
         >
-        <span v-if="location && 'sm' !== computedSize">{{ location }}</span>
+        <span v-if="location">{{ location }}</span>
         <span v-if="time">{{ time }}</span>
       </div>
-      <div v-if="futureEvent && !['sm', 'lg'].includes(computedSize)">
+      <div v-if="futureEvent && !['lg'].includes(computedSize)">
         <a :href="signUpEmail"
           ><Button :class="computedSize === 'md' ? 'sm' : 'md'">{{
             $t("register")
@@ -43,6 +43,11 @@
       }}</span></template
     >
     <template #default>
+      <div class="flex justify-between items-end mb-10" v-if="event.attributes.description">
+        <div class="text-xl">
+          <span>{{ event.attributes.description }}</span>
+        </div>
+      </div>
       <div class="flex justify-between items-end">
         <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
           <span v-if="event.attributes.price"
@@ -171,10 +176,10 @@ export default defineComponent({
         : null;
     },
     futureEvent(): boolean {
-      return (
-        this.unixDay(this.start) >= this.unixDay(new Date()) ||
-        this.unixDay(this.end) >= this.unixDay(new Date())
-      );
+      const futureStart = this.unixDay(this.start) >= this.unixDay(new Date());
+      const futureEnd = this.end instanceof Date && (this.unixDay(this.end) >= this.unixDay(new Date()))
+
+      return futureStart || futureEnd
     },
     time() {
       return this.event.attributes.time;
