@@ -1,27 +1,27 @@
 {
   "collectionName": "components_block_prices",
   "info": {
-    "displayName": "Price",
+    "displayName": "Preis",
     "icon": "money-bill-wave",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Price": {
+    "price": {
       "type": "decimal",
       "required": true
     },
-    "Discount": {
+    "discount": {
       "type": "decimal"
     },
-    "Popular": {
+    "popular": {
       "type": "boolean"
     },
-    "Unit": {
+    "unit": {
       "type": "string"
     }
   }
