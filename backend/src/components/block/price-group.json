@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_block_price_groups",
+  "info": {
+    "displayName": "Price Group",
+    "icon": "money-bill-wave"
+  },
+  "options": {},
+  "attributes": {
+    "Price": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.price",
+      "max": 5
+    }
+  }
+}
