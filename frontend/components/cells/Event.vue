@@ -163,8 +163,8 @@ export default defineComponent({
     dateOptions() {
       return {
         day: "numeric",
-        month: this.size === "sm" ? "short" : "long",
-        year: this.size === "sm" ? "2-digit" : "numeric",
+        month: this.computedSize === "md" ? "short" : "long",
+        year: "numeric",
       } as Intl.DateTimeFormatOptions;
     },
     start(): Date {

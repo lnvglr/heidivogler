@@ -37,6 +37,7 @@
 <script lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Event from "~/components/cells/Event.vue";
+import { Event as EventType } from "~/types";
 export default defineComponent({
   components: {
     Event,
@@ -65,7 +66,7 @@ export default defineComponent({
       this.page?.attributes.events?.data.length > 0
     ) {
       this.events = this.page?.attributes.events?.data.filter(
-        (event) => event.attributes.end > new Date().toISOString()
+        (event: EventType) => (event.attributes.end || event.attributes.start) > new Date().toISOString()
       );
       this.loaded = true;
     } else if (!this.page?.attributes.events) {

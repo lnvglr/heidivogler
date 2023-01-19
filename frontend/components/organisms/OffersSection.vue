@@ -33,12 +33,20 @@ export default defineComponent({
   },
   async mounted() {
     const exclude = this.page?.attributes.offers?.data ? this.page?.attributes.offers?.data.slice(0, 3).map(({id}) => id) : [this.page?.id];
-    this.offers = (await this.$strapi.find("offers")).data.filter(
+    this.offers = this.shuffleArray((await this.$strapi.find("offers")).data.filter(
       (e: Offer) => !exclude.includes(e.id)
-    );
+    )).slice(0, 4);
   },
   computed: {},
-  methods: {},
+  methods: {
+    shuffleArray(array: any[]) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+  },
 });
 </script>
 <style lang="scss"></style>

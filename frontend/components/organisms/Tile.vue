@@ -14,7 +14,7 @@
       :icon="['fas', icon]"
       class="text-primary-500 text-4xl leading-none"
     />
-    <h3 class="text-xl md:text-2xl font-bold text-stone-500 leading-snug">
+    <h3 class="text-xl md:text-2xl font-bold text-stone-500 leading-snug hyphens-auto">
       {{ title }}
     </h3>
   </div>
@@ -53,24 +53,28 @@ export default defineComponent({
 </script>
 <style lang="scss">
 svg {
+  .suitcase-medical &,
   .certificate &,
   .road-barrier & {
     color: var(--color-alert-500);
   }
-  .scale-balanced,
+  .wand-sparkles &,
+  .scale-balanced &,
   .briefcase &,
   .bolt-lightning &,
   .couch & {
     color: var(--color-gold-400);
   }
-  .tree &, .leaf & {
+  .route &, .tree &, .leaf & {
     color: var(--color-success-400);
   }
+  .compass &,
   .wind &,
   .kite &,
   .circle-nodes &, .spa & {
     color: var(--color-info-300);
   }
+  .user-gear &,
   .person-hiking &,
   .person-walking-arrow-right &,
   .people-group &,

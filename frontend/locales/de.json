@@ -19,5 +19,6 @@
   "confirm.data": "Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage erhoben und verarbeitet werden.",
   "register": "Anmelden",
   "events:noEvents": "Keine anstehenden Termine",
-  "events:add.to.calendar": "Zum Kalender hinzufügen"
+  "events:add.to.calendar": "Zum Kalender hinzufügen",
+  "mostPopular": "am beliebtesten"
 }

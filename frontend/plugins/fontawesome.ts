@@ -2,6 +2,11 @@ import { library, config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faEnvelope,
+  faCompass,
+  faSuitcaseMedical,
+  faUserGear,
+  faWandSparkles,
+  faRoute,
   faBriefcase,
   faTree,
   faWind,
@@ -25,15 +30,22 @@ import {
   faCouch,
   faLeaf,
   faSpa,
-  faChessKnight
+  faChessKnight,
+  faCheck
 } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
 library.add(
   faBath,
+  faCheck,
   faEnvelope,
   faBriefcase,
   faTree,
   faWind,
+  faCompass,
+  faSuitcaseMedical,
+  faUserGear,
+  faWandSparkles,
+  faRoute,
   faEyeLowVision,
   faCircleNotch,
   faRoadBarrier,

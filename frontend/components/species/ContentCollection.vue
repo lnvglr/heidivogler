@@ -18,6 +18,7 @@ import AboutSection from "~/components/organisms/AboutSection.vue";
 import ImageSection from "~/components/organisms/ImageSection.vue";
 import ButtonSection from "~/components/organisms/ButtonSection.vue";
 import EventsSection from "~/components/organisms/EventsSection.vue";
+import PriceSection from "~/components/organisms/PriceSection.vue";
 import TestimonialsSection from "~/components/organisms/TestimonialsSection.vue";
 import ContactSection from "~/components/organisms/ContactSection.vue";
 import OffersSection from "~/components/organisms/OffersSection.vue";
@@ -33,6 +34,7 @@ export default defineComponent({
     ImageSection,
     ButtonSection,
     EventsSection,
+    PriceSection,
     ContactSection,
     TestimonialsSection,
     OffersSection,
@@ -58,6 +60,8 @@ export default defineComponent({
           return ButtonSection;
         case "block.events":
           return EventsSection;
+        case "block.price-group":
+          return PriceSection;
         case "block.testimonials":
           return TestimonialsSection;
         case "block.contact-form":
