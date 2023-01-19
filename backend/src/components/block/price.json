@@ -23,6 +23,9 @@
     },
     "unit": {
       "type": "string"
+    },
+    "list": {
+      "type": "richtext"
     }
   }
 }
