@@ -1715,7 +1715,8 @@
             "block.quote",
             "block.button",
             "block.card",
-            "block.tiles"
+            "block.tiles",
+            "block.image-text-block"
           ]
         },
         "createdAt": {
@@ -1777,7 +1778,8 @@
               "block.quote",
               "block.button",
               "block.card",
-              "block.tiles"
+              "block.tiles",
+              "block.image-text-block"
             ]
           }
         },

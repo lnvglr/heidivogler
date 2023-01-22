@@ -6,7 +6,7 @@
     <p class="text-xl mb-12 max-w-2xl" v-if="$route.meta.description">
       {{ $route.meta.description }}
     </p>
-    <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5">
+    <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-12">
       <Offer
         v-for="(offer, i) in offers"
         :key="offer.id"
