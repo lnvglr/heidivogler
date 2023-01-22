@@ -20,30 +20,30 @@
           "sortable": false
         }
       },
-      "Price": {
+      "price": {
         "edit": {
-          "label": "Price",
+          "label": "price",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Price",
+          "label": "price",
           "searchable": false,
           "sortable": false
         }
       },
-      "Size": {
+      "size": {
         "edit": {
-          "label": "Size",
+          "label": "size",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Size",
+          "label": "size",
           "searchable": true,
           "sortable": true
         }
@@ -52,19 +52,19 @@
     "layouts": {
       "list": [
         "id",
-        "Price",
-        "Size"
+        "price",
+        "size"
       ],
       "edit": [
         [
           {
-            "name": "Price",
+            "name": "price",
             "size": 12
           }
         ],
         [
           {
-            "name": "Size",
+            "name": "size",
             "size": 6
           }
         ]

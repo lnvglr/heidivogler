@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "Title",
-      "defaultSortBy": "Title",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,72 +20,86 @@
           "sortable": false
         }
       },
-      "Title": {
+      "title": {
         "edit": {
-          "label": "Title",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Title",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
-      "Price": {
+      "price": {
         "edit": {
-          "label": "Price",
+          "label": "price",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Price",
+          "label": "price",
           "searchable": true,
           "sortable": true
         }
       },
-      "Discount": {
+      "discount": {
         "edit": {
-          "label": "Discount",
+          "label": "discount",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Discount",
+          "label": "discount",
           "searchable": true,
           "sortable": true
         }
       },
-      "Popular": {
+      "unit": {
         "edit": {
-          "label": "Popular",
+          "label": "unit",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Popular",
+          "label": "unit",
           "searchable": true,
           "sortable": true
         }
       },
-      "Unit": {
+      "list": {
         "edit": {
-          "label": "Unit",
+          "label": "list",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Unit",
+          "label": "list",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "highlight": {
+        "edit": {
+          "label": "highlight",
+          "description": "sollte nur bei einem Element ausgefüllt sein",
+          "placeholder": "am beliebtesten",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "highlight",
           "searchable": true,
           "sortable": true
         }
@@ -94,33 +108,41 @@
     "layouts": {
       "list": [
         "id",
-        "Title",
-        "Price",
-        "Discount"
+        "title",
+        "price",
+        "discount"
       ],
       "edit": [
         [
           {
-            "name": "Title",
-            "size": 8
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "price",
+            "size": 4
           },
           {
-            "name": "Popular",
+            "name": "unit",
+            "size": 4
+          },
+          {
+            "name": "discount",
             "size": 4
           }
         ],
         [
           {
-            "name": "Price",
-            "size": 4
-          },
+            "name": "list",
+            "size": 12
+          }
+        ],
+        [
           {
-            "name": "Unit",
-            "size": 4
-          },
-          {
-            "name": "Discount",
-            "size": 4
+            "name": "highlight",
+            "size": 12
           }
         ]
       ]

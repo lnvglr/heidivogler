@@ -18,14 +18,15 @@
     "discount": {
       "type": "decimal"
     },
-    "popular": {
-      "type": "boolean"
-    },
     "unit": {
       "type": "string"
     },
     "list": {
       "type": "richtext"
+    },
+    "highlight": {
+      "type": "string",
+      "maxLength": 20
     }
   }
 }
