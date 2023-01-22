@@ -1,6 +1,5 @@
 import i18n from './config/i18n'
 import postcss from './config/postcss'
-import compress from './config/compress'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	app: {
@@ -15,12 +14,9 @@ export default defineNuxtConfig({
 		'@nuxtjs/i18n',
 		'@formkit/nuxt'
 	],
-	buildModules: [
-    '@nuxtjs/compression'
-	],
-  compression: {
-    threshold: 0
-  },
+	nitro: {
+		compressPublicAssets: true,
+	},
 	formkit: {
 		configFile: '~/config/formkit.config.ts',
 	},
@@ -34,7 +30,6 @@ export default defineNuxtConfig({
 	],
 	i18n,
 	postcss,
-	'nuxt-compress': compress,
 	runtimeConfig: {
 		public: {
 			mapbox: {
