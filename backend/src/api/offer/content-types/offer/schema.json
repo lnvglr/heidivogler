@@ -36,7 +36,9 @@
         "block.offers",
         "block.tiles",
         "block.image-text-block",
-        "block.price-group"
+        "block.price-group",
+        "block.testimonials",
+        "block.contact-form"
       ]
     },
     "events": {
