@@ -22,28 +22,28 @@
       },
       "preCopy": {
         "edit": {
-          "label": "preCopy",
+          "label": "Vorangestellter Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "preCopy",
+          "label": "Vorangestellter Text",
           "searchable": true,
           "sortable": true
         }
       },
       "copy": {
         "edit": {
-          "label": "copy",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "copy",
+          "label": "Text",
           "searchable": true,
           "sortable": true
         }

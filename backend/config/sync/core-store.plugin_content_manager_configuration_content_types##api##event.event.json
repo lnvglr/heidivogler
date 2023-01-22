@@ -22,35 +22,35 @@
       },
       "start": {
         "edit": {
-          "label": "start",
+          "label": "Startdatum",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "start",
+          "label": "Startdatum",
           "searchable": true,
           "sortable": true
         }
       },
       "end": {
         "edit": {
-          "label": "end",
+          "label": "Enddatum",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "end",
+          "label": "Enddatum",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Titel",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -86,21 +86,21 @@
           "editable": true
         },
         "list": {
-          "label": "price",
+          "label": "Preis",
           "searchable": true,
           "sortable": true
         }
       },
       "address": {
         "edit": {
-          "label": "address",
+          "label": "Adresse",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "address",
+          "label": "Adresse",
           "searchable": false,
           "sortable": false
         }
@@ -114,7 +114,7 @@
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Beschreibung",
           "searchable": false,
           "sortable": false
         }
@@ -128,21 +128,21 @@
           "editable": true
         },
         "list": {
-          "label": "groupSize",
+          "label": "Gruppengröße",
           "searchable": true,
           "sortable": true
         }
       },
       "time": {
         "edit": {
-          "label": "Zeit",
+          "label": "Uhrzeit",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "time",
+          "label": "Uhrzeit",
           "searchable": true,
           "sortable": true
         }

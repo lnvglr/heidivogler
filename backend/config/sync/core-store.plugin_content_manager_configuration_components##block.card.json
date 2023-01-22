@@ -22,14 +22,14 @@
       },
       "card": {
         "edit": {
-          "label": "card",
+          "label": "Karte",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "card",
+          "label": "Karte",
           "searchable": false,
           "sortable": false
         }

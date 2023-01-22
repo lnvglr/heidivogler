@@ -22,28 +22,28 @@
       },
       "price": {
         "edit": {
-          "label": "price",
+          "label": "Preis",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "price",
+          "label": "Preis",
           "searchable": false,
           "sortable": false
         }
       },
       "size": {
         "edit": {
-          "label": "size",
+          "label": "Größe",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "size",
+          "label": "Größe",
           "searchable": true,
           "sortable": true
         }

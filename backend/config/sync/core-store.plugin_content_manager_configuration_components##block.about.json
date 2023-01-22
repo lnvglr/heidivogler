@@ -22,28 +22,28 @@
       },
       "text": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "text",
+          "label": "Text",
           "searchable": false,
           "sortable": false
         }
       },
       "image": {
         "edit": {
-          "label": "image",
+          "label": "Bild",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "image",
+          "label": "Bild",
           "searchable": false,
           "sortable": false
         }

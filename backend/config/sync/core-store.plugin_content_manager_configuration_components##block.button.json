@@ -29,7 +29,7 @@
           "editable": true
         },
         "list": {
-          "label": "label",
+          "label": "Butten Text",
           "searchable": true,
           "sortable": true
         }
@@ -43,7 +43,7 @@
           "editable": true
         },
         "list": {
-          "label": "style",
+          "label": "Style",
           "searchable": true,
           "sortable": true
         }
@@ -57,7 +57,7 @@
           "editable": true
         },
         "list": {
-          "label": "link",
+          "label": "Link",
           "searchable": true,
           "sortable": true
         }

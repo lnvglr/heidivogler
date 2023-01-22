@@ -29,7 +29,7 @@
           "editable": true
         },
         "list": {
-          "label": "copy",
+          "label": "Überschrift",
           "searchable": true,
           "sortable": true
         }
@@ -43,7 +43,7 @@
           "editable": true
         },
         "list": {
-          "label": "subCopy",
+          "label": "Unter-Überschrift",
           "searchable": true,
           "sortable": true
         }

@@ -22,84 +22,84 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Titel",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "Titel",
           "searchable": true,
           "sortable": true
         }
       },
       "price": {
         "edit": {
-          "label": "price",
+          "label": "Preis",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "price",
+          "label": "Preis",
           "searchable": true,
           "sortable": true
         }
       },
       "discount": {
         "edit": {
-          "label": "discount",
+          "label": "Rabatt",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "discount",
+          "label": "Rabatt",
           "searchable": true,
           "sortable": true
         }
       },
       "unit": {
         "edit": {
-          "label": "unit",
-          "description": "",
+          "label": "Einheit",
+          "description": "Std.",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "unit",
+          "label": "Einheit",
           "searchable": true,
           "sortable": true
         }
       },
       "list": {
         "edit": {
-          "label": "list",
-          "description": "",
+          "label": "Liste",
+          "description": "Spiegelstrichliste mit den Bestandteilen dieses Angebots",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "list",
+          "label": "Liste",
           "searchable": false,
           "sortable": false
         }
       },
       "highlight": {
         "edit": {
-          "label": "highlight",
+          "label": "Highlight",
           "description": "sollte nur bei einem Element ausgefüllt sein",
-          "placeholder": "am beliebtesten",
+          "placeholder": "z.B. am beliebtesten",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "highlight",
+          "label": "Highlight",
           "searchable": true,
           "sortable": true
         }
