@@ -10,8 +10,7 @@
     "price": {
       "type": "component",
       "repeatable": true,
-      "component": "block.price",
-      "max": 5
+      "component": "block.price"
     },
     "size": {
       "type": "enumeration",
