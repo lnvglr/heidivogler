@@ -97,10 +97,10 @@ export default defineComponent({
     },
     srcset() {
       const formats = Object.values(this.media.formats) as ImageProps[];
-      // formats.push({
-      //   url: this.source,
-      //   width: 2560,
-      // } as ImageProps);
+      formats.push({
+        url: this.source,
+        width: 2560,
+      } as ImageProps);
       const srcset = formats.map((format) => `${format.url} ${format.width}w`).join(", ");
       return srcset;
     },

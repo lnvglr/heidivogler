@@ -4,14 +4,14 @@
 			<ScrollParallax speed="0.2">
 				<Image
 					:media="offer.attributes.hero?.image.data.attributes"
-					class="h-full -z-10"
+					class="h-full -z-10 translate-y-0 lg:-translate-y-[20%]"
 					width="full"
 					aspectRatio="16/12"
 				/>
 			</ScrollParallax>
     </div>
 		<div class="py-24">
-			<div class="relative bg-white md:rounded-2xl px-5 py-10 md:px-12 md:py-24 max-w-5xl mx-auto -mt-64 z-40 flex flex-col gap-5 items-start">
+			<div class="relative bg-white md:rounded-2xl px-5 py-10 md:px-12 lg:px-24 md:py-24 max-w-5xl md:mx-12 lg:mx-auto -mt-64 z-40 flex flex-col gap-5 items-start">
 				<h1 class="text-xl md:text-2xl font-bold text-stone-400">{{ offer.attributes.title }}</h1>
 				<h2 class="text-3xl md:text-5xl font-bold">{{ offer.attributes.hero?.copy }}</h2>
 				<h3 class="text-xl md:text-3xl font-medium mt-2" v-if="offer.attributes.hero?.subCopy">{{ offer.attributes.hero?.subCopy }}</h3>
