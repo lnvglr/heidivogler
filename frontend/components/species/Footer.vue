@@ -21,8 +21,8 @@
           <NuxtLink
             :to="item.path"
             v-if="!item.spacer"
-            class="duration-75 hover:text-gold-600 whitespace-nowrap py-3 md:py-1"
-            exactActiveClass="text-gold-500"
+            class="duration-75 hover:text-gold-700 whitespace-nowrap py-3 md:py-1"
+            exactActiveClass="text-gold-600"
           >
             <Icon v-if="item.icon" :icon="item.icon" class="w-36" />
             <template v-else>{{ item.title }}</template>

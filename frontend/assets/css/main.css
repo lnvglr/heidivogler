@@ -48,7 +48,7 @@
   }
 
   a {
-    color: var(--color-gold-500);
+    color: var(--color-gold-600);
 
     &:hover {
       text-decoration: underline;
@@ -112,15 +112,18 @@
 [data-type="submit"] .formkit-input:focus-visible,
 [data-type="button"] .formkit-input:focus-within,
 [data-type="submit"] .formkit-input:focus-within {
-  --fk-color-checked: var(--color-primary-400) !important;
-  --fk-color-primary: var(--color-primary-400);
-  --fk-bg-submit: var(--color-primary-400);
-  --fk-color-border-focus: var(--color-primary-400);
-  --fk-bg-submit-hover: var(--color-primary-500);
+  --fk-color-checked: var(--color-primary-500) !important;
+  --fk-color-primary: var(--color-primary-500);
+  --fk-bg-submit: var(--color-primary-500);
+  --fk-color-border-focus: var(--color-primary-500);
+  --fk-bg-submit-hover: var(--color-primary-600);
   --fk-color-placeholder: var(--color-stone-400);
 }
 .formkit-outer + .formkit-messages {
   margin-top: -1.5em;
+}
+button.formkit-input {
+  border-radius: 100px !important;
 }
 .success button {
   --fk-bg-submit: var(--color-success-400) !important;

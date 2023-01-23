@@ -37,6 +37,10 @@ export default defineComponent({
   components: {
     ContactForm,
   },
+  key(route) {
+    console.log(route)
+    return route.fullPath
+  },
   head() {
     return {
       title: "Kontakt",
@@ -72,7 +76,7 @@ export default defineComponent({
       },
       token: useRuntimeConfig().public.mapbox.token,
       location: "Gailhöfe 6, 88699 Frickingen",
-      geolocation: { center: [0, 0], place_name: "" },
+      geolocation: { center: [0, 0] as mapboxgl.LngLatLike, place_name: "" },
       debounce: null,
     };
   },
@@ -91,28 +95,26 @@ export default defineComponent({
     },
     async initMap() {
       if (!this.$refs.map) return;
-
       const mapboxgl = await import("mapbox-gl");
-      const map = new mapboxgl.Map({
+      this.$state.map = new mapboxgl.Map({
         accessToken: this.token,
         attributionControl: true,
-        container: this.$refs.map,
+        container: this.$refs.map as HTMLElement,
         style: "mapbox://styles/mapbox/streets-v11",
         center: this.geolocation?.center,
         language: "de",
-        // scrollZoom: false,
         cooperativeGestures: true,
         zoom: 10,
         pitch: 45,
       });
-      const marker = new mapboxgl.Marker()
+      new mapboxgl.Marker()
         .setLngLat(this.geolocation?.center)
         .setPopup(
           new mapboxgl.Popup().setHTML(
             `<p>${this.geolocation?.place_name?.replace(/,/g, "<br>")}</p>`
           )
         )
-        .addTo(map);
+        .addTo(this.$state.map);
     },
   },
   watch: {

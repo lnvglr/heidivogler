@@ -7,7 +7,7 @@
       <div class="flex flex-col h-screen">
         <Header class="w-full" />
         <NuxtLayout>
-          <NuxtPage />
+          <NuxtPage :nuxt-child-key="$route.path" keep-alive />
         </NuxtLayout>
         <Footer class="w-full mt-auto" />
       </div>
@@ -34,7 +34,7 @@ export default defineComponent({
     };
     strapi.user = (await strapi.fetchUser()).value as StrapiUser;
     if (!app.$strapi) app.provide("strapi", reactive(strapi));
-    if (!app.$state) app.provide("state", reactive({headerColor: null}));
+    if (!app.$state) app.provide("state", reactive({headerColor: null, map: null}));
   },
   components: {
     Header,

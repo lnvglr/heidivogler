@@ -5,6 +5,7 @@ import { useStrapiAuth } from '@nuxtjs/strapi/dist/runtime/composables/useStrapi
 import { StrapiAuthenticationData, StrapiAuthenticationResponse, StrapiAuthProvider, StrapiEmailConfirmationData, StrapiForgotPasswordData, StrapiRegistrationData, StrapiResetPasswordData, Strapi4RequestParams } from '@nuxtjs/strapi/dist/runtime/types'
 export { Strapi4Response, Strapi4ResponseData, Strapi4RequestParams } from '@nuxtjs/strapi/dist/runtime/types'
 export { EventAttributes } from 'ics/index'
+import Mapbox from 'mapbox-gl'
 
 export interface Event {
   attributes: {
@@ -114,7 +115,8 @@ interface Strapi {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     $state: {
-      headerColor: string
+      headerColor: string | null,
+      map?: Mapbox.Map
     },
     $strapi: Strapi
   }

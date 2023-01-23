@@ -10,8 +10,8 @@
         v-else
         :to="item.path"
         target="_blank"
-        class="duration-75 hover:text-gold-600 whitespace-nowrap py-3 md:py-1"
-        exactActiveClass="text-gold-500"
+        class="duration-75 hover:text-gold-700 whitespace-nowrap py-3 md:py-1"
+        exactActiveClass="text-gold-600"
       >
         <ClientOnly>
           <FontAwesomeIcon :icon="item.icon" class="mr-3" fixed-width />

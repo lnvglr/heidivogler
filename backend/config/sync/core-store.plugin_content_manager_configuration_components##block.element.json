@@ -22,14 +22,14 @@
       },
       "editor": {
         "edit": {
-          "label": "editor",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "editor",
+          "label": "Text",
           "searchable": false,
           "sortable": false
         }

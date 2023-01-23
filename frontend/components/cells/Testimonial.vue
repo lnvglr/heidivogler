@@ -12,7 +12,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-12 w-full">
       <Stars
         :n="5"
-        class="hidden sm:flex justify-center items-center"
+        class="hidden sm:flex justify-center items-center text-gold-400"
         :class="{ '-mt-10': testimonial.image.data }"
       />
       <div class="col-span-2 flex flex-col items-center gap-2 text-center">
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div
-        class="hidden sm:flex justify-center items-center text-primary-500 text-5xl leading-none text-center"
+        class="hidden sm:flex justify-center items-center text-gold-400 text-5xl leading-none text-center"
         :class="{ '-mt-10': testimonial.image.data }"
       >
         <FontAwesomeIcon :icon="['fas', 'quote-right']" />

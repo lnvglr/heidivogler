@@ -31,7 +31,7 @@
         <li
           v-for="(item, i) in routes"
           :key="item.name"
-          :style="{ '--i': offset(i, routes), '--k': i }"
+          :style="{ '--i': offset(item, filteredRoutes), '--k': getIndex(item, filteredRoutes) }"
           :class="{
             'order-0 md:order-1': item.icon,
             'order-1': !item.icon,
@@ -39,8 +39,6 @@
           }"
           :ref="!item.icon ? item.path : ''"
         >
-          <!-- @mouseover="(e) => setLine(!item.icon && e)"
-          @mouseleave="() => setLine(false)" -->
           <NuxtLink
             :to="item.path"
             class="duration-500 whitespace-nowrap py-2"
@@ -128,13 +126,17 @@ export default defineComponent({
     };
   },
   methods: {
-    offset(i: number, array: number[]) {
-      return Math.abs(i - Math.ceil((array.length - 1) / 2));
+    getIndex(item: typeof this.routes[number], array: typeof this.routes) {
+      return array.indexOf(item)
+    },
+    offset(item: typeof this.routes[number], array: typeof this.routes) {
+      return Math.abs(this.getIndex(item, array) - Math.ceil((array.length - 1) / 2));
     },
     setLine(e: MouseEvent | false) {
       const target = e
-        ? (e.target as HTMLElement)
-        : this.$refs[this.$route.path]?.[0];
+        ? e.target as HTMLElement
+        : (this.$refs[this.$route.path] as HTMLAllCollection)?.[0] as HTMLElement;
+
       if (!target) {
         this.lineWidth = 0;
         return;
@@ -153,6 +155,9 @@ export default defineComponent({
     headerColor() {
       return this.$state.headerColor;
     },
+    filteredRoutes() {
+      return this.routes.filter(e => !e.icon);
+    }
   },
 });
 </script>

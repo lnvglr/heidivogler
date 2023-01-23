@@ -5,7 +5,7 @@
     @click="open = true"
   >
     <div class="date flex justify-between">
-      <span class="text-primary-500 font-bold leading-none">{{ date }}</span>
+      <span class="text-primary-600 font-bold leading-none">{{ date }}</span>
     </div>
     <div class="title font-bold leading-none">
       <span>{{ event.attributes.title }}</span>
@@ -17,7 +17,7 @@
       <span>{{ event.attributes.description }}</span>
     </div>
     <div class="date flex gap-6 mt-auto items-end justify-between">
-      <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
+      <div class="flex flex-col gap-2 text-stone-500 font-bold leading-none">
         <span v-if="event.attributes.price && 'xl' === computedSize"
           >Preis: {{ event.attributes.price }} Euro</span
         >
@@ -38,7 +38,7 @@
   </div>
   <Popup :title="event.attributes.title" :open="open" @close="open = false">
     <template #pretitle
-      ><span class="text-primary-500 font-bold leading-none">{{
+      ><span class="text-primary-600 font-bold leading-none">{{
         date
       }}</span></template
     >
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="flex justify-between items-end">
-        <div class="flex flex-col gap-2 text-stone-400 font-bold leading-none">
+        <div class="flex flex-col gap-2 text-stone-500 font-bold leading-none">
           <span v-if="event.attributes.price"
             >Preis: {{ event.attributes.price }} Euro</span
           >
@@ -59,7 +59,7 @@
           <span v-if="location">{{ location }}</span>
           <span v-if="time">{{ time }}</span>
 
-        <NuxtLink v-if="event.attributes.offer?.data" :to="`angebot/${event.attributes.offer.data.attributes.slug}`" class="w-min whitespace-nowrap flex items-center gap-2 text-primary-500 hover:underline font-bold mt-5">{{ $t("toTheOffer") }}<FontAwesomeIcon :icon="['fas', 'arrow-right']" /></NuxtLink>
+        <NuxtLink v-if="event.attributes.offer?.data" :to="`angebot/${event.attributes.offer.data.attributes.slug}`" class="w-min whitespace-nowrap flex items-center gap-2 text-primary-600 hover:underline font-bold mt-5">{{ $t("toTheOffer") }}<FontAwesomeIcon :icon="['fas', 'arrow-right']" /></NuxtLink>
           <DownloadEvent
             :event="event"
             class="mt-10 flex gap-2 font-normal hover:underline"
@@ -139,7 +139,6 @@ export default defineComponent({
     },
   },
   mounted() {
-    console.log(this.event)
     window.addEventListener("resize", () => this.viewport());
     this.viewport();
   },

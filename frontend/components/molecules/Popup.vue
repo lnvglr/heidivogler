@@ -18,7 +18,7 @@
             </h3>
           </div>
           <button
-            class="font-normal text-4xl md:text-6xl h-12 w-12 min-w-[48px] md:h-16 md:w-16 md:min-w-[48px] items-center justify-center -m-3 md:-m-5 text-stone-400 hover:text-primary-500 rounded-xl"
+            class="font-normal text-4xl md:text-6xl h-12 w-12 min-w-[48px] md:h-16 md:w-16 md:min-w-[48px] items-center justify-center -m-3 md:-m-5 text-stone-400 hover:text-primary-600 rounded-xl"
             @click="$emit('close')"
           >
             &times;
