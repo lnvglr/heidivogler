@@ -5,13 +5,14 @@
       'cursor-pointer hover:scale-[0.99] hover:bg-stone-50 duration-75':
         !!description,
       [icon]: icon,
+      [iconNew]: iconNew,
     }"
     @click="open = !open && !!description"
     v-bind="$attrs"
   >
     <FontAwesomeIcon
-      v-if="icon"
-      :icon="['fas', icon]"
+      v-if="iconNew || icon"
+      :icon="['fas', iconNew || icon]"
       class="text-primary-500 text-4xl leading-none"
     />
     <h3 class="text-xl md:text-2xl font-bold text-stone-500 leading-snug hyphens-auto">
@@ -29,6 +30,9 @@ export default defineComponent({
   },
   props: {
     icon: {
+      type: String,
+    },
+    iconNew: {
       type: String,
     },
     title: {

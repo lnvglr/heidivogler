@@ -1,11 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
+
 import { TextInput } from '@strapi/design-system/TextInput'
-import { Box } from '@strapi/design-system/Box';
 import { Flex } from '@strapi/design-system/Flex';
 import { Stack } from '@strapi/design-system/Stack';
 import { Typography } from '@strapi/design-system/Typography';
-import Cell from '@strapi/plugin-content-type-builder/admin/src/components/ComponentIconPicker/Cell'
+import Cell from '../Cell/index.js'
 
 const CELL_WIDTH = 44;
 
@@ -24,7 +28,6 @@ const Field = (props) => {
     label,
     hint,
   } = attribute.customFieldConfig || {};
-
   const icon = useRef(value)
   return (
     <>
@@ -42,7 +45,7 @@ const Field = (props) => {
             style={{ width: CELL_WIDTH, height: CELL_WIDTH }}
           >
             <div style={{ margin: '3px', borderRadius: '4px', width: '100%', height: 'calc(100% - 6px)', backgroundColor: '#ebebf3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {icon.current && <FontAwesomeIcon icon={icon.current} size="lg" />}
+              {icon.current && <FontAwesomeIcon icon={[ 'fas', icon.current ]} size="lg" color="rgb(50, 50, 77)" />}
             </div>
           </Cell>
           <TextInput
@@ -62,6 +65,7 @@ const Field = (props) => {
               onChange(arg);
             }}
             value={value}
+            style={{ width: '100%' }}
           />
         </Flex>
         <Typography variant="pi"><a href='https://fontawesome.com/search?m=free&s=solid' target='_blank'>Browse Icons</a></Typography>

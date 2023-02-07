@@ -2,22 +2,39 @@ import { prefixPluginTranslations } from '@strapi/helper-plugin';
 import pluginPkg from '../../package.json';
 import pluginId from './pluginId';
 import Initializer from './components/Initializer';
-import IconPickerField from './components/IconPickerField';
+import Icon from "./components/IconPickerIcon/index.js"
 
 const name = pluginPkg.strapi.name;
 
 export default {
   register(app) {
-    app.addFields([{
-      type: 'icon-picker',
-      Component: IconPickerField,
-    }]),
     app.registerPlugin({
       id: pluginId,
       initializer: Initializer,
       isReady: false,
       name,
     });
+    app.customFields.register({
+      pluginId,
+      name: "icon",
+      type: "string",
+      intlLabel: {
+        id: "icon-picker.icon.label",
+        defaultMessage: "Icon",
+      },
+      intlDescription: {
+        id: "icon-picker.icon.description",
+        defaultMessage: "Select a FontAwesome icon",
+      },
+      icon: Icon,
+      components: {
+        Input: async () => import(/* webpackChunkName: "input-component" */ "./components/IconPickerField/index.js"),
+      },
+      options: {
+        // declare options here
+      },
+    });
+
   },
 
   bootstrap(app) {},
