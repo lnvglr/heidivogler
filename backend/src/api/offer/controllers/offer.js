@@ -13,6 +13,7 @@ module.exports = createCoreController('api::offer.offer', ({ strapi }) => ({
 		const entity = await strapi.entityService.findMany('api::offer.offer', {
 			...query,
 			populate: {
+				rank: true,
 				copy: true,
 				events: true,
 				headerColor: true,

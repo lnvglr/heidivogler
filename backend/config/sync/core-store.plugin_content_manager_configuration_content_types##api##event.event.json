@@ -147,6 +147,20 @@
           "sortable": true
         }
       },
+      "canRegister": {
+        "edit": {
+          "label": "Anmelden Button",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "canRegister",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -219,11 +233,15 @@
         [
           {
             "name": "groupSize",
-            "size": 6
+            "size": 4
           },
           {
             "name": "offer",
-            "size": 6
+            "size": 4
+          },
+          {
+            "name": "canRegister",
+            "size": 4
           }
         ]
       ],

@@ -73,6 +73,9 @@ export default defineComponent({
       this.events = (
         await this.$strapi.find("events", {
           sort: "start",
+          populate: {
+				    canRegister: true,
+          },
           filters: {
             start: {
               $gte: new Date(),

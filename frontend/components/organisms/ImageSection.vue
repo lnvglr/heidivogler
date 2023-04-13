@@ -4,7 +4,7 @@
 			<ScrollParallax :speed="0.1">
 				<Image
 					:media="content"
-					class="h-full -z-10 -translate-y-1/3 md:-translate-y-1/4 scale-105"
+					class="h-full -z-10 -translate-y-2/3 sm:-translate-y-1/2 lg:-translate-y-1/3 scale-105"
 					width="full"
 				/>
 			</ScrollParallax>

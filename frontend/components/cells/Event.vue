@@ -27,7 +27,7 @@
         <span v-if="location">{{ location }}</span>
         <span v-if="time">{{ time }}</span>
       </div>
-      <div v-if="futureEvent && !['lg'].includes(computedSize)">
+      <div v-if="canRegister && !['lg'].includes(computedSize)">
         <a :href="signUpEmail"
           ><Button :class="computedSize === 'md' ? 'sm' : 'md'">{{
             $t("register")
@@ -68,7 +68,7 @@
           >
         </div>
 
-        <div v-if="futureEvent" class="ml-auto">
+        <div v-if="canRegister" class="ml-auto">
           <a :href="signUpEmail"
             ><Button class="md">{{ $t("register") }}</Button></a
           >
@@ -180,6 +180,10 @@ export default defineComponent({
 
       return futureStart || futureEnd
     },
+    canRegister(): boolean {
+      console.log(this.event.attributes)
+      return this.futureEvent && this.event.attributes.canRegister;
+    },
     time() {
       return this.event.attributes.time;
     },
@@ -239,16 +243,16 @@ export default defineComponent({
     }
   }
   &.lg {
-    --width: 18rem;
+    --width: 12rem;
     --aspect-ratio: 1/1;
     --text-title: var(--text-2xl);
     --text-date: var(--text-lg);
   }
   &.xl {
     --width: 100%;
-    --height: 24rem;
-    --text-title: var(--text-3xl);
-    --text-date: var(--text-xl);
+    --height: 12rem;
+    --text-title: var(--text-2xl);
+    --text-date: var(--text-lg);
   }
 }
 </style>

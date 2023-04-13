@@ -109,7 +109,7 @@ export default defineComponent({
   },
   computed: {
     offers() {
-      return this.page?.attributes?.offers?.data.slice(0, 3)
+      return this.page?.attributes?.offers?.data.sort((a, b) => a.attributes.rank - b.attributes.rank).slice(0, 3)
     }
   },
   methods: {

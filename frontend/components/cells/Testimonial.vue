@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="testimonial"
     class="flex flex-col gap-5 items-center bg-stone-50 rounded-2xl p-6 sm:p-12 w-full max-w-2xl"
   >
     <div class="w-24 h-24 -translate-y-20 -mb-20 sm:-translate-y-24 sm:-mb-24" v-if="testimonial.image.data">
@@ -28,7 +29,7 @@
         <FontAwesomeIcon :icon="['fas', 'quote-right']" />
       </div>
     </div>
-    <div v-html="content" class="markdown" />
+    <div v-html="useMarkdown(testimonial.testimonial)" class="markdown" />
   </div>
 </template>
 
@@ -44,13 +45,7 @@ export default defineComponent({
     testimonial: {
       type: Object,
     },
-  },
-  computed: {
-    content() {
-      return useMarkdown(this.testimonial.testimonial)
-      // return this.data.image?.data.attributes
-    },
-  },
+  }
 });
 </script>
 <style lang="scss"></style>

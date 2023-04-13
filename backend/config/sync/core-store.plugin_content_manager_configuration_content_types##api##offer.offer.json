@@ -105,6 +105,20 @@
           "sortable": false
         }
       },
+      "rank": {
+        "edit": {
+          "label": "rank",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "rank",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -135,6 +149,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "events",
+        "rank"
+      ],
       "edit": [
         [
           {
@@ -167,12 +187,13 @@
             "name": "events",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "rank",
+            "size": 4
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "events"
       ]
     }
   },
