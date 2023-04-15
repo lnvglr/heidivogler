@@ -1,16 +1,16 @@
 <template>
   <div
-    class="flex flex-col bg-white w-48 h-36 rounded-xl overflow-hidden"
+    class="flex flex-col bg-white shrink-0 w-48 h-36 rounded-xl overflow-hidden"
     :class="{
       'bg-success-800 text-white w-full': highlight,
     }"
   >
     <div class="flex flex-col gap-12 h-full p-5">
-      <div class="flex flex-col items-start h-full">
+      <div class="flex flex-col items-start justify-between h-full">
         <div class="text-sm leading-none">{{ title }}</div>
         <div class="text-2xl font-bold">
           <span>{{ price }}</span
-          ><span v-if="true" class="text-sm font-normal">/Std.</span>
+          ><span v-if="unit" class="text-sm font-normal">/{{ unit }}</span>
         </div>
         <div
           v-if="highlight"

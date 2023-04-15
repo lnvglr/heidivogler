@@ -1,9 +1,11 @@
 <template>
   <section
-    class="flex justify-center gap-5 p-5 sm:p-12 md:p-10 lg:p-12"
+    class="flex gap-5 p-5 lg:justify-center sm:p-12 md:p-10 lg:p-12"
     :class="{
-    'flex-col lg:flex-row': data?.size === 'lg',
-  }">
+      'flex-col lg:flex-row': data?.size === 'lg',
+      'overflow-x-auto': data?.size !== 'lg',
+    }"
+  >
     <component
       :is="data?.size === 'lg' ? 'PriceLarge' : 'PriceSmall'"
       v-for="price in data?.price"
@@ -11,6 +13,7 @@
       :title="price.title"
       :price="realPrice(price)"
       :discount="price.discount"
+      :unit="price.unit"
       :originalPrice="price.price"
       :list="list(price)"
       :mailTo="`mailto:${emailTo}?subject=${page?.attributes.title} – ${price.title}`"
