@@ -5,7 +5,7 @@
     @click="open = true"
   >
     <div class="date flex justify-between">
-      <span class="text-primary-600 font-bold leading-none">{{ date }}</span>
+      <span class="text-primary-600 font-bold leading-none">{{ getDate() }}</span>
     </div>
     <div class="title font-bold leading-none">
       <span>{{ event.attributes.title }}</span>
@@ -39,7 +39,7 @@
   <Popup :title="event.attributes.title" :open="open" @close="open = false">
     <template #pretitle
       ><span class="text-primary-600 font-bold leading-none">{{
-        date
+        getDate(false)
       }}</span></template
     >
     <template #default>
@@ -107,7 +107,7 @@ export default defineComponent({
     grid: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   data() {
     return {
@@ -120,8 +120,8 @@ export default defineComponent({
     viewport() {
       this.windowWidth = window.innerWidth;
     },
-    formatRange(start: string, end: string, short: boolean) {
-      if (start === end || !end) return start;
+    formatRange(start: string, end?: string, short = true) {
+      if (!end || start === end) return start;
       if (short) {
         const endDate = end.split(" ");
         const startDate = start.split(" ");
@@ -136,6 +136,27 @@ export default defineComponent({
         date.getHours() * 60 * 60 * 1000;
       date.toISOString();
       return (date.getTime() - day) / (1000 * 60 * 60 * 24);
+    },
+
+    getDate(short = true) {
+      const daysToGo = this.unixDay(this.start) - this.unixDay(new Date());
+      if (daysToGo < 1 && daysToGo > -1) {
+        const rtf = new Intl.RelativeTimeFormat(this.locale, {
+          numeric: "auto",
+        });
+        return rtf.format(daysToGo, "day");
+      }
+      return this.formatRange(
+        this.start.toLocaleDateString(this.locale, this.dateOptions(short)),
+        this.end?.toLocaleDateString(this.locale, this.dateOptions(short))
+      );
+    },
+    dateOptions(short = true) {
+      return {
+        day: "numeric",
+        month: this.computedSize === "md" && short ? "short" : "long",
+        year: "numeric",
+      } as Intl.DateTimeFormatOptions;
     },
   },
   mounted() {
@@ -159,13 +180,6 @@ export default defineComponent({
         minute: "numeric",
       } as Intl.DateTimeFormatOptions;
     },
-    dateOptions() {
-      return {
-        day: "numeric",
-        month: this.computedSize === "md" ? "short" : "long",
-        year: "numeric",
-      } as Intl.DateTimeFormatOptions;
-    },
     start(): Date {
       return new Date(this.event.attributes.start);
     },
@@ -186,20 +200,6 @@ export default defineComponent({
     },
     time() {
       return this.event.attributes.time;
-    },
-    date() {
-      const daysToGo = this.unixDay(this.start) - this.unixDay(new Date());
-      if (daysToGo < 1 && daysToGo > -1) {
-        const rtf = new Intl.RelativeTimeFormat(this.locale, {
-          numeric: "auto",
-        });
-        return rtf.format(daysToGo, "day");
-      }
-      return this.formatRange(
-        this.start.toLocaleDateString(this.locale, this.dateOptions),
-        this.end?.toLocaleDateString(this.locale, this.dateOptions),
-        true
-      );
     },
     location() {
       return false;

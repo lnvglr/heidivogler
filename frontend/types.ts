@@ -16,6 +16,7 @@ export interface Event {
     start: string;
     end: string;
     time: string;
+    canRegister: boolean;
     offer: {
       data: Offer
     }
