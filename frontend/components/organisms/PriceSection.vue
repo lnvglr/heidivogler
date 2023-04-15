@@ -65,9 +65,9 @@ export default defineComponent({
   },
   methods: {
     realPrice(price: Price) {
-      const p = `${price.price}€`
+      const p = price.price
       if (!price.discount) return p;
-      return `${Math.round(price.price - price.price / price.discount)}€`;
+      return Math.round(price.price - price.price / price.discount);
     },
     list(price: Price) {
       return price.list?.replaceAll("\n", "").split("- ").filter(Boolean);

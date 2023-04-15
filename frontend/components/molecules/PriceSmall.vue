@@ -8,9 +8,38 @@
     <div class="flex flex-col gap-12 h-full p-5">
       <div class="flex flex-col items-start justify-between h-full">
         <div class="text-sm leading-none">{{ title }}</div>
-        <div class="text-2xl font-bold">
-          <span>{{ price }}</span
+        <div>
+          <span class="text-2xl font-bold">{{
+            $n(price, {
+              style: "currency",
+              currency: "EUR",
+              maximumFractionDigits: 0,
+              currencyDisplay: "narrowSymbol",
+            }).replace(/\s/g, "")
+          }}</span
           ><span v-if="unit" class="text-sm font-normal">/{{ unit }}</span>
+
+          <div
+            v-if="
+              typeof discount === 'number' && typeof originalPrice === 'number'
+            "
+            class="text-sm mt-auto text-alert-500"
+          >
+            {{
+              $t("discount", {
+                discount: $n(discount / 100, { style: "percent" }).replace(
+                  /\s/g,
+                  ""
+                ),
+                originalPrice: $n(originalPrice, {
+                  style: "currency",
+                  currency: "EUR",
+                  maximumFractionDigits: 0,
+                  currencyDisplay: "narrowSymbol",
+                }).replace(/\s/g, ""),
+              })
+            }}
+          </div>
         </div>
         <div
           v-if="highlight"
@@ -18,53 +47,20 @@
         >
           {{ highlight }}
         </div>
-        <div v-if="discount" class="text-sm mt-auto text-alert-500">
-          <span class="line-through">{{ originalPrice }}€</span>, {{ discount }}% Rabatt
-        </div>
-        <!-- <div v-if="discount" class="text-sm mt-auto text-alert-500">
-          {{ discount }}% Rabatt, vorher {{ originalPrice }}€
-        </div> -->
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { PropType } from "vue";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import Button from "./Button.vue";
-export default defineComponent({
-  components: {
-    Event,
-    Button,
-    FontAwesomeIcon,
-  },
-  props: {
-    highlight: {
-      type: String,
-    },
-    discount: {
-      type: [Boolean, Number],
-    },
-    title: {
-      type: String,
-    },
-    price: {
-      type: String,
-    },
-    originalPrice: {
-      type: Number,
-    },
-    unit: {
-      type: String,
-    },
-    list: {
-      type: Array,
-    },
-    mailTo: {
-      type: String,
-    },
-  },
-});
+<script lang="ts" setup>
+defineProps<{
+  highlight: string;
+  discount: boolean | number;
+  title: string;
+  price: number;
+  originalPrice: number;
+  unit: string;
+  list: string[];
+  mailTo: string;
+}>();
 </script>
-<style lang="scss"></style>

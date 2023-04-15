@@ -15,9 +15,34 @@
     <div class="flex flex-col gap-12 h-full p-5 sm:p-12 md:p-10 lg:p-12">
       <div class="flex flex-col items-center text-center">
         <div class="text-xl">{{ title }}</div>
-        <div class="text-4xl font-bold">{{ price }}</div>
-        <div v-if="discount" class="text-sm mt-2 text-alert-500">
-          {{ discount }}% Rabatt, vorher {{ originalPrice }}€
+        <div v-if="typeof price === 'number'" class="text-4xl font-bold flex flex-col">
+          <span>{{ $n(price, {
+                style: "currency",
+                currency: "EUR",
+                maximumFractionDigits: 0,
+                currencyDisplay: "narrowSymbol",
+              }).replace(/\s/g,'') }}</span
+          ><span v-if="unit" class="text-sm font-normal">{{
+            $t("per", { unit })
+          }}</span>
+        </div>
+        <div
+          v-if="
+            typeof discount === 'number' && typeof originalPrice === 'number'
+          "
+          class="text-sm mt-2 text-alert-500"
+        >
+          {{
+            $t("discount", {
+              discount: $n(discount / 100, { style: "percent" }).replace(/\s/g,''),
+              originalPrice: $n(originalPrice, {
+                style: "currency",
+                currency: "EUR",
+                maximumFractionDigits: 0,
+                currencyDisplay: "narrowSymbol",
+              }).replace(/\s/g,''),
+            })
+          }}
         </div>
       </div>
       <div class="markdown text-md flex flex-col gap-4">
@@ -44,9 +69,10 @@ defineProps<{
   highlight: string;
   discount: boolean | number;
   title: string;
-  price: string;
+  price: number;
   originalPrice: number;
   list: string[];
   mailTo: string;
-}>()
+  unit: string;
+}>();
 </script>
