@@ -36,14 +36,14 @@
         :offer="offer"
         :parallax="i + 1"
         innerClass="lg:p-8 xl:p-12"
-        :class="`row-span-2 lg:row-span-4 lg:col-start-${i + 1} row-start-${
+        :class="`z-50 row-span-2 lg:row-span-4 lg:col-start-${i + 1} row-start-${
           i * 2 - 1
         } lg:row-start-${i + 1} w-full`"
         :style="`--i: ${3 - i}`"
       />
       <div
         key="SocialLinks"
-        class="hidden lg:block lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
+        class="sticky bottom-0 hidden lg:block lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
       >
         <SocialLinks
           v-if="page"

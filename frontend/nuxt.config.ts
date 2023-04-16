@@ -5,6 +5,17 @@ import sitemap from './config/sitemap'
 export default defineNuxtConfig({
 	app: {
 		pageTransition: { name: 'page', mode: 'out-in' },
+		head: {
+			title: "Heidi Vogler – Reittherapie, Traumabearbeitung, Waldbaden",
+			meta: [
+				{
+					name: "description",
+					content:
+						"Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.",
+				},
+			],
+			link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+		}
 	},
 	modules: [
 		'nuxt-simple-sitemap',
