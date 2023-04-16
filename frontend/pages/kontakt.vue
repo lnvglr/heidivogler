@@ -38,7 +38,6 @@ export default defineComponent({
     ContactForm,
   },
   key(route) {
-    console.log(route)
     return route.fullPath
   },
   head() {

@@ -7,6 +7,8 @@
       <div class="flex flex-col min-h-screen">
         <Header class="w-full" />
         <NuxtLayout>
+          <SeoKit />
+          <OgImageStatic />
           <NuxtPage :nuxt-child-key="$route.path" keep-alive />
         </NuxtLayout>
       </div>
@@ -34,4 +36,25 @@ const strapi: Strapi = {
 if (!app.$strapi) app.provide("strapi", strapi);
 if (!app.$state)
   app.provide("state", reactive({ headerColor: null, map: null }));
+
+const about = (await strapi.find("about", { populate: "*" })).data;
+
+useSchemaOrg([
+  defineLocalBusiness({
+    name: 'Heidi Vogler',
+    address: {
+      streetAddress: 'Gailhöfe 6',
+      addressLocality: 'Frickingen',
+      postalCode: '88699',
+      addressCountry: 'DE',
+    },
+    image: 'https://heidivogler.s3.eu-central-1.amazonaws.com/IMG_4749_de493186a9.jpg',
+  }),
+  defineWebSite({
+    url: 'https://heidivogler.de',
+    name: 'Heidi Vogler'
+  }),
+  defineWebPage(),
+])
+
 </script>

@@ -1,21 +1,12 @@
 import i18n from './config/i18n'
 import postcss from './config/postcss'
 import sitemap from './config/sitemap'
+import meta from './config/meta'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	app: {
 		pageTransition: { name: 'page', mode: 'out-in' },
-		head: {
-			title: "Heidi Vogler – Reittherapie, Traumabearbeitung, Waldbaden",
-			meta: [
-				{
-					name: "description",
-					content:
-						"Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.",
-				},
-			],
-			link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
-		}
+		head: meta.head
 	},
 	modules: [
 		'nuxt-simple-sitemap',
@@ -37,9 +28,6 @@ export default defineNuxtConfig({
 		'~/assets/css/transitions.css',
 		'@fortawesome/fontawesome-svg-core/styles.css'
 	],
-	i18n,
-	postcss,
-	sitemap,
 	runtimeConfig: {
 		public: {
 			mapbox: {
@@ -49,6 +37,15 @@ export default defineNuxtConfig({
 				to: process.env.ADDRESS_TO
 			},
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.heidivogler.de',
+			siteName: meta.head.title,
+			siteDescription: meta.head.meta.find((m) => m.name === 'description')?.content,
+			language: 'de-DE',
 		}
 	},
+	i18n,
+	postcss,
+	// sitemap,
+	extends: [
+		'nuxt-seo-kit'
+	]
 })

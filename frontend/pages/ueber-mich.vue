@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SchemaOrgWebPage type="AboutPage" name="Heidi Vogler" />
     <div class="h-[90vh] min-h-[720px] relative">
       <TransitionGroup name="slide-in">
         <Image
