@@ -81,7 +81,7 @@
 <script lang="ts">
 import Button from "~/components/molecules/Button.vue";
 import Popup from "~/components/molecules/Popup.vue";
-import { Event, EventAttributes } from "~/types";
+import { Event, Strapi4ResponseData } from "~/types";
 import DownloadEvent from "~/components/molecules/DownloadEvent.vue";
 
 export default defineComponent({
@@ -92,7 +92,7 @@ export default defineComponent({
   },
   props: {
     event: {
-      type: Object as () => Event,
+      type: Object as () => Strapi4ResponseData<Event>,
       required: true,
     },
     size: {

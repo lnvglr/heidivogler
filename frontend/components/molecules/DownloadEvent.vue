@@ -3,12 +3,14 @@
 </template>
 
 <script lang="ts">
-import { Event, EventAttributes } from '~/types'
+import { Event } from '~/types'
+import { EventAttributes } from 'ics/index'
+import { Strapi4ResponseData } from '~/types'
 
 export default defineComponent({
   props: {
     event: {
-      type: Object as () => Event,
+      type: Object as () => Strapi4ResponseData<Event>,
       required: true,
     },
   },

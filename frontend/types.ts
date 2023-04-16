@@ -1,50 +1,20 @@
-import publicRuntimeConfig from '@nuxtjs/strapi/dist/module'
-import { Ref } from 'vue'
-import { StrapiAuthenticationData, StrapiAuthenticationResponse, StrapiAuthProvider, StrapiEmailConfirmationData, StrapiForgotPasswordData, StrapiRegistrationData, StrapiResetPasswordData, Strapi4RequestParams } from '@nuxtjs/strapi/dist/runtime/types'
-export { Strapi4Response, Strapi4ResponseData, Strapi4RequestParams } from '@nuxtjs/strapi/dist/runtime/types'
-import { EventAttributes } from 'ics/index'
+import { Strapi4ResponseSingle, Strapi4ResponseMany } from '@nuxtjs/strapi/dist/runtime/types'
+export { Strapi4ResponseData, Strapi4ResponseSingle, Strapi4ResponseMany } from '@nuxtjs/strapi/dist/runtime/types'
 export { EventAttributes } from 'ics/index'
 import Mapbox from 'mapbox-gl'
+import { PublicRuntimeConfig } from 'nuxt/schema'
 
 export interface Event {
-  attributes: {
-    title: string;
-    description: string;
-    price: number;
-    groupSize: number;
-    start: string;
-    end: string;
-    time: string;
-    canRegister: boolean;
-    offer: {
-      data: Offer
-    }
-  }
-}
-export interface Offer {
   title: string;
-  slug: string;
-  createdAt: string
-  updatedAt: string
-  rank: number
-  events: {
-    data: EventAttributes[]
-  }
-  hero: {
-    copy: string;
-    image: {
-      data: {
-        id: number;
-        attributes: Media;
-      }
-    }
-    data: {
-      id: number
-      attributes: Media
-    }
-  }
+  description: string;
+  price: number;
+  groupSize: number;
+  start: string;
+  end: string;
+  time: string;
+  canRegister: boolean;
+  offer: Strapi4ResponseSingle<Offer>
 }
-
 export interface ImageProps {
   name: string
   hash: string
@@ -56,7 +26,7 @@ export interface ImageProps {
   size: number
   url: string
 }
-export interface Media extends ImageProps {
+export interface StrapiMedia extends ImageProps {
   alternativeText: string
   caption: string
   previewUrl: string | null
@@ -68,41 +38,28 @@ export interface Media extends ImageProps {
     [key: string]: ImageProps
   }
 }
-
-export interface StrapiUser {
-  blocked: boolean;
-  confirmed: boolean;
+export interface Offer {
+  title: string;
+  slug: string;
   createdAt: string
-  email: string
-  id: number
-  name: string
-  provider: string
   updatedAt: string
-  username: string
-  role: string
+  rank: number
+  headerColor: string
+  events: Strapi4ResponseMany<Event>
+  hero: Strapi4ResponseSingle<StrapiMedia> & {
+    copy: string;
+    image: Strapi4ResponseSingle<StrapiMedia>
+  }
 }
 
-interface Strapi {
-  find<T>(collection: string, params?: Strapi4RequestParams): Promise<T>;
-  findOne<T>(contentType: string, id: string | number, params?: Strapi4RequestParams): Promise<T>;
-  create(collection: string, data: object): Promise<any>;
-  count(collection: string, params?: object): Promise<any>;
-  update(collection: string, id: number, data: object): Promise<any>;
-  delete(collection: string, id: number): Promise<any>;
-  setToken: (value: string | null) => void;
-  setUser: (value: StrapiUser) => void;
-  fetchUser: () => Promise<Ref<StrapiUser>>;
-  login: (data: StrapiAuthenticationData) => Promise<StrapiAuthenticationResponse>;
-  logout: () => void;
-  register: (data: StrapiRegistrationData) => Promise<StrapiAuthenticationResponse>;
-  forgotPassword: (data: StrapiForgotPasswordData) => Promise<void>;
-  resetPassword: (data: StrapiResetPasswordData) => Promise<StrapiAuthenticationResponse>;
-  sendEmailConfirmation: (data: StrapiEmailConfirmationData) => Promise<void>;
-  getProviderAuthenticationUrl: (provider: StrapiAuthProvider) => string;
-  authenticateProvider: (provider: StrapiAuthProvider, access_token: string) => Promise<StrapiAuthenticationResponse>;
-  user: StrapiUser;
-  api: typeof publicRuntimeConfig;
-  client: <T>(contentType: string, data: Partial<T>, method?: string) => Promise<T>
+
+export interface Strapi extends ReturnType<typeof useStrapi> {
+  api: PublicRuntimeConfig['strapi']
+  client: <T>(
+    contentType: string,
+    data?: Partial<T>,
+    method?: string
+  ) => Promise<T>
 }
 
 declare module '@vue/runtime-core' {
