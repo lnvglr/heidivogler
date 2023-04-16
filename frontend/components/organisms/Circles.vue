@@ -7,15 +7,14 @@
       <div
         v-for="(circle, i) in circles"
         :key="i"
-        class="absolute rounded-full border border-gold-500"
+        class="absolute rounded-full border border-gold-500 duration-1000"
         :style="{
           width: circle.size + '%',
           paddingBottom: circle.size + '%',
           top: circle.top + '%',
           right: circle.right + '%',
           left: circle.left + '%',
-          transform: circle.hoverTransform,
-          transition: circle.hoverTransition,
+          transform: circle.transform,
         }"
       ></div>
     </div>
@@ -24,45 +23,49 @@
 
 <script lang="ts">
 interface Circle {
-  index: number;
-  baseSize: number;
-  baseTop: number;
-  baseLeft: number;
-  baseRight?: number;
   size?: number;
   top?: number;
   left?: number;
   right?: number;
-  hoverTransform?: string;
-  hoverTransition?: string;
+  transform?: string;
 }
 export default defineComponent({
   mounted() {
     window.addEventListener("mousemove", this.onMouseMove);
-    setInterval(this.updateCircles, 10);
-    setTimeout(() => {
-      this.show = true;
-    }, 500);
+    setTimeout(() => (this.show = true), 500);
+    this.animateCircles();
+  },
+  unmounted() {
+    window.removeEventListener("mousemove", this.onMouseMove);
   },
   methods: {
     onMouseMove(e: MouseEvent) {
       this.pointer = {
-        x: Math.abs(e.clientX / window.innerWidth),
-        y: Math.abs(e.clientY / window.innerHeight),
+        x: Math.abs(e.clientX / window.innerWidth) - 0.5,
+        y: Math.abs(e.clientY / window.innerHeight) - 0.5,
       };
     },
-    updateCircles() {
+    randomNumber(min: number, max: number) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    animateCircles() {
+      requestAnimationFrame(this.animateCircles);
+
       const newCircles = this.circles.map((circle, i) => {
-        const sizeVariation = Math.sin(Date.now() / 2000 + circle.index);
-        const hoverVariation = () => Math.sin(Date.now() / 1000 + circle.index) * (i % 2 ? -1 : 1);
-        const size = circle.baseSize + sizeVariation;
-        const transform = `translateX(${hoverVariation() + (this.pointer.x - 0.5) * 10}%) translateY(${hoverVariation() + (this.pointer.x - 0.5) * 10}%) scale(${1 + hoverVariation() / 20})`;
-        const transition = 'all 1s cubic-bezier(0.19, 1, 0.22, 1)';
+        const sizeVariation = () =>
+          (Math.sin(Date.now() / this.sizeVariation + i) * (i % 2 ? -5 : 5)) /
+            20 +
+          1;
+        const hoverVariation = (pointer: number) =>
+          Math.sin(Date.now() / this.hoverVariation + i) * (i % 2 ? -3 : 3) +
+          pointer * (i % 2 ? 50 : -50);
+        const transform = `translate(${hoverVariation(
+          this.pointer.x
+        )}%, ${hoverVariation(this.pointer.y)}%) scale(${sizeVariation()})`;
+
         return {
           ...circle,
-          size,
-          hoverTransform: transform,
-          hoverTransition: transition,
+          transform,
         };
       });
       this.circles = newCircles;
@@ -75,22 +78,21 @@ export default defineComponent({
         x: 0,
         y: 0,
       },
+      sizeVariation: this.randomNumber(7000, 10000),
+      hoverVariation: this.randomNumber(1000, 2000),
       circles: [
         {
-          index: 0,
-          baseSize: 16,
+          size: 16,
           top: 0,
           left: -2,
         },
         {
-          index: 1,
-          baseSize: 40,
+          size: 40,
           top: 30,
           right: -10,
         },
         {
-          index: 2,
-          baseSize: 20,
+          size: 20,
           top: 70,
           left: 10,
         },
