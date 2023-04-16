@@ -1,6 +1,5 @@
 <template>
   <div v-if="offer">
-    <pre>{{ offer?.attributes.content?.find((e) => e.price)?.price[0] }}</pre>
     <div
       class="h-[60vh] md:h-[80vh] md:min-h-[720px] relative overflow-hidden -mt-36"
     >
