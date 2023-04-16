@@ -17,24 +17,21 @@
 <script lang="ts" setup>
 import Header from "~/components/species/Header.vue";
 import Footer from "~/components/species/Footer.vue";
-import { StrapiUser } from "~/types";
+import { Strapi } from "~/types";
 import "@formkit/themes/genesis";
 
 const app = useNuxtApp();
-const strapi = {
-  client: <T>(
-    contentType: string,
-    data?: Partial<T>,
-    method: string = "POST"
-  ) => useStrapiClient()(contentType, { method, body: data }) as Promise<T>,
+const strapi: Strapi = {
   ...useStrapi(),
-  ...useStrapiAuth(),
-  ...useStrapiUser(),
+  client: (
+    contentType,
+    data,
+    method = "POST"
+  ) => useStrapiClient()(contentType, { method, body: data }),
   api: useRuntimeConfig().public.strapi,
-  user: {} as StrapiUser,
 };
-strapi.user = (await strapi.fetchUser()).value as StrapiUser;
-if (!app.$strapi) app.provide("strapi", reactive(strapi));
+
+if (!app.$strapi) app.provide("strapi", strapi);
 if (!app.$state)
   app.provide("state", reactive({ headerColor: null, map: null }));
 </script>
