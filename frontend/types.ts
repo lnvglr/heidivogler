@@ -1,4 +1,4 @@
-import { Strapi4ResponseSingle, Strapi4ResponseMany } from '@nuxtjs/strapi/dist/runtime/types'
+import { Strapi4ResponseSingle, Strapi4ResponseMany, Strapi4ResponseData } from '@nuxtjs/strapi/dist/runtime/types'
 export { Strapi4ResponseData, Strapi4ResponseSingle, Strapi4ResponseMany } from '@nuxtjs/strapi/dist/runtime/types'
 export { EventAttributes } from 'ics/index'
 import Mapbox from 'mapbox-gl'
@@ -40,6 +40,8 @@ export interface StrapiMedia extends ImageProps {
 }
 export interface Offer {
   title: string;
+  copy: string;
+  subCopy: string;
   slug: string;
   createdAt: string
   updatedAt: string
@@ -48,8 +50,10 @@ export interface Offer {
   events: Strapi4ResponseMany<Event>
   hero: Strapi4ResponseSingle<StrapiMedia> & {
     copy: string;
+    subCopy: string;
     image: Strapi4ResponseSingle<StrapiMedia>
   }
+  content: (Record<string, any> & { __component: string })[]
 }
 
 
@@ -62,12 +66,13 @@ export interface Strapi extends ReturnType<typeof useStrapi> {
   ) => Promise<T>
 }
 
+export interface State {
+  headerColor: string | null
+  map?: Mapbox.Map
+}
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $state: {
-      headerColor: string | null,
-      map?: Mapbox.Map
-    },
+    $state: State,
     $strapi: Strapi
   }
 }

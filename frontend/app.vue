@@ -37,8 +37,6 @@ if (!app.$strapi) app.provide("strapi", strapi);
 if (!app.$state)
   app.provide("state", reactive({ headerColor: null, map: null }));
 
-const about = (await strapi.find("about", { populate: "*" })).data;
-
 useSchemaOrg([
   defineLocalBusiness({
     name: 'Heidi Vogler',

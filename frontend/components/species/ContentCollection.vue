@@ -1,5 +1,5 @@
 <template>
-  <div v-if="content?.length > 0">
+  <div v-if="content?.length">
     <component
       v-for="element in content"
       :key="element.id"
@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import TextBlock from "~/components/molecules/TextBlock.vue";
 import TextCard from "~/components/molecules/TextCard.vue";
 import QuoteSection from "~/components/organisms/QuoteSection.vue";
@@ -24,60 +24,44 @@ import ContactSection from "~/components/organisms/ContactSection.vue";
 import OffersSection from "~/components/organisms/OffersSection.vue";
 import TileSection from "~/components/organisms/TileSection.vue";
 import ImageTextBlock from "~/components/organisms/ImageTextBlock.vue";
+import { Strapi4ResponseData } from "@nuxtjs/strapi/dist/runtime/types";
+import { Offer } from "~/types";
 
-export default defineComponent({
-  components: {
-    TextBlock,
-    TextCard,
-    QuoteSection,
-    AboutSection,
-    ImageSection,
-    ButtonSection,
-    EventsSection,
-    PriceSection,
-    ContactSection,
-    TestimonialsSection,
-    OffersSection,
-    TileSection,
-    ImageTextBlock
-  },
-  props: {
-    content: Object,
-    page: Object,
-  },
-  methods: {
-    component(name: string) {
-      switch (name) {
-        case "block.element":
-          return TextBlock;
-        case "block.card":
-          return TextCard;
-        case "block.quote":
-          return QuoteSection;
-        case "block.image":
-          return ImageSection;
-        case "block.button":
-          return ButtonSection;
-        case "block.events":
-          return EventsSection;
-        case "block.price-group":
-          return PriceSection;
-        case "block.testimonials":
-          return TestimonialsSection;
-        case "block.contact-form":
-          return ContactSection;
-        case "block.about":
-          return AboutSection;
-        case "block.offers":
-          return OffersSection;
-        case "block.tiles":
-          return TileSection;
-        case "block.image-text-block":
-          return ImageTextBlock;
-      }
-    },
-  },
-});
+defineProps<{
+  content: Offer['content'];
+  page: Strapi4ResponseData<any>;
+}>();
+
+const component = (name: string) => {
+  switch (name) {
+    case "block.element":
+      return TextBlock;
+    case "block.card":
+      return TextCard;
+    case "block.quote":
+      return QuoteSection;
+    case "block.image":
+      return ImageSection;
+    case "block.button":
+      return ButtonSection;
+    case "block.events":
+      return EventsSection;
+    case "block.price-group":
+      return PriceSection;
+    case "block.testimonials":
+      return TestimonialsSection;
+    case "block.contact-form":
+      return ContactSection;
+    case "block.about":
+      return AboutSection;
+    case "block.offers":
+      return OffersSection;
+    case "block.tiles":
+      return TileSection;
+    case "block.image-text-block":
+      return ImageTextBlock;
+  }
+};
 </script>
 
 <style scoped></style>
