@@ -9,36 +9,35 @@
         <NuxtLayout>
           <NuxtPage :nuxt-child-key="$route.path" keep-alive />
         </NuxtLayout>
-        <Footer class="w-full mt-auto" />
       </div>
+      <Footer class="w-full" />
     </Body>
   </Html>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import Header from "~/components/species/Header.vue";
 import Footer from "~/components/species/Footer.vue";
 import { StrapiUser } from "~/types";
 import "@formkit/themes/genesis";
 
-export default defineComponent({
-  async setup() {
-    const app = useNuxtApp();
-    const strapi = {
-      client: <T>(contentType: string, data?: Partial<T>, method: string = "POST") =>
-        useStrapiClient()(contentType, { method, body: data }) as Promise<T>,
-      ...useStrapi4(),
-      ...useStrapiAuth(),
-      ...useStrapiUser(),
-      api: useRuntimeConfig().public.strapi,
-      user: {} as StrapiUser,
-    };
-    strapi.user = (await strapi.fetchUser()).value as StrapiUser;
-    if (!app.$strapi) app.provide("strapi", reactive(strapi));
-    if (!app.$state) app.provide("state", reactive({headerColor: null, map: null}));
-  },
-  components: {
-    Header,
-    Footer,
-  },
-});
+useHead({
+  title: "Heidi Vogler – Reittherapie, Traumabearbeitung, Waldbaden",
+  meta: [
+    { name: 'description', content: 'Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.' }
+  ],
+})
+
+const app = useNuxtApp();
+const strapi = {
+  client: <T>(contentType: string, data?: Partial<T>, method: string = "POST") =>
+    useStrapiClient()(contentType, { method, body: data }) as Promise<T>,
+  ...useStrapi(),
+  ...useStrapiAuth(),
+  ...useStrapiUser(),
+  api: useRuntimeConfig().public.strapi,
+  user: {} as StrapiUser,
+};
+strapi.user = (await strapi.fetchUser()).value as StrapiUser;
+if (!app.$strapi) app.provide("strapi", reactive(strapi));
+if (!app.$state) app.provide("state", reactive({ headerColor: null, map: null }));
 </script>
