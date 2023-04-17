@@ -195,7 +195,6 @@ export default defineComponent({
       return futureStart || futureEnd
     },
     canRegister(): boolean {
-      console.log(this.event.attributes)
       return this.futureEvent && this.event.attributes.canRegister;
     },
     time() {

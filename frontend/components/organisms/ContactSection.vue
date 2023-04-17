@@ -12,10 +12,10 @@
           'md:col-span-1': layout === 'column',
         }"
       >
-        {{ data.preCopy }}
+        {{ data?.preCopy }}
       </div>
       <div class="flex flex-col gap-3">
-        <div class="text-2xl md:text-4xl mb-12">{{ data.copy }}</div>
+        <div class="text-2xl md:text-4xl mb-12">{{ data?.copy }}</div>
       </div>
       <ContactForm :collapsed="true"/>
     </div>
@@ -44,6 +44,7 @@ export default defineComponent({
       },
       sending: false,
       sent: false,
+      layout: null
     };
   },
   methods: {

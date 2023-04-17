@@ -1,132 +1,87 @@
 <template>
-  <div v-if="source" class="overflow-hidden h-full w-full" v-bind="$attrs">
-    <img
-      :src="(inView && source) || smallest.url || ''"
-      :srcset="(inView && srcset) || ''"
-      :style="`--aspect-ratio: ${aspectRatio}`"
-      class="duration-300"
-      :class="{
-        'w-full h-full': width === 'full',
-        'duration-75 blur-lg brightness-75 scale-105': loading,
-      }"
-      :width="w"
-      :height="h"
-      ref="image"
-      :alt="alt || media?.alternativeText || 'image'"
-      @load="inView && (loading = false)"
-      :loading="lazy ? 'lazy' : 'eager'"
-    />
-  </div>
   <div
-    v-else
-    class="placeholder flex items-center justify-center text-beige-400 font-bold"
+    ref="image"
+    class="overflow-hidden h-full w-full"
+    v-bind="$attrs"
   >
-    {{ placeholder }}
+  <!-- <pre class="m-12 py-20">{{ smallest.url }}</pre> -->
+    <NuxtImg
+      :src="sources[0].url"
+      class="duration-300 w-full h-full"
+      provider="cloudinary"
+      :placeholder="smallest.url"
+      format="webp"
+      responsive
+      :width="w"
+      quality="90"
+      :class="[aspectRatio, object, loading ? 'blur-lg scale-105' : '']"
+      :alt="alt || media?.alternativeText || 'image'"
+      loading="lazy"
+      @load="load"
+    />
+      <!-- :srcset="srcset" -->
   </div>
 </template>
-<script lang="ts">
-import { Media, ImageProps } from "~/types";
-export default defineComponent({
-  props: {
-    media: {
-      type: Object as () => Media,
-    },
-    src: {
-      type: String,
-      default: null,
-    },
-    alt: {
-      type: String,
-      default: null,
-    },
-    size: {
-      type: String,
-      default: "small",
-    },
-    width: {
-      type: [String, Number],
-    },
-    height: {
-      type: String,
-    },
-    aspectRatio: {
-      type: String,
-      default: "",
-    },
-    placeholder: {
-      type: String,
-      default: "",
-    },
-    lazy: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  computed: {
-    w() {
-      if (!this.width) return "auto";
-      if (typeof this.width === "number") return this.width;
-      return this.format?.width || "auto";
-    },
-    h() {
-      if (typeof this.height == "number") return this.height;
-      return "auto";
-    },
-    format() {
-      if (!this.media?.formats) return null;
-      const f = Object.entries((this.media as Media)?.formats)
-        .sort((a, b) => a[1].width - b[1].width)
-        .find((image) => this.match(image));
-      if (!f) return this.media.formats["thumbnail"];
-      return f[1];
-    },
-    largest(): Media {
-      return Object.entries((this.media as Media)?.formats).reduce(
-        (a, b) => (a[1]?.width > b[1]?.width ? a : b),
-        []
-      );
-    },
-    smallest(): Media {
-      return Object.entries((this.media as Media)?.formats).reduce(
-        (a, b) => (a[1]?.width < b[1]?.width ? a : b),
-        []
-      ) as Media;
-    },
-    source(): string {
-      if (this.src) return this.src;
-      if (this.media?.url) return this.media.url;
-    },
-    srcset() {
-      const formats = Object.values(this.media.formats) as ImageProps[];
-      formats.push({
-        url: this.source,
-        width: 2560,
-      } as ImageProps);
-      const srcset = formats.map((format) => `${format.url} ${format.width}w`).join(", ");
-      return srcset;
-    },
-  },
-  data() {
-    return {
-      inView: !this.lazy,
-      loading: true,
-    };
-  },
-  methods: {
-    match(image: ImageProps) {
-      const width = parseInt(this.width);
-      if (!isNaN(width) && image[1]?.width > width) return image;
-      if (this.width === "full" && image[0] === this.largest[0]) return image;
-    },
-  },
+<script lang="ts" setup>
+import { CSSProperties } from "vue";
+import { ImageProps, StrapiMedia } from "~/types";
+
+const props = defineProps<{
+  media?: StrapiMedia;
+  src?: string;
+  alt?: string;
+  size?: string;
+  width?: string | number;
+  height?: string;
+  aspectRatio?: string;
+  placeholder?: string;
+  lazy?: boolean;
+  object?: CSSProperties['objectFit'];
+}>();
+
+const w = computed(() => {
+  if (props.width === "full") return undefined;
+  if (typeof props.width === "number") return props.width;
+  if (typeof props.width === "string" && typeof parseInt(props.width, 10) === 'number') return parseInt(props.width, 10);
+  return 100;
 });
+// const sizeMap = {
+//   thumbnail: 'xs',
+//   small: 'sm',
+//   medium: 'md',
+//   large: 'lg',
+//   full: 'xl'
+// }
+// const sizes = computed(() =>{
+//   const formats = Object.entries(props.media.formats) as [string, ImageProps][];
+//   const srcset = formats.map(([name, format]) => `${sizeMap[name]}:${format.width}px`).join(" ");
+//   return srcset;
+// })
+const formats = Object.values(props.media?.formats || {}) as ImageProps[];
+const source = computed(() => props.src || props.media?.url || "");
+
+const smallest = computed(()=> {
+  return formats.reduce(
+    (acc, curr) => (curr?.width < acc?.width ? curr : acc),
+  );
+})
+const sources = computed(()=> {
+  return formats.sort(
+    (a, b) => (b?.width - a?.width),
+  );
+})
+const srcset = computed(() =>{
+  return formats.map((format) => `${format.url} ${format.width}w`).join(", ");
+})
+
+
+const aspectRatio = computed(() => props.aspectRatio ? `aspect-[${props.aspectRatio}]` : 'aspect-square');
+const object = computed(() => props.object ? `object-[${props.object}]` : 'object-cover');
+
+const loading = ref(true)
+const load = () => {
+  setTimeout(() => {
+    loading.value = false;
+  }, 100);
+}
 </script>
-<style scoped>
-img {
-  aspect-ratio: var(--aspect-ratio);
-  object-fit: cover;
-}
-:global(.placeholder) {
-  font-size: var(--text-sm);
-}
-</style>

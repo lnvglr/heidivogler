@@ -1,6 +1,7 @@
 import i18n from './config/i18n'
 import postcss from './config/postcss'
 import sitemap from './config/sitemap'
+import image from './config/image'
 import meta from './config/meta'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -12,6 +13,7 @@ export default defineNuxtConfig({
 		'nuxt-simple-sitemap',
 		'@nuxtjs/strapi',
 		'@nuxtjs/i18n',
+		'@nuxt/image-edge',
 		'@formkit/nuxt'
 	],
 	nitro: {
@@ -45,6 +47,7 @@ export default defineNuxtConfig({
 	},
 	i18n,
 	postcss,
+	image,
 	// sitemap,
 	extends: [
 		'nuxt-seo-kit'

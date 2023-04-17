@@ -35,6 +35,23 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
+      breakpoints: {
+        xlarge: 2000,
+        large: 1000,
+        medium: 750,
+        small: 500,
+      },
+      // provider: 'cloudinary',
+      // providerOptions: {
+      //   cloud_name: env('CLOUDINARY_NAME'),
+      //   api_key: env('CLOUDINARY_KEY'),
+      //   api_secret: env('CLOUDINARY_SECRET'),
+      // },
+      // actionOptions: {
+      //   upload: {},
+      //   delete: {},
+      // },
+
       provider: 'aws-s3',
       providerOptions: {
         accessKeyId: env('AWS_ACCESS_KEY_ID'),
@@ -49,12 +66,6 @@ module.exports = ({ env }) => ({
         uploadStream: {},
         delete: {},
       },
-      breakpoints: {
-        xlarge: 2000,
-        large: 1000,
-        medium: 750,
-        small: 500,
-      }
     },
   },
   email: {

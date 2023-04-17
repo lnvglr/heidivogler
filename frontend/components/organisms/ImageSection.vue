@@ -6,6 +6,7 @@
 					:media="content"
 					class="h-full -z-10 -translate-y-2/3 sm:-translate-y-1/2 lg:-translate-y-1/3 scale-105"
 					width="full"
+					object="contain"
 				/>
 			</ScrollParallax>
 		</div>

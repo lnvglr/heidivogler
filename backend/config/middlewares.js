@@ -1,4 +1,3 @@
-const awsBucket = `${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com`;
 module.exports = [
   'strapi::compression',
   'strapi::errors',
@@ -13,15 +12,13 @@ module.exports = [
             "'self'",
             'data:',
             'blob:',
-            'dl.airtable.com',
-            awsBucket,
+            'res.cloudinary.com',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            'dl.airtable.com',
-            awsBucket,
+            'res.cloudinary.com',
           ],
           upgradeInsecureRequests: null,
         },
