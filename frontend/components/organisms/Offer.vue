@@ -99,15 +99,4 @@ onUnmounted(() => {
     getParallaxSpeed();
   });
 })
-
-  methods: {,
-  },
-  computed: {
-    events() {
-      return this.offer.attributes.events?.data.filter(
-        (event) => event.attributes.end > new Date().toISOString()
-      );
-    },
-  },
-});
 </script>
