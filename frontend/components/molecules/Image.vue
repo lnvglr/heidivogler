@@ -14,6 +14,7 @@
       ref="image"
       :alt="alt || media?.alternativeText || 'image'"
       @load="inView && (loading = false)"
+      :loading="lazy ? 'lazy' : 'eager'"
     />
   </div>
   <div
@@ -105,22 +106,13 @@ export default defineComponent({
       return srcset;
     },
   },
-  mounted() {
-    this.$nextTick(() => {
-      if (this.$refs.image) this.observer.observe(this.$refs.image);
-    });
-  },
   data() {
     return {
-      observer: new IntersectionObserver((e) => this.checkView(e[0]), { rootMargin: "50%" }),
       inView: !this.lazy,
       loading: true,
     };
   },
   methods: {
-    checkView({isIntersecting}) {
-      if (isIntersecting) this.inView = true
-    },
     match(image: ImageProps) {
       const width = parseInt(this.width);
       if (!isNaN(width) && image[1]?.width > width) return image;
