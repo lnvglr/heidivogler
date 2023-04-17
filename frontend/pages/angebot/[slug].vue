@@ -43,7 +43,7 @@ import {
   Strapi4ResponseData,
 } from "~/types";
 const route = useRoute();
-const state = useState();
+const state = useAppState();
 
 const offer = ref<Strapi4ResponseData<Offer> | null>(null);
 onMounted(() => {

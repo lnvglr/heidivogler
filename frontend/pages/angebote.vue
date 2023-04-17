@@ -26,9 +26,9 @@ const offers = ref(null as Strapi4ResponseData<Offer>[] | null)
 const featured = ref([] as number[])
 onMounted(async () => {
   useStrapi().find<Offer>("offers", { populate: ["content", "hero"] }).then(({ data }) => offers.value = data);
-  useState().setHeaderColor("dark")
+  useAppState().setHeaderColor("dark")
 })
-onUnmounted(() => useState().setHeaderColor(null))
+onUnmounted(() => useAppState().setHeaderColor(null))
 
 definePageMeta({
   title: "Angebote",

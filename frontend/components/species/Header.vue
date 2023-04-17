@@ -3,9 +3,9 @@
     class="z-50 overflow-hidden absolute w-screen"
     :class="{
       open: menuOpen,
-      'text-white': useState().headerColor.value === 'light' || menuOpen,
-      'text-gold-300': useState().headerColor.value === 'default' && !menuOpen,
-      'text-stone-700': (!useState().headerColor.value || useState().headerColor.value === 'dark') && !menuOpen,
+      'text-white': useAppState().headerColor.value === 'light' || menuOpen,
+      'text-gold-300': useAppState().headerColor.value === 'default' && !menuOpen,
+      'text-stone-700': (!useAppState().headerColor.value || useAppState().headerColor.value === 'dark') && !menuOpen,
       loaded,
     }"
     style="backdropfilter: blur(var(--header-blur, 0px))"
@@ -44,17 +44,17 @@
             :to="item.path"
             class="duration-500 whitespace-nowrap py-2"
             :exactActiveClass="
-              useState().headerColor.value === 'light'
+              useAppState().headerColor.value === 'light'
                 ? 'text-white'
-                : useState().headerColor.value === 'default' || menuOpen
+                : useAppState().headerColor.value === 'default' || menuOpen
                 ? 'text-gold-400'
                 : 'text-stone-600'
             "
             :title="item.title || item.name"
             :class="{
-              'hover:text-gold-100': useState().headerColor.value === 'light',
-              'hover:text-gold-600': useState().headerColor.value === 'default',
-              'hover:text-stone-900': !useState().headerColor.value || useState().headerColor.value === 'dark',
+              'hover:text-gold-100': useAppState().headerColor.value === 'light',
+              'hover:text-gold-600': useAppState().headerColor.value === 'default',
+              'hover:text-stone-900': !useAppState().headerColor.value || useAppState().headerColor.value === 'dark',
             }"
             @click="menuOpen = false"
           >

@@ -34,7 +34,7 @@ const strapi: Strapi = {
 };
 
 if (!app.$strapi) app.provide("strapi", strapi);
-if (!app.$strapi) app.provide("state", useState());
+if (!app.$strapi) app.provide("state", useAppState());
 
 useSchemaOrg([
   defineLocalBusiness({

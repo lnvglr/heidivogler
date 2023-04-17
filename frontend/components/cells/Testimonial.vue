@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="testimonial"
     class="flex flex-col gap-5 items-center bg-stone-50 rounded-2xl p-6 sm:p-12 w-full max-w-2xl"
   >
     <div class="w-24 h-24 -translate-y-20 -mb-20 sm:-translate-y-24 sm:-mb-24" v-if="testimonial.image.data">
@@ -26,26 +25,20 @@
         class="hidden sm:flex justify-center items-center text-gold-400 text-5xl leading-none text-center"
         :class="{ '-mt-10': testimonial.image.data }"
       >
-        <FontAwesomeIcon :icon="['fas', 'quote-right']" />
+        <ClientOnly><FontAwesomeIcon :icon="['fas', 'quote-right']" /></ClientOnly>
       </div>
     </div>
     <div v-html="useMarkdown(testimonial.testimonial)" class="markdown" />
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Image from "~/components/molecules/Image.vue";
 import Stars from "~/components/molecules/Stars.vue";
-export default defineComponent({
-  components: {
-    Image,
-    Stars,
-  },
-  props: {
-    testimonial: {
-      type: Object,
-    },
-  }
-});
+import { Testimonial } from "~/types";
+
+defineProps<{
+  testimonial: Testimonial['testimonial'][number]
+}>()
+
 </script>
-<style lang="scss"></style>

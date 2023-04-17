@@ -111,7 +111,7 @@ export default defineComponent({
   },
   async setup() {
    const page = await useStrapi().find("home").then(({data}) => {
-     useState().setHeaderColor("default");
+     useAppState().setHeaderColor("default");
      return data;
     });
     return {

@@ -82,7 +82,7 @@
 } */
 .move-leave-to {
   opacity: 0;
-  transform: scale(1.1) translateY(50%);
+  transform: scale(1.1) translateY(30%);
   /* animation: flip-out 500ms; */
 }
 @keyframes flip-in {

@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it'
+
 export const useMarkdown = (string: string) => {
   const md = new MarkdownIt({
     html: true,

@@ -1,5 +1,5 @@
 <template>
-	<div class="flex gap-1 text-gold-400"><FontAwesomeIcon v-for="star in n" :icon="['fas', 'star']" /></div>
+	<ClientOnly><div class="flex gap-1 text-gold-400"><FontAwesomeIcon v-for="star in n" :icon="['fas', 'star']" /></div></ClientOnly>
 </template>
 
 <script lang="ts">

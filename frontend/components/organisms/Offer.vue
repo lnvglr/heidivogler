@@ -34,11 +34,13 @@
               offer.attributes.headerColor === 'dark',
           }"
         >
-          <FontAwesomeIcon
-            :icon="['fas', 'calendar']"
-            class="mr-3"
-            fixed-width
-          />
+          <ClientOnly>
+            <FontAwesomeIcon
+              :icon="['fas', 'calendar']"
+              class="mr-3"
+              fixed-width
+            />
+          </ClientOnly>
           <span class="font-bold">
             {{ $t("upcoming.events", { n: events.length }) }}
           </span>

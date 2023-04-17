@@ -10,41 +10,22 @@
       />
     </div>
 		<div class="flex flex-col items-start gap-6">
-			<p class="text-xl sm:text-2xl" v-html="content"/>
+			<div class="text-xl sm:text-2xl" v-html="useMarkdown(data.text)" />
 			<Button :to="'ueber-mich'" :title="$t('learn.more')">{{$t('learn.more')}}</Button>
 		</div>
 		</div>
 	</section>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import Image from "~/components/molecules/Image.vue";
 import Button from '~/components/molecules/Button.vue'
+import { Strapi4ResponseSingle, StrapiMedia } from "~/types";
 
-export default defineComponent({
-	components: {
-		Image,
-		Button
-	},
-	props: {
-		data: {
-			type: Object,
-		}
-	},
-	computed: {
-		content() {
-			if (!this.data?.text) return
-			return useMarkdown(this.data.text)
-		}
-	},
-})
-</script>
-<style lang="scss">
-blockquote {
-	em, i {
-		font-style: inherit;
-		color: var(--color-success-500)
+const { data } = defineProps<{
+	data: {
+		text: string;
+		image: Strapi4ResponseSingle<StrapiMedia>;
 	}
-
-}
-</style>
+}>();
+</script>

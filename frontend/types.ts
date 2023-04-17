@@ -38,6 +38,18 @@ export interface StrapiMedia extends ImageProps {
     [key: string]: ImageProps
   }
 }
+export interface ContentComponent {
+  __component: string
+}
+export interface Testimonial {
+  id: number
+  testimonial: {
+    image: Strapi4ResponseSingle<StrapiMedia>
+    name: string
+    position: string
+    testimonial: string
+  }
+}
 export interface Offer {
   title: string;
   copy: string;
