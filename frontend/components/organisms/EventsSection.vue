@@ -26,7 +26,7 @@
     v-else
     class="px-5 py-10 md:p-12 text-center flex item-center justify-center flex-col text-stone-400"
   >
-    <ClientOnly><FontAwesomeIcon :icon="['fas', 'calendar']" fixed-width /></ClientOnly>
+    <span><ClientOnly><FontAwesomeIcon :icon="['fas', 'calendar']" fixed-width /></ClientOnly></span>
     <span>{{ $t("events:noEvents") }}</span>
   </section>
   <!-- <section v-else class="p-12 my-24 text-center text-stone-300"><FontAwesomeIcon class="spin" :icon="['fas', 'circle-notch']" size="2xl" /></section> -->

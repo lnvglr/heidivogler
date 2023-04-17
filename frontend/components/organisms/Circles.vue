@@ -2,7 +2,7 @@
   <Transition name="page">
     <div
       v-if="show"
-      class="absolute left-0 -top-36 w-full h-[200vh] overflow-hidden pointer-events-none"
+      class="absolute left-0 -top-36 w-full h-[200vh] pointer-events-none"
     >
       <div
         v-for="(circle, i) in circles"
@@ -61,7 +61,7 @@ export default defineComponent({
           pointer * (i % 2 ? 50 : -50);
         const transform = `translate(${hoverVariation(
           this.pointer.x
-        )}%, ${hoverVariation(this.pointer.y)}%) scale(${sizeVariation()})`;
+        )}%, ${hoverVariation(this.pointer.y) + window.scrollY / 20}%) scale(${sizeVariation()})`;
 
         return {
           ...circle,

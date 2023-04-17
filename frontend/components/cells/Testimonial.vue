@@ -12,7 +12,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-12 w-full">
       <Stars
         :n="5"
-        class="hidden sm:flex justify-center items-center text-gold-400"
+        class="hidden sm:flex justify-center items-center text-gold-400 -mt-2"
         :class="{ '-mt-10': testimonial.image.data }"
       />
       <div class="col-span-2 flex flex-col items-center gap-2 text-center">
