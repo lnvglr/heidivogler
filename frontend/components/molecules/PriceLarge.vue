@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex flex-col bg-white lg:w-96 rounded-xl overflow-hidden lg:order-0"
+    class="flex flex-col lg:w-96 rounded-xl overflow-hidden lg:order-0"
     :class="{
-      'lg:mt-12 w-full max-lg:order-1': !highlight,
+      'bg-white lg:mt-12 w-full max-lg:order-1': !highlight,
       'bg-success-800 text-white w-full': highlight,
     }"
   >
