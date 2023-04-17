@@ -3,12 +3,11 @@
     class="z-50 overflow-hidden absolute w-screen"
     :class="{
       open: menuOpen,
-      'text-white': useAppState().headerColor.value === 'light' || menuOpen,
+      'text-white drop-shadow bg-gradient-to-b from from-black/10 to-black/0': useAppState().headerColor.value === 'light' || menuOpen,
       'text-gold-300': useAppState().headerColor.value === 'default' && !menuOpen,
-      'text-stone-700': (!useAppState().headerColor.value || useAppState().headerColor.value === 'dark') && !menuOpen,
+      'text-stone-700 bg-gradient-to-b from from-white/10 to-white/0': (!useAppState().headerColor.value || useAppState().headerColor.value === 'dark') && !menuOpen,
       loaded,
     }"
-    style="backdropfilter: blur(var(--header-blur, 0px))"
   >
 
     <BurgerIcon

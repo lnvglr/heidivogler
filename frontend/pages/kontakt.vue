@@ -137,10 +137,10 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.$state.headerColor = "dark";
+    useAppState().setHeaderColor("dark");
   },
   unmounted() {
-    this.$state.headerColor = null;
+    useAppState().setHeaderColor('default');
   },
 });
 </script>

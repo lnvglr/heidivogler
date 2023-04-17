@@ -72,6 +72,7 @@ export default defineComponent({
     } else if (!this.page?.attributes.events) {
       this.events = (
         await this.$strapi.find("events", {
+          publicationState: "live",
           sort: "start",
           populate: {
 				    canRegister: true,

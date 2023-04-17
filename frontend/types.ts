@@ -57,7 +57,7 @@ export interface Page {
   meta: {
     title: string;
   }
-  content: (Record<string, any> & { __component: string })[]
+  content: string
   hero: Strapi4ResponseSingle<StrapiMedia> & {
     copy: string;
     subCopy: string;

@@ -2,7 +2,7 @@
   <Transition name="page">
     <div
       v-if="show"
-      class="absolute left-0 -top-36 w-full h-[200vh] pointer-events-none"
+      class="absolute left-0 -top-36 w-full h-[300vh] overflow-hidden pointer-events-none"
     >
       <div
         v-for="(circle, i) in circles"

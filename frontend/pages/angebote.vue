@@ -25,7 +25,7 @@ import { Offer, Strapi4ResponseData } from "~/types";
 const offers = ref(null as Strapi4ResponseData<Offer>[] | null)
 const featured = ref([] as number[])
 onMounted(async () => {
-  useStrapi().find<Offer>("offers", { populate: ["content", "hero"] }).then(({ data }) => offers.value = data);
+  useStrapi().find<Offer>("offers", { publicationState: "live", populate: ["content", "hero"] }).then(({ data }) => offers.value = data);
   useAppState().setHeaderColor("dark")
 })
 onUnmounted(() => useAppState().setHeaderColor("default"))

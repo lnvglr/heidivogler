@@ -5,6 +5,7 @@
     direction="y"
     :up="true"
   >
+  <pre class="bg-white">{{ offer?.attributes.hero.image }}</pre>
     <NuxtLink
       v-if="offer?.attributes"
       :to="

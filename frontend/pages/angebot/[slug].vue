@@ -49,6 +49,7 @@ const offer = ref<Strapi4ResponseData<Offer> | null>(null);
 onMounted(() => {
   useStrapi()
     .find<Offer>("offers", {
+      publicationState: "live",
       populate: ["content", "hero"],
       filters: { slug: route.params.slug },
     })
