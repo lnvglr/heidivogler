@@ -28,7 +28,7 @@ onMounted(async () => {
   useStrapi().find<Offer>("offers", { populate: ["content", "hero"] }).then(({ data }) => offers.value = data);
   useAppState().setHeaderColor("dark")
 })
-onUnmounted(() => useAppState().setHeaderColor(null))
+onUnmounted(() => useAppState().setHeaderColor("default"))
 
 definePageMeta({
   title: "Angebote",

@@ -6,10 +6,7 @@
     >
       <NuxtImg src="/green.jpg" format="webp" class="relative object-cover w-full h-full z-10 mix-blend-hard-light" alt="" role="presentation" />
     </div>
-    <!-- <div
-      class="absolute h-screen min-h-[1280px] w-screen -mt-36 -z-10 bg-success-800 green"
-      :class="{'show-green': page}"
-    ></div> -->
+    
     <Circles />
     <TransitionGroup tag="div" name="page" style="--total: 2">
       <HeroCopy
@@ -67,7 +64,7 @@
     <ContentCollection :content="page?.attributes?.content" :page="page" />
   </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import HeroCopy from "~/components/organisms/HeroCopy.vue";
 import SocialLinks from "~/components/species/SocialLinks.vue";
 import Offer from "~/components/organisms/Offer.vue";
@@ -77,67 +74,42 @@ import Arrow from "~/components/molecules/Arrow.vue";
 import Event from "~/components/cells/Event.vue";
 import ContentCollection from "~~/components/species/ContentCollection.vue";
 
-export default defineComponent({
-  components: {
-    HeroCopy,
-    SocialLinks,
-    Offer,
-    Circles,
-    Button,
-    Arrow,
-    Event,
-    ContentCollection,
-  },
-  head() {
-    return {
-      title: this.page?.attributes?.meta?.title,
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content:
-            this.page?.attributes?.hero.copy +
-            " " +
-            this.page?.attributes?.hero.subCopy,
-        },
-      ],
-      link: [
-        {
-          rel: "preload",
-          as: "image",
-          href: this.offers?.[0]?.attributes?.hero.image.data.attributes,
-        },
-      ],
-    };
-  },
-  async setup() {
-   const page = await useStrapi().find("home").then(({data}) => {
-     useAppState().setHeaderColor("default");
-     return data;
-    });
-    return {
-      page
-    }
-  },
-  computed: {
-    offers() {
-      return this.page?.attributes?.offers?.data
-        .sort((a, b) => a.attributes.rank - b.attributes.rank)
-        .slice(0, 3);
-    },
-  },
-  methods: {
-    scrollToHash(hash: string) {
-      document.querySelector(hash).scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    },
-  },
+
+const page = await useStrapi().find("home").then(({data}) => {
+  return data;
 });
-</script>
-<style scoped>
-.show-green:after {
-  opacity: 1;
+
+const offers = computed(() => {
+  return page?.attributes?.offers?.data
+    .sort((a, b) => a.attributes.rank - b.attributes.rank)
+    .slice(0, 3);
+})
+
+const scrollToHash = (hash: string) => {
+  document?.querySelector(hash)?.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
 }
-</style>
+
+useHead({
+  title: page?.attributes?.meta?.title,
+  meta: [
+    {
+      hid: "description",
+      name: "description",
+      content:
+        page?.attributes?.hero.copy +
+        " " +
+        page?.attributes?.hero.subCopy,
+    },
+  ],
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: offers.value?.[0]?.attributes?.hero.image.data.attributes,
+    },
+  ],
+})
+</script>

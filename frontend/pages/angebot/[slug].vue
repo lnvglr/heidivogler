@@ -58,7 +58,7 @@ onMounted(() => {
     })
     .catch((err) => console.error(err));
 });
-onUnmounted(() => state.setHeaderColor(null));
+onUnmounted(() => state.setHeaderColor("default"));
 
 const mediaToImageObject = (heroImage: Offer["hero"]["image"]) => {
   if (!heroImage?.data.attributes) return undefined;
