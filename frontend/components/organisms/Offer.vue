@@ -19,6 +19,7 @@
         :media="offer.attributes.hero.image.data.attributes"
         class="absolute inset-0 h-full"
         width="full"
+        :loading="loading"
       />
       <div
         class="relative z-10 text-white flex flex-col justify-end h-full bg-gradient-to-t from-black/70 rounded-2xl"
@@ -73,6 +74,7 @@ interface OfferProps {
   offer: Strapi4ResponseData<Offer>;
   size?: string;
   parallax?: number;
+  loading?: 'lazy' | 'eager';
 }
 // defineprops with defaults
 const props = withDefaults(defineProps<OfferProps>(), {

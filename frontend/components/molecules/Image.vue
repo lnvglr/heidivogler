@@ -14,7 +14,7 @@
       ref="image"
       :alt="alt || media?.alternativeText || 'image'"
       @load="load"
-      loading="lazy"
+      :loading="loading"
     />
   </div>
 </template>
@@ -54,6 +54,10 @@ export default defineComponent({
     lazy: {
       type: Boolean,
       default: true,
+    },
+    loading: {
+      type: String,
+      default: "lazy",
     },
   },
   computed: {

@@ -4,7 +4,7 @@
       :class="[page ? 'opacity-100': 'opacity-0']"
       class="duration-1000 transition-opacity absolute h-screen min-h-[1280px] w-screen -mt-36 after:bg-success-800 after:absolute after:w-full after:h-full after:top-0 -z-10"
     >
-      <NuxtImg src="/green.jpg" format="webp" class="relative object-cover w-full h-full z-10 mix-blend-hard-light"/>
+      <NuxtImg src="/green.jpg" format="webp" class="relative object-cover w-full h-full z-10 mix-blend-hard-light" alt="" role="presentation" />
     </div>
     <!-- <div
       class="absolute h-screen min-h-[1280px] w-screen -mt-36 -z-10 bg-success-800 green"
@@ -50,6 +50,7 @@
           i + 1
         } row-start-${i * 2 - 1} lg:row-start-${i + 1} w-full`"
         :style="`--i: ${3 - i}`"
+        :loading="i === 0 ? 'eager' : 'lazy'"
       />
       <div
         key="SocialLinks"
