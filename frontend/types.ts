@@ -50,6 +50,23 @@ export interface Testimonial {
     testimonial: string
   }
 }
+
+export interface Page {
+  title: string;
+  slug: string;
+  meta: {
+    title: string;
+  }
+  content: (Record<string, any> & { __component: string })[]
+  hero: Strapi4ResponseSingle<StrapiMedia> & {
+    copy: string;
+    subCopy: string;
+    image?: Strapi4ResponseSingle<StrapiMedia>
+  }
+  offers: Strapi4ResponseMany<Offer>
+}
+
+
 export interface Offer {
   title: string;
   copy: string;

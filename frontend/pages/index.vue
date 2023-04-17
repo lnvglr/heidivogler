@@ -74,10 +74,10 @@ import Arrow from "~/components/molecules/Arrow.vue";
 import Event from "~/components/cells/Event.vue";
 import ContentCollection from "~~/components/species/ContentCollection.vue";
 
+import { Page } from "~/types";
 
-const page = await useStrapi().find("home").then(({data}) => {
-  return data;
-});
+
+const { data: page } = await useStrapi().findOne<Page>("home")
 
 const offers = computed(() => {
   return page?.attributes?.offers?.data
@@ -108,7 +108,7 @@ useHead({
     {
       rel: "preload",
       as: "image",
-      href: offers.value?.[0]?.attributes?.hero.image.data.attributes,
+      href: offers.value?.[0]?.attributes?.hero.image?.data.attributes,
     },
   ],
 })
