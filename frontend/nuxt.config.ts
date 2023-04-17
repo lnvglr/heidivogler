@@ -40,6 +40,7 @@ export default defineNuxtConfig({
 			siteName: meta.head.title,
 			siteDescription: meta.head.meta.find((m) => m.name === 'description')?.content,
 			language: 'de-DE',
+			// titleSeparator: ' · ',
 		}
 	},
 	i18n,

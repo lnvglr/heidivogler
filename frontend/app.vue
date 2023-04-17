@@ -34,12 +34,13 @@ const strapi: Strapi = {
 };
 
 if (!app.$strapi) app.provide("strapi", strapi);
-if (!app.$state)
-  app.provide("state", reactive({ headerColor: null, map: null }));
+if (!app.$strapi) app.provide("state", useState());
 
 useSchemaOrg([
   defineLocalBusiness({
     name: 'Heidi Vogler',
+    telephone: '+49 (0) 1763 - 1763 624',
+    priceRange: '€€',
     address: {
       streetAddress: 'Gailhöfe 6',
       addressLocality: 'Frickingen',

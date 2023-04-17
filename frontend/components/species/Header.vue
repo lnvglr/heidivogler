@@ -3,13 +3,14 @@
     class="z-50 overflow-hidden absolute w-screen"
     :class="{
       open: menuOpen,
-      'text-white': headerColor === 'light' || menuOpen,
-      'text-gold-300': headerColor === 'default' && !menuOpen,
-      'text-stone-700': (!headerColor || headerColor === 'dark') && !menuOpen,
+      'text-white': useState().headerColor.value === 'light' || menuOpen,
+      'text-gold-300': useState().headerColor.value === 'default' && !menuOpen,
+      'text-stone-700': (!useState().headerColor.value || useState().headerColor.value === 'dark') && !menuOpen,
       loaded,
     }"
     style="backdropfilter: blur(var(--header-blur, 0px))"
   >
+
     <BurgerIcon
       :active="menuOpen"
       @click="menuOpen = !menuOpen"
@@ -43,17 +44,17 @@
             :to="item.path"
             class="duration-500 whitespace-nowrap py-2"
             :exactActiveClass="
-              headerColor === 'light'
+              useState().headerColor.value === 'light'
                 ? 'text-white'
-                : headerColor === 'default' || menuOpen
+                : useState().headerColor.value === 'default' || menuOpen
                 ? 'text-gold-400'
                 : 'text-stone-600'
             "
             :title="item.title || item.name"
             :class="{
-              'hover:text-gold-100': headerColor === 'light',
-              'hover:text-gold-600': headerColor === 'default',
-              'hover:text-stone-900': !headerColor || headerColor === 'dark',
+              'hover:text-gold-100': useState().headerColor.value === 'light',
+              'hover:text-gold-600': useState().headerColor.value === 'default',
+              'hover:text-stone-900': !useState().headerColor.value || useState().headerColor.value === 'dark',
             }"
             @click="menuOpen = false"
           >
@@ -152,9 +153,6 @@ export default defineComponent({
     },
   },
   computed: {
-    headerColor() {
-      return this.$state.headerColor;
-    },
     filteredRoutes() {
       return this.routes.filter(e => !e.icon);
     }

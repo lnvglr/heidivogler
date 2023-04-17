@@ -96,16 +96,14 @@ export default defineComponent({
     ],
     };
   },
-  data() {
-    return {
-      page: null,
-    };
-  },
-  mounted() {
-    this.$strapi.find("home").then(({data}) => {
-      this.page = data;
-      this.$state.headerColor = "default";
+  async setup() {
+   const page = await useStrapi().find("home").then(({data}) => {
+     useState().setHeaderColor("default");
+     return data;
     });
+    return {
+      page
+    }
   },
   computed: {
     offers() {

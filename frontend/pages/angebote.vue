@@ -7,7 +7,7 @@
       {{ $route.meta.description }}
     </p>
     <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-12">
-      <Offer
+      <OfferComponent
         v-for="(offer, i) in offers"
         :key="offer.id"
         :offer="offer"
@@ -18,42 +18,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import Button from "~/components/molecules/Button.vue";
-import Offer from "~/components/organisms/Offer.vue";
-export default defineComponent({
-  components: {
-    Button,
-    Offer,
-  },
-  setup() {
-    definePageMeta({
-      title: "Angebote",
-      description:
-        "Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.",
-    });
+<script lang="ts" setup>
+import OfferComponent from "~/components/organisms/Offer.vue";
+import { Offer, Strapi4ResponseData } from "~/types";
 
-    return {};
-  },
-  data() {
-    return {
-      offers: null,
-      featured: [],
-    };
-  },
-  async mounted() {
-    // this.$strapi.find("home").then(({data}) => {
-    //   this.featured = data?.attributes?.offers?.data.slice(0, 3).map(({id}) => id)
-    // })
-    this.offers = (
-      await this.$strapi.find("offers", { populate: ["content", "hero"] })
-    ).data;
-    this.$state.headerColor = "dark"
-  },
-  unmounted() {
-    this.$state.headerColor = null
-  },
+const offers = ref(null as Strapi4ResponseData<Offer>[] | null)
+const featured = ref([] as number[])
+onMounted(async () => {
+  useStrapi().find<Offer>("offers", { populate: ["content", "hero"] }).then(({ data }) => offers.value = data);
+  useState().setHeaderColor("dark")
+})
+onUnmounted(() => useState().setHeaderColor(null))
+
+definePageMeta({
+  title: "Angebote",
+  description:
+    "Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung zu beginnen.",
 });
-</script>
 
-<style scoped></style>
+</script>

@@ -51,7 +51,7 @@ export interface Offer {
   hero: Strapi4ResponseSingle<StrapiMedia> & {
     copy: string;
     subCopy: string;
-    image: Strapi4ResponseSingle<StrapiMedia>
+    image?: Strapi4ResponseSingle<StrapiMedia>
   }
   content: (Record<string, any> & { __component: string })[]
 }

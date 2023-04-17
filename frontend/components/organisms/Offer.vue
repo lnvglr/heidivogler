@@ -61,44 +61,46 @@
   </component>
 </template>
 
-<script lang="ts">
-import { Offer } from "~/types";
+<script lang="ts" setup>
+import { Offer, Strapi4ResponseData } from "~/types";
 import Image from "~/components/molecules/Image.vue";
-import ScrollParallax from "vue3-parallax/src/components/ScrollParallax.vue";
+import VueScrollParallax from "vue3-parallax/src/components/ScrollParallax.vue";
 import { markRaw } from "vue";
 
-export default defineComponent({
-  components: { Image, ScrollParallax },
-  props: {
-    offer: {
-      type: Object as () => Offer,
-      required: true,
-    },
-    size: {
-      type: String,
-      default: "medium",
-    },
-    parallax: {
-      type: Number,
-      default: 0,
-    },
-  },
-  data() {
-    return {
-      ScrollParallax: markRaw(ScrollParallax),
-      parallaxSpeed: this.parallax,
-    };
-  },
-  mounted() {
-    window.addEventListener("resize", () => {
-      this.getParallaxSpeed();
-    });
-    this.getParallaxSpeed();
-  },
-  methods: {
-    getParallaxSpeed() {
-      this.parallaxSpeed = window.innerWidth >= 1024 ? this.parallax : 0;
-    },
+interface OfferProps {
+  offer: Strapi4ResponseData<Offer>;
+  size?: string;
+  parallax?: number;
+}
+// defineprops with defaults
+const props = withDefaults(defineProps<OfferProps>(), {
+  size: "medium",
+  parallax: 0,
+});
+
+const ScrollParallax = ref(markRaw(VueScrollParallax))
+const parallaxSpeed = ref(props.parallax)
+const events = computed(() => props.offer.attributes.events?.data.filter(
+  (event) => event.attributes.end > new Date().toISOString()
+))
+
+const getParallaxSpeed = () => {
+  parallaxSpeed.value = window.innerWidth >= 1024 ? props.parallax : 0;
+  }
+
+onMounted(() => {
+  window.addEventListener("resize", () => {
+    getParallaxSpeed();
+  });
+  getParallaxSpeed();
+})
+onUnmounted(() => {
+  window.removeEventListener("resize", () => {
+    getParallaxSpeed();
+  });
+})
+
+  methods: {,
   },
   computed: {
     events() {
@@ -109,5 +111,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped></style>
