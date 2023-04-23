@@ -50,7 +50,7 @@ useSchemaOrg([
     image: 'https://heidivogler.s3.eu-central-1.amazonaws.com/IMG_4749_de493186a9.jpg',
   }),
   defineWebSite({
-    url: 'https://heidivogler.de',
+    url: useRuntimeConfig().public.siteUrl,
     name: 'Heidi Vogler'
   }),
   defineWebPage(),

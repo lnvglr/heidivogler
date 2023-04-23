@@ -55,7 +55,7 @@ export default defineComponent({
         },
         {
           name: "email",
-          path: "mailto:hallo@heidivogler.de",
+          path: useRuntimeConfig().public.email.to,
           title: "Email",
           cta: "Schreib mir eine Email",
           icon: ["fas", "envelope"],

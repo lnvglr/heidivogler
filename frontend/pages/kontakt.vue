@@ -21,7 +21,7 @@
           <div>
             <p>{{ $t("contact.me") }}</p>
             <p class="font-bold text-2xl">
-              +49 (0) 1763 - 1763 624<br />hallo@heidivogler.de
+              +49 (0) 1763 - 1763 624<br />{{useRuntimeConfig().public.email.to}}
             </p>
           </div>
         </div>

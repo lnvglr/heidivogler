@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 			email: {
 				to: process.env.ADDRESS_TO
 			},
-			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.heidivogler.de',
+			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
 			siteName: meta.head.title,
 			siteDescription: meta.head.meta.find((m) => m.name === 'description')?.content,
 			language: 'de-DE',
