@@ -31,7 +31,13 @@ import {
   faLeaf,
   faSpa,
   faChessKnight,
-  faCheck
+  faCheck,
+  faHorseHead,
+  faHorse,
+  faComments,
+  faUserCircle,
+  faBalanceScale,
+  faSeedling
 } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
 library.add(
@@ -68,7 +74,13 @@ library.add(
   faCouch,
   faLeaf,
   faSpa,
-  faChessKnight
+  faChessKnight,
+  faHorseHead,
+  faHorse,
+  faComments,
+  faUserCircle,
+  faBalanceScale,
+  faSeedling
 )
 
 config.autoAddCss = false

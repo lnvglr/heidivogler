@@ -62,6 +62,7 @@ svg {
   .road-barrier & {
     color: var(--color-alert-500);
   }
+  .balance-scale &,
   .wand-sparkles &,
   .scale-balanced &,
   .briefcase &,
@@ -69,15 +70,19 @@ svg {
   .couch & {
     color: var(--color-gold-400);
   }
-  .route &, .tree &, .leaf & {
+  .route &, .tree &, .leaf &, .seedling {
     color: var(--color-success-400);
   }
+  .user-circle &,
+  .comments &,
   .compass &,
   .wind &,
   .kite &,
   .circle-nodes &, .spa & {
     color: var(--color-info-300);
   }
+  .horse &,
+  .horse-head &,
   .user-gear &,
   .person-hiking &,
   .person-walking-arrow-right &,
