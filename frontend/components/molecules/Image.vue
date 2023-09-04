@@ -3,7 +3,7 @@
     <img
       :src="source"
       :srcset="srcset"
-      :style="`aspect-ratio: ${aspectRatio}`"
+      :style="aspectRatio ? `aspect-ratio: ${aspectRatio}` : ''"
       class="duration-300 object-cover w-full h-full"
       :class="{
         'duration-75 blur-lg brightness-75 scale-105': !isLoaded && !isCached,

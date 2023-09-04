@@ -1,14 +1,16 @@
 <template>
 	<section role="figure" :aria-labelledby="captionId">
-		<div class="h-min md:min-h-[360px] max-h-[90vh] overflow-hidden">
-			<ScrollParallax :speed="0.1">
+		<div class="h-min md:min-h-[360px] max-h-[90vh] overflow-hidden dis">
+			<!-- <ScrollParallax :speed="0.1"> -->
 				<Image
 					:media="content"
-					class="h-full -z-10 -translate-y-2/3 sm:-translate-y-1/2 lg:-translate-y-1/3 scale-105"
+					class="h-full -z-10"
 					width="full"
 					object="contain"
+					:aspect-ratio="null"
 				/>
-			</ScrollParallax>
+					<!-- class="h-full -z-10 -translate-y-2/3 sm:-translate-y-1/2 lg:-translate-y-1/3 scale-105" -->
+			<!-- </ScrollParallax> -->
 		</div>
 		<p :id="captionId" class="max-w-5xl mx-auto my-3 px-5 md:px-12 text-stone-400 leading-snug">{{content.caption}}</p>
 	</section>
