@@ -4,6 +4,7 @@
     :class="{
       'flex-col lg:flex-row': data?.size === 'lg',
       'overflow-x-auto mx-auto': data?.size !== 'lg',
+      'max-w-2xl': data?.size !== 'lg' && data?.price.length < 3,
     }"
   >
     <component
