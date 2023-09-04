@@ -1,7 +1,8 @@
 <template>
   <div
-    class="flex flex-col bg-white shrink-0 w-48 h-36 rounded-xl overflow-hidden"
+    class="flex flex-col shrink-0 w-48 h-36 rounded-xl overflow-hidden max-w-1/2"
     :class="{
+      'bg-white': !highlight,
       'bg-success-800 text-white w-full': highlight,
     }"
   >

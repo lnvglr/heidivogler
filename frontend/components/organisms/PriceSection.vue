@@ -3,7 +3,7 @@
     class="flex gap-5 p-5 lg:justify-center sm:p-12 md:p-10 lg:p-12"
     :class="{
       'flex-col lg:flex-row': data?.size === 'lg',
-      'overflow-x-auto': data?.size !== 'lg',
+      'overflow-x-auto mx-auto': data?.size !== 'lg',
     }"
   >
     <component
