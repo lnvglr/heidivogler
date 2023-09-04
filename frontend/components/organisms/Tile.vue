@@ -67,6 +67,7 @@ svg {
   .scale-balanced &,
   .briefcase &,
   .bolt-lightning &,
+  .user-circle &,
   .couch & {
     color: var(--color-gold-400);
   }
@@ -74,7 +75,6 @@ svg {
     color: var(--color-success-400);
   }
   .eye &,
-  .user-circle &,
   .comments &,
   .compass &,
   .wind &,
