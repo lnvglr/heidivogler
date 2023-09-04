@@ -70,7 +70,7 @@ svg {
   .couch & {
     color: var(--color-gold-400);
   }
-  .route &, .tree &, .leaf &, .seedling {
+  .route &, .tree &, .leaf &, .seedling & {
     color: var(--color-success-400);
   }
   .eye &,
