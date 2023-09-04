@@ -37,7 +37,8 @@ import {
   faComments,
   faUserCircle,
   faBalanceScale,
-  faSeedling
+  faSeedling,
+  faEye
 } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
 library.add(
@@ -80,7 +81,8 @@ library.add(
   faComments,
   faUserCircle,
   faBalanceScale,
-  faSeedling
+  faSeedling,
+  faEye
 )
 
 config.autoAddCss = false

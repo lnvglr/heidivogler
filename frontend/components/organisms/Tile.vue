@@ -73,6 +73,7 @@ svg {
   .route &, .tree &, .leaf &, .seedling {
     color: var(--color-success-400);
   }
+  .eye &,
   .user-circle &,
   .comments &,
   .compass &,
