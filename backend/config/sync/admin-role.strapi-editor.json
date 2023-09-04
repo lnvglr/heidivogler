@@ -104,18 +104,19 @@
       "subject": "api::event.event",
       "properties": {
         "fields": [
-          "address.city",
-          "address.country",
-          "address.housenumber",
-          "address.postcode",
-          "address.street",
-          "description",
+          "start",
           "end",
-          "groupSize",
+          "title",
           "offer",
           "price",
-          "start",
-          "title"
+          "address.street",
+          "address.housenumber",
+          "address.country",
+          "address.postcode",
+          "address.city",
+          "description",
+          "groupSize",
+          "time"
         ]
       },
       "conditions": []
