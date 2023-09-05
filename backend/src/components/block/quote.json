@@ -1,8 +1,8 @@
 {
   "collectionName": "components_block_quotes",
   "info": {
-    "displayName": "Quote",
-    "icon": "quote-left",
+    "displayName": "Zitat",
+    "icon": "quote",
     "description": ""
   },
   "options": {},

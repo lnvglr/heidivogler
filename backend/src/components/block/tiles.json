@@ -2,7 +2,7 @@
   "collectionName": "components_block_tiles",
   "info": {
     "displayName": "Kacheln",
-    "icon": "border-all",
+    "icon": "grid",
     "description": ""
   },
   "options": {},
