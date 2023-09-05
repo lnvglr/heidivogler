@@ -50,6 +50,7 @@
         }"
         :style="`--i: ${offers.length - i}`"
         :loading="i === 0 ? 'eager' : 'lazy'"
+        vertical
       />
       <div
         key="SocialLinks"
