@@ -1,16 +1,17 @@
 <template>
   <div v-if="offer">
     <div
-      class="h-[60vh] md:h-[80vh] md:min-h-[720px] relative overflow-hidden -mt-36"
+      class="h-[60vh] md:h-[80vh] min-h-[420px] sm:min-h-[540px] md:min-h-[720px] relative overflow-hidden -mt-36"
     >
-      <ScrollParallax :speed="0.2">
+      <!-- <ScrollParallax :speed="0.1"> -->
         <Image
           :media="offer.attributes.hero?.image?.data.attributes"
-          class="h-full -z-10 translate-y-0 lg:-translate-y-[20%]"
+          class="h-full -z-10"
           width="full"
-          aspectRatio="16/12"
+          :aspectRatio="undefined"
         />
-      </ScrollParallax>
+          <!-- class="h-full -z-10 translate-y-0 lg:-translate-y-[20%]" -->
+      <!-- </ScrollParallax> -->
     </div>
     <div class="pt-24">
       <div

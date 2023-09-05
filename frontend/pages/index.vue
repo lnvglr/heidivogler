@@ -49,13 +49,13 @@
         innerClass="lg:p-8 xl:p-12"
         class="z-50 w-full row-span-2 lg:row-span-4"
         :class="{
-          'row-start-5 lg:row-start-1 lg:col-start-1': i === 0,
+          'row-start-1 lg:row-start-1 lg:col-start-1': i === 0,
           'row-start-3 lg:row-start-2 lg:col-start-2': i === 1,
-          'row-start-1 lg:row-start-3 lg:col-start-3': i === 2,
+          'row-start-5 lg:row-start-3 lg:col-start-3': i === 2,
         }"
         :style="`--i: ${offers.length - i}`"
         :loading="i === 0 ? 'eager' : 'lazy'"
-        vertical
+        :vertical="verticalHero"
       />
       <div
         key="SocialLinks"
@@ -89,8 +89,13 @@ import { Page } from "~/types";
 
 
 const { data: page } = await useStrapi().findOne<Page>("home")
+const verticalHero = ref(true)
 
-console.log(page?.attributes?.offers?.data)
+const setHeroAspect = () => verticalHero.value = window.innerWidth >= 1024
+
+onMounted(() => window.addEventListener('resize', setHeroAspect))
+onUnmounted(() => window.removeEventListener('resize', setHeroAspect))
+
 const offers = computed(() => {
   return page?.attributes?.offers?.data
     .filter(e => e.attributes.publishedAt)
