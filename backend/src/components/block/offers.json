@@ -1,8 +1,8 @@
 {
   "collectionName": "components_block_offers",
   "info": {
-    "displayName": "Offers",
-    "icon": "hand-holding-heart"
+    "displayName": "Angebote",
+    "icon": "handHeart"
   },
   "options": {},
   "attributes": {}
