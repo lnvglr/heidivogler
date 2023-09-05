@@ -82,6 +82,7 @@ export interface Offer {
     copy: string;
     subCopy: string;
     image?: Strapi4ResponseSingle<StrapiMedia>
+    vertical?: Strapi4ResponseSingle<StrapiMedia>
   }
   content: (Record<string, any> & { __component: string })[]
 }

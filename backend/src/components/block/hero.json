@@ -14,11 +14,22 @@
       "type": "text"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "description": "Das Bild für das Angebot"
+    },
+    "vertical": {
       "allowedTypes": [
         "images"
       ],
       "type": "media",
-      "multiple": false
+      "required": false,
+      "multiple": false,
+      "description": "Im besten Fall das gleiche Bild, allerdings vertikal zugeschnitten, damit es besser auf der Startseite dargestellt werden kann"
     }
   }
 }

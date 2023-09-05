@@ -16,8 +16,8 @@
       class="block h-full relative rounded-2xl bg-stone-700 overflow-hidden duration-300 hover:-translate-y-1"
     >
       <Image
-        v-if="offer.attributes.hero?.image.data"
-        :media="offer.attributes.hero.image.data.attributes"
+        v-if="image"
+        :media="image.attributes"
         class="absolute inset-0 h-full"
         width="full"
         :loading="loading"
@@ -76,6 +76,7 @@ interface OfferProps {
   size?: string;
   parallax?: number;
   loading?: 'lazy' | 'eager';
+  vertical?: boolean;
 }
 // defineprops with defaults
 const props = withDefaults(defineProps<OfferProps>(), {
@@ -88,6 +89,10 @@ const parallaxSpeed = ref(props.parallax)
 const events = computed(() => props.offer.attributes.events?.data.filter(
   (event) => event.attributes.end > new Date().toISOString()
 ))
+const image = computed(() => {
+  const { hero } = props.offer.attributes
+  return props.vertical && hero?.vertical ? hero?.vertical?.data : hero?.image?.data
+})
 
 const getParallaxSpeed = () => {
   parallaxSpeed.value = window.innerWidth >= 1024 ? props.parallax : 0;
