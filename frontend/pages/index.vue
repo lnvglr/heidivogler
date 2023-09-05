@@ -34,7 +34,12 @@
       tag="div"
       name="page"
       :style="`--total: ${offers.length}`"
-      class="h-[150vh] min-h-[1280px] max-h-[1920px] w-full grid grid-cols-1 grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
+      class="h-[150vh] min-h-[1280px] max-h-[1920px] w-full grid grid-cols-1 grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:-mt-12 xl:p-12 xl:gap-12"
+      :class="{
+        'lg:grid-cols-1': offers.length === 1,
+        'lg:grid-cols-2': offers.length === 2,
+        'lg:grid-cols-3': offers.length === 3,
+      }"
     >
       <Offer
         v-for="(offer, i) in offers"
@@ -54,7 +59,12 @@
       />
       <div
         key="SocialLinks"
-        class="sticky bottom-0 hidden lg:block lg:row-start-2 lg:row-span-1 lg:col-start-3 text-gold-200 px-0 lg:px-12 xl:px-24"
+        class="sticky bottom-0 hidden lg:block lg:row-start-2 lg:row-span-1 text-gold-200 px-0 lg:px-12 xl:px-24"
+        :class="{
+          'lg:col-start-1': offers.length === 1,
+          'lg:col-start-2': offers.length === 2,
+          'lg:col-start-3': offers.length === 3,
+        }"
       >
         <SocialLinks
           v-if="page"
@@ -84,7 +94,6 @@ console.log(page?.attributes?.offers?.data)
 const offers = computed(() => {
   return page?.attributes?.offers?.data
     .filter(e => e.attributes.publishedAt)
-    .sort((a, b) => a.attributes.rank - b.attributes.rank)
 })
 
 const scrollToHash = (hash: string) => {

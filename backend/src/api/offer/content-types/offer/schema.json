@@ -55,9 +55,6 @@
         "default"
       ],
       "default": "default"
-    },
-    "rank": {
-      "type": "integer"
     }
   }
 }
