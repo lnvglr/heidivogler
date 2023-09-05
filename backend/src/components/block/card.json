@@ -2,7 +2,7 @@
   "collectionName": "components_block_cards",
   "info": {
     "displayName": "Karte",
-    "icon": "clone"
+    "icon": "stack"
   },
   "options": {},
   "attributes": {

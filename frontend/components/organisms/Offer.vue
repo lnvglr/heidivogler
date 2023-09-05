@@ -91,7 +91,6 @@ const events = computed(() => props.offer.attributes.events?.data.filter(
 ))
 const image = computed(() => {
   const { hero } = props.offer.attributes
-  // console.log(props.vertical, hero)
   return props.vertical && hero?.vertical ? hero?.vertical?.data : hero?.image?.data
 })
 

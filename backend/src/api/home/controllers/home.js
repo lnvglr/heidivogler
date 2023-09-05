@@ -23,6 +23,7 @@ module.exports = createCoreController('api::home.home', ({ strapi }) => ({
 						hero: {
 							populate: {
 								image: true,
+								vertical: true,
 							}
 						},
 					},
