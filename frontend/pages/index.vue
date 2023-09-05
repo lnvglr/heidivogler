@@ -33,7 +33,7 @@
     <TransitionGroup
       tag="div"
       name="page"
-      style="--total: 3"
+      :style="`--total: ${offers.length}`"
       class="h-[150vh] min-h-[1280px] max-h-[1920px] w-full grid grid-cols-1 grid-rows-6 lg:mb-[-30vh] p-6 gap-6 lg:grid-cols-3 lg:-mt-12 xl:p-12 xl:gap-12"
     >
       <Offer
@@ -42,10 +42,13 @@
         :offer="offer"
         :parallax="i + 1"
         innerClass="lg:p-8 xl:p-12"
-        :class="`z-50 row-span-2 lg:row-span-4 lg:col-start-${
-          i + 1
-        } row-start-${i * 2 - 1} lg:row-start-${i + 1} w-full`"
-        :style="`--i: ${3 - i}`"
+        class="z-50 w-full row-span-2 lg:row-span-4"
+        :class="{
+          'row-start-5 lg:row-start-1 lg:col-start-1': i === 0,
+          'row-start-3 lg:row-start-2 lg:col-start-2': i === 1,
+          'row-start-1 lg:row-start-3 lg:col-start-3': i === 2,
+        }"
+        :style="`--i: ${offers.length - i}`"
         :loading="i === 0 ? 'eager' : 'lazy'"
       />
       <div
@@ -68,9 +71,7 @@ import HeroCopy from "~/components/organisms/HeroCopy.vue";
 import SocialLinks from "~/components/species/SocialLinks.vue";
 import Offer from "~/components/organisms/Offer.vue";
 import Circles from "~/components/organisms/Circles.vue";
-import Button from "~/components/molecules/Button.vue";
 import Arrow from "~/components/molecules/Arrow.vue";
-import Event from "~/components/cells/Event.vue";
 import ContentCollection from "~~/components/species/ContentCollection.vue";
 
 import { Page } from "~/types";
@@ -78,10 +79,11 @@ import { Page } from "~/types";
 
 const { data: page } = await useStrapi().findOne<Page>("home")
 
+console.log(page?.attributes?.offers?.data)
 const offers = computed(() => {
   return page?.attributes?.offers?.data
+    .filter(e => e.attributes.publishedAt)
     .sort((a, b) => a.attributes.rank - b.attributes.rank)
-    .slice(0, 3);
 })
 
 const scrollToHash = (hash: string) => {

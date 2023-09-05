@@ -72,6 +72,7 @@ export interface Offer {
   copy: string;
   subCopy: string;
   slug: string;
+  publishedAt: string
   createdAt: string
   updatedAt: string
   rank: number
