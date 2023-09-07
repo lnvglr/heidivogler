@@ -7,6 +7,7 @@
         class="rounded-full w-24 h-24 sm:w-48 sm:h-48"
         :media="data.image.data.attributes"
         width="160"
+				aspect-ratio="1/1"
       />
     </div>
 		<div class="flex flex-col items-start gap-6">

@@ -8,7 +8,6 @@
           :media="offer.attributes.hero?.image?.data.attributes"
           class="h-full -z-10"
           width="full"
-          :aspectRatio="undefined"
         />
           <!-- class="h-full -z-10 translate-y-0 lg:-translate-y-[20%]" -->
       <!-- </ScrollParallax> -->

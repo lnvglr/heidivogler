@@ -8,7 +8,6 @@
           :media="page.attributes.hero.image.data?.attributes"
           class="h-full -mt-36 -z-10 object-top"
           width="full"
-          aspectRatio="16/10"
         />
         <HeroCopy
           v-if="page && show"

@@ -93,7 +93,11 @@ const verticalHero = ref(true)
 
 const setHeroAspect = () => verticalHero.value = window.innerWidth >= 1024
 
-onMounted(() => window.addEventListener('resize', setHeroAspect))
+
+onMounted(() => {
+  setHeroAspect()
+  window.addEventListener('resize', setHeroAspect)
+})
 onUnmounted(() => window.removeEventListener('resize', setHeroAspect))
 
 const offers = computed(() => {

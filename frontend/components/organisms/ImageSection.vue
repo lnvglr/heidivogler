@@ -7,7 +7,6 @@
 					class="h-full -z-10"
 					width="full"
 					object="contain"
-					:aspect-ratio="undefined"
 				/>
 					<!-- class="h-full -z-10 -translate-y-2/3 sm:-translate-y-1/2 lg:-translate-y-1/3 scale-105" -->
 			<!-- </ScrollParallax> -->

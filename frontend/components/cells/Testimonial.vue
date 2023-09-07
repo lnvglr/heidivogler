@@ -7,6 +7,7 @@
         class="h-full rounded-full"
         :media="testimonial.image.data.attributes"
         width="160"
+        aspect-ratio="1/1"
       />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-12 w-full">
