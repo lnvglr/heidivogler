@@ -25,15 +25,15 @@ module.exports = [
       },
     },
   },
+  'strapi::poweredBy',
   {
     name: 'strapi::cors',
     config: {
-      // enabled: true,
-      headers: ['*'],
-      origin: ['*'],
+      enabled: true,
+      headers: '*',
+      origin: ['http://localhost:1337', process.env.NUXT_PUBLIC_SITE_URL],
     }
   },
-  'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
   'strapi::body',
