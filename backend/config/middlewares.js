@@ -31,7 +31,7 @@ module.exports = [
     config: {
       enabled: true,
       headers: '*',
-      origin: ['http://localhost:1337', process.env.NUXT_PUBLIC_SITE_URL],
+      origin: process.env.NODE_ENV === 'development' ? ['http://localhost:1337'] : [process.env.API_BASE, process.env.NUXT_PUBLIC_SITE_URL],
     }
   },
   'strapi::logger',
