@@ -66,7 +66,7 @@ export default defineComponent({
       this.page?.attributes.events?.data.length > 0
     ) {
       this.events = this.page?.attributes.events?.data.filter(
-        (event: EventType) => (event.attributes.end || event.attributes.start) > new Date().toISOString()
+        (event: EventType) => (event?.attributes.end || event?.attributes.start) > new Date().toISOString()
       );
       this.loaded = true;
     } else if (!this.page?.attributes.events) {

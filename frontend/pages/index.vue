@@ -11,8 +11,8 @@
     <TransitionGroup tag="div" name="page" style="--total: 2">
       <HeroCopy
         v-if="page?.attributes?.hero"
-        :copy="page.attributes.hero.copy"
-        :subCopy="page.attributes.hero.subCopy"
+        :copy="page?.attributes.hero.copy"
+        :subCopy="page?.attributes.hero.subCopy"
         class="p-5 md:p-12 lg:p-24 pt-24 pb-12 w-full"
         :ornaments="true"
         style="--i: 2"
@@ -102,7 +102,7 @@ onUnmounted(() => window.removeEventListener('resize', setHeroAspect))
 
 const offers = computed(() => {
   return page?.attributes?.offers?.data
-    .filter(e => e.attributes.publishedAt)
+    .filter(e => e?.attributes.publishedAt)
 })
 
 const scrollToHash = (hash: string) => {
@@ -128,7 +128,7 @@ useHead({
     {
       rel: "preload",
       as: "image",
-      href: offers.value?.[0]?.attributes?.hero.image?.data.attributes,
+      href: offers.value?.[0]?.attributes?.hero.image?.data?.attributes,
     },
   ],
 })

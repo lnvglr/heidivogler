@@ -5,20 +5,20 @@
       <TransitionGroup name="slide-in">
         <Image
           v-if="page"
-          :media="page.attributes.hero.image.data?.attributes"
+          :media="page?.attributes.hero.image.data?.attributes"
           class="h-full -mt-36 -z-10 object-top"
           width="full"
         />
         <HeroCopy
           v-if="page && show"
-          :copy="page.attributes.hero.copy"
-          :subCopy="page.attributes.hero.subCopy"
+          :copy="page?.attributes.hero.copy"
+          :subCopy="page?.attributes.hero.subCopy"
           class="absolute bottom-0 px-5 py-10 md:px-12 py-24 w-full bg-gradient-to-t z-20"
         />
       </TransitionGroup>
     </div>
     <Transition name="slide-in">
-      <ContentCollection v-if="page" :content="page.attributes.content" />
+      <ContentCollection v-if="page" :content="page?.attributes.content" />
     </Transition>
     <div class="flex justify-center items-center md:gap-24 gap-12 px-5 py-10 md:px-12 md:py-24 flex-wrap">
       <NuxtLink

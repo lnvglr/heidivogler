@@ -5,7 +5,7 @@
     <div class="w-24 h-24 -translate-y-20 -mb-20 sm:-translate-y-24 sm:-mb-24" v-if="testimonial.image.data">
       <Image
         class="h-full rounded-full"
-        :media="testimonial.image.data.attributes"
+        :media="testimonial.image.data?.attributes"
         width="160"
         aspect-ratio="1/1"
       />

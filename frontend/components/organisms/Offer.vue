@@ -9,15 +9,15 @@
     <NuxtLink
       v-if="offer?.attributes"
       :to="
-        offer.attributes.slug
-          ? `/angebot/${offer.attributes.slug}`
+        offer?.attributes.slug
+          ? `/angebot/${offer?.attributes.slug}`
           : '/angebote'
       "
       class="block h-full relative rounded-2xl bg-stone-700 overflow-hidden duration-300 hover:-translate-y-1"
     >
       <Image
         v-if="image"
-        :media="image.attributes"
+        :media="image?.attributes"
         class="absolute inset-0 h-full"
         width="full"
         :loading="loading"
@@ -29,11 +29,11 @@
           v-if="events.length > 0"
           class="p-5 md:p-12 mb-auto overflow-hidden rounded-2xl"
           :class="{
-            'text-white': offer.attributes.headerColor === 'light',
-            'text-gold-300': offer.attributes.headerColor === 'default',
+            'text-white': offer?.attributes.headerColor === 'light',
+            'text-gold-300': offer?.attributes.headerColor === 'default',
             'text-stone-700':
-              !offer.attributes.headerColor ||
-              offer.attributes.headerColor === 'dark',
+              !offer?.attributes.headerColor ||
+              offer?.attributes.headerColor === 'dark',
           }"
         >
           <ClientOnly>
@@ -50,14 +50,14 @@
         <div class="flex flex-col gap-2 p-5 lg:p-12">
           <h3
             class="textlg md:text-xl leading-none font-medium opacity-70"
-            v-if="offer.attributes.hero?.copy"
+            v-if="offer?.attributes.hero?.copy"
           >
-            {{ offer.attributes.title }}
+            {{ offer?.attributes.title }}
           </h3>
           <span
             class="text-2xl md:text-3xl font-bold leading-none hyphens-auto"
           >
-            {{ offer.attributes.hero?.copy || offer.attributes.title }}
+            {{ offer?.attributes.hero?.copy || offer?.attributes.title }}
           </span>
         </div>
       </div>
@@ -86,11 +86,11 @@ const props = withDefaults(defineProps<OfferProps>(), {
 
 const ScrollParallax = ref(markRaw(VueScrollParallax))
 const parallaxSpeed = ref(props.parallax)
-const events = computed(() => props.offer.attributes.events?.data.filter(
-  (event) => event.attributes.end > new Date().toISOString()
+const events = computed(() => props.offer?.attributes.events?.data.filter(
+  (event) => event?.attributes.end > new Date().toISOString()
 ))
 const image = computed(() => {
-  const { hero } = props.offer.attributes
+  const { hero } = props.offer?.attributes
   return props.vertical && hero?.vertical ? hero?.vertical?.data : hero?.image?.data
 })
 

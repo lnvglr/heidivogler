@@ -8,21 +8,21 @@
       <span class="text-primary-600 font-bold leading-none">{{ getDate() }}</span>
     </div>
     <div class="title font-bold leading-none">
-      <span>{{ event.attributes.title }}</span>
+      <span>{{ event?.attributes.title }}</span>
     </div>
     <div
       class="text-xl"
-      v-if="event.attributes.description && computedSize === 'xl'"
+      v-if="event?.attributes.description && computedSize === 'xl'"
     >
-      <span>{{ event.attributes.description }}</span>
+      <span>{{ event?.attributes.description }}</span>
     </div>
     <div class="date flex gap-6 mt-auto items-end justify-between">
       <div class="flex flex-col gap-2 text-stone-500 font-bold leading-none">
-        <span v-if="event.attributes.price && 'xl' === computedSize"
-          >Preis: {{ event.attributes.price }} Euro</span
+        <span v-if="event?.attributes.price && 'xl' === computedSize"
+          >Preis: {{ event?.attributes.price }} Euro</span
         >
-        <span v-if="event.attributes.groupSize && 'xl' === computedSize"
-          >Gruppengröße: {{ event.attributes.groupSize }}</span
+        <span v-if="event?.attributes.groupSize && 'xl' === computedSize"
+          >Gruppengröße: {{ event?.attributes.groupSize }}</span
         >
         <span v-if="location">{{ location }}</span>
         <span v-if="time">{{ time }}</span>
@@ -36,30 +36,30 @@
       </div>
     </div>
   </div>
-  <Popup :title="event.attributes.title" :open="open" @close="open = false">
+  <Popup :title="event?.attributes.title" :open="open" @close="open = false">
     <template #pretitle
       ><span class="text-primary-600 font-bold leading-none">{{
         getDate(false)
       }}</span></template
     >
     <template #default>
-      <div class="flex justify-between items-end mb-10" v-if="event.attributes.description">
+      <div class="flex justify-between items-end mb-10" v-if="event?.attributes.description">
         <div class="text-xl">
-          <span>{{ event.attributes.description }}</span>
+          <span>{{ event?.attributes.description }}</span>
         </div>
       </div>
       <div class="flex justify-between items-end">
         <div class="flex flex-col gap-2 text-stone-500 font-bold leading-none">
-          <span v-if="event.attributes.price"
-            >Preis: {{ event.attributes.price }} Euro</span
+          <span v-if="event?.attributes.price"
+            >Preis: {{ event?.attributes.price }} Euro</span
           >
-          <span v-if="event.attributes.groupSize"
-            >Gruppengröße: {{ event.attributes.groupSize }}</span
+          <span v-if="event?.attributes.groupSize"
+            >Gruppengröße: {{ event?.attributes.groupSize }}</span
           >
           <span v-if="location">{{ location }}</span>
           <span v-if="time">{{ time }}</span>
 
-        <NuxtLink v-if="event.attributes.offer?.data" :to="`angebot/${event.attributes.offer.data.attributes.slug}`" class="w-min whitespace-nowrap flex items-center gap-2 text-primary-600 hover:underline font-bold mt-5">{{ $t("toTheOffer") }}<FontAwesomeIcon :icon="['fas', 'arrow-right']" /></NuxtLink>
+        <NuxtLink v-if="event?.attributes.offer?.data" :to="`angebot/${event?.attributes.offer.data?.attributes.slug}`" class="w-min whitespace-nowrap flex items-center gap-2 text-primary-600 hover:underline font-bold mt-5">{{ $t("toTheOffer") }}<FontAwesomeIcon :icon="['fas', 'arrow-right']" /></NuxtLink>
           <DownloadEvent
             :event="event"
             class="mt-10 flex gap-2 font-normal hover:underline"
@@ -181,11 +181,11 @@ export default defineComponent({
       } as Intl.DateTimeFormatOptions;
     },
     start(): Date {
-      return new Date(this.event.attributes.start);
+      return new Date(this.event?.attributes.start);
     },
     end(): Date | null {
-      return this.event.attributes.end
-        ? new Date(this.event.attributes.end)
+      return this.event?.attributes.end
+        ? new Date(this.event?.attributes.end)
         : null;
     },
     futureEvent(): boolean {
@@ -195,17 +195,17 @@ export default defineComponent({
       return futureStart || futureEnd
     },
     canRegister(): boolean {
-      return this.futureEvent && this.event.attributes.canRegister;
+      return this.futureEvent && this.event?.attributes.canRegister;
     },
     time() {
-      return this.event.attributes.time;
+      return this.event?.attributes.time;
     },
     location() {
       return false;
     },
     signUpEmail() {
-      const subject = `Anmeldung ${this.event.attributes.title}, ${this.date}`;
-      const body = `Hallo Heidi,\nich würde mich gerne für ${this.event.attributes.title} am ${this.date} anmelden.
+      const subject = `Anmeldung ${this.event?.attributes.title}, ${this.date}`;
+      const body = `Hallo Heidi,\nich würde mich gerne für ${this.event?.attributes.title} am ${this.date} anmelden.
       `;
       return `mailto:${this.email}?subject=${encodeURIComponent(
         subject

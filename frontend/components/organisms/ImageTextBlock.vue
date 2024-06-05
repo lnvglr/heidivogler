@@ -35,7 +35,7 @@ export default defineComponent({
   data: () => ({ captionId: uuid.v4() }),
   computed: {
     image() {
-      return this.data.image?.data.attributes;
+      return this.data.image?.data?.attributes;
     },
     text() {
       if (!this.data.text) return "";

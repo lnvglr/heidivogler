@@ -45,15 +45,15 @@ export default defineComponent({
           endInputType: 'utc',
           endOutputType: 'local',
 
-          title: this.event.attributes.title,
-          description: this.event.attributes.description || "",
+          title: this.event?.attributes.title,
+          description: this.event?.attributes.description || "",
           // location: this.location,
           busyStatus: 'BUSY',
         } as EventAttributes
 
         const eventName =
           slugify(
-            [this.event.attributes.title, event.start.join('-')].join('-'),
+            [this.event?.attributes.title, event.start.join('-')].join('-'),
             {
               lower: true,
               strict: true,
@@ -75,11 +75,11 @@ export default defineComponent({
   },
   computed: {
     start(): Date {
-      return new Date(this.event.attributes.start)
+      return new Date(this.event?.attributes.start)
     },
     end(): Date | null {
-      return this.event.attributes.end
-        ? new Date(this.event.attributes.end)
+      return this.event?.attributes.end
+        ? new Date(this.event?.attributes.end)
         : null
     },
   },

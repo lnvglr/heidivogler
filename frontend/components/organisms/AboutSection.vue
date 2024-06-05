@@ -5,7 +5,7 @@
     <div class="min-w-fit">
       <Image
         class="rounded-full w-24 h-24 sm:w-48 sm:h-48"
-        :media="data.image.data.attributes"
+        :media="data.image.data?.attributes"
         width="160"
 				aspect-ratio="1/1"
       />

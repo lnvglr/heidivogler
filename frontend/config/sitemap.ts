@@ -11,8 +11,8 @@ export default {
 			const res = await fetch(`${apiBase}/api/offers`)
 			const { data } = (await res.json() as Strapi4ResponseMany<Offer>)
 			return (data).map((offer) => ({
-				loc: `/angebot/${offer.attributes.slug}`,
-				lastmod: offer.attributes.updatedAt,
+				loc: `/angebot/${offer?.attributes.slug}`,
+				lastmod: offer?.attributes.updatedAt,
 				changefreq: 'weekly',
 				priority: 0.8,
 			}))

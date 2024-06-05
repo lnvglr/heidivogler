@@ -5,7 +5,7 @@
     >
       {{ page?.attributes.title }}
     </h1>
-    <div class="markdown" v-html="useMarkdown(page.attributes.content)" />
+    <div class="markdown" v-html="useMarkdown(page?.attributes.content)" />
   </div>
 </template>
 
