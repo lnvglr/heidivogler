@@ -3,6 +3,7 @@ import postcss from './config/postcss'
 import sitemap from './config/sitemap'
 import image from './config/image'
 import meta from './config/meta'
+import gtm from './config/gtm'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	app: {
@@ -14,7 +15,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/strapi',
 		'@nuxtjs/i18n',
 		'@nuxt/image-edge',
-		'@formkit/nuxt'
+		'@formkit/nuxt',
+		'@zadigetvoltaire/nuxt-gtm'
 	],
 	nitro: {
 		compressPublicAssets: true,
@@ -48,6 +50,7 @@ export default defineNuxtConfig({
 	i18n,
 	postcss,
 	image,
+	gtm,
 	// sitemap,
 	extends: [
 		'nuxt-seo-kit'
