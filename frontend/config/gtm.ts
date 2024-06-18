@@ -1,5 +1,5 @@
 export default {
-	id: 'GTM-KJPSWVHK',
+	id: process.env.GTM_ID,
 	// queryParams: {
 	// 	// Add URL query string when loading gtm.js with GTM ID (required when using custom environments)
 	// 	gtm_auth: 'AB7cDEf3GHIjkl-MnOP8qr',
