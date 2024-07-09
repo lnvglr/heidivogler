@@ -13,19 +13,29 @@
 import { Page, Strapi4ResponseData } from "~/types";
 
 const route = useRoute();
+const page = ref<Strapi4ResponseData<Page>>();
 useHead({
-  title: `${route.meta.title} - Heidi Vogler`,
+  title: [page.value?.attributes.title, "Heidi Vogler"].join(" - "),
 });
 
-const page = ref(null as Strapi4ResponseData<Page> | null);
+useSchemaOrg([
+  defineWebPage({
+    name: page.value?.attributes.title,
+    description: page.value?.attributes.content,
+  }),
+]);
 onMounted(() => {
-  const slug = typeof route.params.slug === 'string' ? route.params.slug : route.params.slug[0];
+  const slug =
+    typeof route.params.slug === "string"
+      ? route.params.slug
+      : route.params.slug[0];
 
-  useAppState().setHeaderColor('dark')
+  useAppState().setHeaderColor("dark");
 
   useStrapi()
     .findOne<Page>(slug)
     .then(({ data }) => (page.value = data));
 });
-onUnmounted(() => useAppState().setHeaderColor('default'));
+onUnmounted(() => useAppState().setHeaderColor("default"));
 </script>
+

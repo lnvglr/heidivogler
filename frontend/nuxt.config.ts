@@ -4,6 +4,7 @@ import sitemap from './config/sitemap'
 import image from './config/image'
 import meta from './config/meta'
 import gtm from './config/gtm'
+import cookieControl from './config/cookieControl'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
 	app: {
@@ -16,7 +17,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/i18n',
 		'@nuxt/image-edge',
 		'@formkit/nuxt',
-		'@zadigetvoltaire/nuxt-gtm'
+		'@zadigetvoltaire/nuxt-gtm',
+		"@dargmuesli/nuxt-cookie-control"
 	],
 	nitro: {
 		compressPublicAssets: true,
@@ -51,6 +53,7 @@ export default defineNuxtConfig({
 	postcss,
 	image,
 	gtm,
+	cookieControl,
 	// sitemap,
 	extends: [
 		'nuxt-seo-kit'
