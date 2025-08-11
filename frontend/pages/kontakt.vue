@@ -97,7 +97,7 @@ export default defineComponent({
       const mapboxgl = await import("mapbox-gl");
       // dispose existing map instance if present
       if (this.$state.setMap) {
-        if (this.$state.map) this.$state.map.remove();
+        if (this.$state.map && typeof this.$state.map.remove === 'function') this.$state.map.remove();
         this.$state.setMap(null);
       }
       this.$state.map = new mapboxgl.Map({
