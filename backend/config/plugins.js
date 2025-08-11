@@ -14,10 +14,12 @@ module.exports = ({ env }) => ({
   "rest-cache": {
     config: {
       provider: {
+        // Force memory provider to avoid Redis until explicitly configured
         name: "memory",
         options: {
-          max: 32767,
-          maxAge: 3600,
+          // Keep caps conservative to prevent growth
+          max: Number(process.env.REST_CACHE_MAX || 1000),
+          maxAge: Number(process.env.REST_CACHE_TTL || 300),
         },
       },
       strategy: {
