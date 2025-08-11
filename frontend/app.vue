@@ -31,8 +31,9 @@ const strapi: Strapi = {
   api: useRuntimeConfig().public.strapi,
 };
 
-if (!app.$strapi) app.provide("strapi", strapi);
-if (!app.$strapi) app.provide("state", useAppState());
+// only provide once
+if (!(app as any).$strapi) app.provide("strapi", strapi);
+if (!(app as any).$state) app.provide("state", useAppState());
 
 useSchemaOrg([
   defineLocalBusiness({

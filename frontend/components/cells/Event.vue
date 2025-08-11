@@ -114,6 +114,7 @@ export default defineComponent({
       windowWidth: window?.innerWidth || 0,
       open: false,
       email: useRuntimeConfig().public.email.to,
+      _onResize: null as null | (() => void),
     };
   },
   methods: {
@@ -160,11 +161,14 @@ export default defineComponent({
     },
   },
   mounted() {
-    window.addEventListener("resize", () => this.viewport());
+    (this as any)._onResize = () => this.viewport();
+    window.addEventListener("resize", (this as any)._onResize);
     this.viewport();
   },
   unmounted() {
-    window.removeEventListener("resize", () => this.viewport());
+    if ((this as any)._onResize) {
+      window.removeEventListener("resize", (this as any)._onResize);
+    }
   },
   computed: {
     locale() {
@@ -202,6 +206,9 @@ export default defineComponent({
     },
     location() {
       return false;
+    },
+    date(): string {
+      return this.getDate(false);
     },
     signUpEmail() {
       const subject = `Anmeldung ${this.event?.attributes.title}, ${this.date}`;

@@ -99,14 +99,11 @@ const getParallaxSpeed = () => {
   }
 
 onMounted(() => {
-  window.addEventListener("resize", () => {
-    getParallaxSpeed();
-  });
+  // use a stable handler reference so it can be removed
+  window.addEventListener("resize", getParallaxSpeed);
   getParallaxSpeed();
 })
 onUnmounted(() => {
-  window.removeEventListener("resize", () => {
-    getParallaxSpeed();
-  });
+  window.removeEventListener("resize", getParallaxSpeed);
 })
 </script>

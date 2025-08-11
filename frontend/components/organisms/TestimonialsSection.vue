@@ -66,6 +66,9 @@ onMounted(() => {
   };
   timeout.value = setTimeout(interval, duration.value);
 });
+onBeforeUnmount(() => {
+  if (timeout.value) clearTimeout(timeout.value);
+});
 const prev = () => {
   clearTimeout(timeout.value);
   if (current.value === 0) {

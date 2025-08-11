@@ -33,10 +33,11 @@ export default defineComponent({
   mounted() {
     window.addEventListener("mousemove", this.onMouseMove);
     setTimeout(() => (this.show = true), 500);
-    this.animateCircles();
+    this.rafId = requestAnimationFrame(this.animateCircles);
   },
   unmounted() {
     window.removeEventListener("mousemove", this.onMouseMove);
+    if (this.rafId !== null) cancelAnimationFrame(this.rafId);
   },
   methods: {
     onMouseMove(e: MouseEvent) {
@@ -49,7 +50,7 @@ export default defineComponent({
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
     animateCircles() {
-      requestAnimationFrame(this.animateCircles);
+      this.rafId = requestAnimationFrame(this.animateCircles);
 
       const newCircles = this.circles.map((circle, i) => {
         const sizeVariation = () =>
@@ -74,6 +75,7 @@ export default defineComponent({
   data() {
     return {
       show: false,
+      rafId: null as number | null,
       pointer: {
         x: 0,
         y: 0,

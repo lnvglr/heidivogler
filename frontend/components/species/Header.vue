@@ -84,14 +84,16 @@ export default defineComponent({
         this.loaded = true;
       }, 300);
     });
-    window.addEventListener("resize", () => this.setLine(false));
+    this._onResize = () => this.setLine(false);
+    window.addEventListener("resize", this._onResize);
   },
   unmounted() {
-    window.removeEventListener("resize", () => this.setLine(false));
+    if (this._onResize) window.removeEventListener("resize", this._onResize);
   },
   data() {
     return {
       Logo,
+      _onResize: null as null | (() => void),
       routes: [
         {
           name: "termine",

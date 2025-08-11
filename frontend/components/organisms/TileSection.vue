@@ -25,36 +25,43 @@ export default defineComponent({
   },
   props: {
     data: {
-      type: Object,
+      type: Object as () => { tile: any[]; size?: string },
+      required: true,
     },
   },
   data() {
     return {
-      observer: new IntersectionObserver((e) => this.checkView(e[0])),
+      observer: new IntersectionObserver((entries: IntersectionObserverEntry[]) => this.checkView(entries[0])),
       inView: false,
       hasTransitioned: false
     }
   },
   mounted() {
     this.$nextTick(() => {
-      if (this.$refs.tiles) this.observer.observe(this.$refs.tiles);
+      const el = this.$refs.tiles as unknown as Element | null;
+      if (el) this.observer.observe(el);
     });
   },
+  unmounted() {
+    try {
+      this.observer.disconnect();
+    } catch (_) {}
+  },
   methods: {
-    checkView({ isIntersecting }) {
+    checkView({ isIntersecting }: { isIntersecting: boolean }) {
       if (isIntersecting) {
         setTimeout(() => {
           this.inView = true;
           setTimeout(() => {
             this.hasTransitioned = true;
-          }, this.data.tile.length * 250);
+          }, (this.data?.tile?.length || 0) * 250);
         }, 500);
       }
     },
   },
   computed: {
     content() {
-      return useMarkdown(this.data);
+      return useMarkdown(this.data as any);
     },
   },
 });

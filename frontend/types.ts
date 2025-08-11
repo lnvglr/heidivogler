@@ -100,6 +100,7 @@ export interface Strapi extends ReturnType<typeof useStrapi> {
 export interface State {
   headerColor: string | null
   map?: Mapbox.Map
+  setMap?: (m: Mapbox.Map | null) => void
 }
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {

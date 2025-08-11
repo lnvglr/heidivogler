@@ -37,7 +37,7 @@ export default defineComponent({
   components: {
     ContactForm,
   },
-  key(route) {
+  key(route: { fullPath: string }) {
     return route.fullPath
   },
   head() {
@@ -76,7 +76,7 @@ export default defineComponent({
       token: useRuntimeConfig().public.mapbox.token,
       location: "Gailhöfe 6, 88699 Frickingen",
       geolocation: { center: [0, 0] as mapboxgl.LngLatLike, place_name: "" },
-      debounce: null,
+      debounce: null as ReturnType<typeof setTimeout> | null,
     };
   },
   methods: {
@@ -95,13 +95,17 @@ export default defineComponent({
     async initMap() {
       if (!this.$refs.map) return;
       const mapboxgl = await import("mapbox-gl");
+      // dispose existing map instance if present
+      if (this.$state.setMap) {
+        if (this.$state.map) this.$state.map.remove();
+        this.$state.setMap(null);
+      }
       this.$state.map = new mapboxgl.Map({
         accessToken: this.token,
         attributionControl: true,
         container: this.$refs.map as HTMLElement,
         style: "mapbox://styles/mapbox/streets-v11",
         center: this.geolocation?.center,
-        language: "de",
         cooperativeGestures: true,
         zoom: 10,
         pitch: 45,
@@ -119,7 +123,7 @@ export default defineComponent({
   watch: {
     location: {
       handler(newValue: string) {
-        clearTimeout(this.debounce);
+        if (this.debounce) clearTimeout(this.debounce as any);
         this.debounce = setTimeout(() => {
           this.geocoding(newValue);
         }, 1000);
@@ -140,7 +144,11 @@ export default defineComponent({
     useAppState().setHeaderColor("dark");
   },
   unmounted() {
-    useAppState().setHeaderColor('default');
+    // dispose mapbox instance if exists
+    const state = useAppState();
+    if (state.map) (state.map as any).remove();
+    state.setHeaderColor('default');
+    if (state.setMap) state.setMap(null);
   },
 });
 </script>
