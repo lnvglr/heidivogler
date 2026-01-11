@@ -17,9 +17,10 @@ module.exports = ({ env }) => ({
         // Force memory provider to avoid Redis until explicitly configured
         name: "memory",
         options: {
-          // Keep caps conservative to prevent growth
-          max: Number(process.env.REST_CACHE_MAX || 1000),
-          maxAge: Number(process.env.REST_CACHE_TTL || 300),
+          // Reduced cache size to minimize RAM usage (each entry can be several KB)
+          // Consider using Redis in production for better memory management
+          max: Number(process.env.REST_CACHE_MAX || 100),
+          maxAge: Number(process.env.REST_CACHE_TTL || 180),
         },
       },
       strategy: {

@@ -3,7 +3,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "start": "node .output/server/index.mjs",
+    "start": "node --max-old-space-size=512 .output/server/index.mjs",
+    "start:prod": "NODE_ENV=production node --max-old-space-size=512 --optimize-for-size .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

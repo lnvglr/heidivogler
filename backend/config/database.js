@@ -17,6 +17,12 @@ module.exports = ({ env }) => ({
     debug: false,
     pool: {
       min: 0,
+      max: 5, // Limit max connections to reduce memory usage
+      acquireTimeoutMillis: 30000,
+      createTimeoutMillis: 30000,
+      idleTimeoutMillis: 30000,
+      reapIntervalMillis: 1000,
+      createRetryIntervalMillis: 200,
     }
 
   },

@@ -22,6 +22,14 @@ export default defineNuxtConfig({
 	],
 	nitro: {
 		compressPublicAssets: true,
+		// Optimize for production to reduce memory usage
+		prerender: {
+			crawlLinks: false, // Disable link crawling to save memory during build
+		},
+		// Reduce memory usage in production
+		experimental: {
+			wasm: false, // Disable WASM if not needed
+		},
 	},
 	formkit: {
 		configFile: '~/config/formkit.config.ts',
