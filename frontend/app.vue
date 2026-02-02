@@ -9,7 +9,7 @@
         <NuxtLayout>
           <SeoKit />
           <OgImageStatic />
-          <NuxtPage :nuxt-child-key="$route.path" keep-alive />
+          <NuxtPage :nuxt-child-key="$route.path" />
         </NuxtLayout>
       </div>
       <Footer class="w-full" />

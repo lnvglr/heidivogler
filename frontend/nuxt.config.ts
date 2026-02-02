@@ -30,6 +30,16 @@ export default defineNuxtConfig({
 		experimental: {
 			wasm: false, // Disable WASM if not needed
 		},
+		// Route rules to limit caching and prevent memory accumulation
+		routeRules: {
+			// Limit image caching to prevent unbounded growth
+			'/images/**': { 
+				headers: { 
+					'Cache-Control': 'public, max-age=3600, s-maxage=3600' 
+				},
+				cors: true,
+			},
+		},
 	},
 	formkit: {
 		configFile: '~/config/formkit.config.ts',

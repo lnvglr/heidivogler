@@ -52,24 +52,17 @@ export default defineComponent({
     animateCircles() {
       this.rafId = requestAnimationFrame(this.animateCircles);
 
-      const newCircles = this.circles.map((circle, i) => {
-        const sizeVariation = () =>
-          (Math.sin(Date.now() / this.sizeVariation + i) * (i % 2 ? -5 : 5)) /
-            20 +
-          1;
-        const hoverVariation = (pointer: number) =>
-          Math.sin(Date.now() / this.hoverVariation + i) * (i % 2 ? -3 : 3) +
-          pointer * (i % 2 ? 50 : -50);
-        const transform = `translate(${hoverVariation(
-          this.pointer.x
-        )}%, ${hoverVariation(this.pointer.y) + window.scrollY / 20}%) scale(${sizeVariation()})`;
-
-        return {
-          ...circle,
-          transform,
-        };
+      // Mutate existing circles array instead of creating new objects
+      // This reduces memory allocation and garbage collection pressure
+      const now = Date.now();
+      const scrollY = window.scrollY / 20;
+      
+      this.circles.forEach((circle, i) => {
+        const sizeVariation = (Math.sin(now / this.sizeVariation + i) * (i % 2 ? -5 : 5)) / 20 + 1;
+        const hoverVariationX = Math.sin(now / this.hoverVariation + i) * (i % 2 ? -3 : 3) + this.pointer.x * (i % 2 ? 50 : -50);
+        const hoverVariationY = Math.sin(now / this.hoverVariation + i) * (i % 2 ? -3 : 3) + this.pointer.y * (i % 2 ? 50 : -50) + scrollY;
+        circle.transform = `translate(${hoverVariationX}%, ${hoverVariationY}%) scale(${sizeVariation})`;
       });
-      this.circles = newCircles;
     },
   },
   data() {

@@ -144,9 +144,16 @@ export default defineComponent({
     useAppState().setHeaderColor("dark");
   },
   unmounted() {
+    // Clear debounce timer
+    if (this.debounce) {
+      clearTimeout(this.debounce);
+      this.debounce = null;
+    }
     // dispose mapbox instance if exists
     const state = useAppState();
-    if (state.map) (state.map as any).remove();
+    if (state.map && typeof (state.map as any).remove === 'function') {
+      (state.map as any).remove();
+    }
     state.setHeaderColor('default');
     if (state.setMap) state.setMap(null);
   },
