@@ -75,5 +75,11 @@ export default defineNuxtConfig({
 	// sitemap,
 	extends: [
 		'nuxt-seo-kit'
-	]
+	],
+	// Disable runtime OG image generation (was leaking memory via satori/chromium)
+	ogImage: {
+		browserProvider: false,
+		satoriProvider: false,
+		playground: false,
+	},
 })

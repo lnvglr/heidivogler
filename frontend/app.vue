@@ -8,7 +8,6 @@
         <Header class="w-full" />
         <NuxtLayout>
           <SeoKit />
-          <OgImageStatic />
           <NuxtPage :nuxt-child-key="$route.path" />
         </NuxtLayout>
       </div>
