@@ -76,11 +76,4 @@ export default defineNuxtConfig({
 	extends: [
 		'nuxt-seo-kit'
 	],
-	// Keep satoriProvider enabled (required for the module's import map).
-	// Runtime OG generation is avoided by not mounting <OgImageStatic />.
-	// Chromium browser screenshots stay off to reduce memory use.
-	ogImage: {
-		browserProvider: false,
-		playground: false,
-	},
 })
