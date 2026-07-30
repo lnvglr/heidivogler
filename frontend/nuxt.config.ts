@@ -76,10 +76,11 @@ export default defineNuxtConfig({
 	extends: [
 		'nuxt-seo-kit'
 	],
-	// Disable runtime OG image generation (was leaking memory via satori/chromium)
+	// Keep satoriProvider enabled (required for the module's import map).
+	// Runtime OG generation is avoided by not mounting <OgImageStatic />.
+	// Chromium browser screenshots stay off to reduce memory use.
 	ogImage: {
 		browserProvider: false,
-		satoriProvider: false,
 		playground: false,
 	},
 })
