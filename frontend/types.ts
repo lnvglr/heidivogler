@@ -1,7 +1,7 @@
 import { Strapi4ResponseSingle, Strapi4ResponseMany, Strapi4ResponseData } from '@nuxtjs/strapi/dist/runtime/types'
 export { Strapi4ResponseData, Strapi4ResponseSingle, Strapi4ResponseMany } from '@nuxtjs/strapi/dist/runtime/types'
 export { EventAttributes } from 'ics/index'
-import Mapbox from 'mapbox-gl'
+import type { Map as MapboxMap } from 'mapbox-gl'
 import { PublicRuntimeConfig } from 'nuxt/schema'
 
 export interface Event {
@@ -99,8 +99,8 @@ export interface Strapi extends ReturnType<typeof useStrapi> {
 
 export interface State {
   headerColor: string | null
-  map?: Mapbox.Map
-  setMap?: (m: Mapbox.Map | null) => void
+  map?: MapboxMap
+  setMap?: (m: MapboxMap | null) => void
 }
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {

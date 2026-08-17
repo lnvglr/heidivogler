@@ -4,7 +4,7 @@
       :class="[page ? 'opacity-100': 'opacity-0']"
       class="duration-1000 transition-opacity absolute h-screen min-h-[1280px] w-screen -mt-36 after:bg-success-800 after:absolute after:w-full after:h-full after:top-0 -z-10"
     >
-      <NuxtImg src="/green.jpg" format="webp" class="relative object-cover w-full h-full z-10 mix-blend-hard-light" alt="" role="presentation" />
+      <img src="/green.jpg" class="relative object-cover w-full h-full z-10 mix-blend-hard-light" alt="" role="presentation" />
     </div>
     
     <Circles />

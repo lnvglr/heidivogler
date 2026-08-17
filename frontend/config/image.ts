@@ -1,6 +1,8 @@
 const name = process.env.CLOUDINARY_NAME
 
 export default {
+	// Use Cloudinary for remote images so IPX/sharp never boots in the Node process.
+	provider: 'cloudinary',
 	cloudinary: {
 		baseURL: `https://res.cloudinary.com/${name}/image/fetch/`
 	},

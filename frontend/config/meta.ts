@@ -1,9 +1,10 @@
-const ogImage =
+export const ogImage =
 	"https://heidivogler.s3.eu-central-1.amazonaws.com/IMG_4749_de493186a9.jpg";
 const description =
 	"Hier wirst du deinen Weg finden und kannst im Wald oder mit den Pferden einen Prozess der Heilung beginnen.";
 
 export default {
+	ogImage,
 	head: {
 		title: "Heidi Vogler – Reittherapie, Traumabearbeitung, Waldbaden",
 		meta: [
